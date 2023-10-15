@@ -15,7 +15,7 @@ Tests for RPI's and Jetson Nano:
 
 Tools used and needed:
 * gprof for baseline benchmarks and code execution performance
-* prof for flamegraphs
+* perf for flamegraphs showing CPU utilization and stack performance
 * NVCC for CUDA compilation
 * g++ for C++ compilation
 * `std::chrono` for naive time logging
