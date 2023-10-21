@@ -1,5 +1,6 @@
 #include "primes.hpp"
 #include "threadpool.hpp"
+#include "montecarlo.hpp"
 #include <chrono>
 #include <iostream>
 #include <vector>
@@ -126,6 +127,8 @@ int main() {
     naive_primes(nums);
     threadpool_primes(nums);
     threadpool_primes_dispatch(nums);
+
+    monte_carlo();
 
     return 0;
 }
