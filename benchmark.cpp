@@ -108,6 +108,7 @@ int main() {
     cpu_temp();
     // TODO get idle temperature at the start of this benchmark to determine
     // the "idle starting" temperature. store in struct? 
+    // when would it get called?
 
     std::cout << "Starting with primality testing using the Miller-Rabin "
                  "algorithm...\n";
@@ -155,6 +156,8 @@ int main() {
     naive_primes(nums);
     threadpool_primes(nums);
 
+    // TODO where/when should these be called? should these functions update values
+    // located within a struct? think about this...
     cpu_usage();
     mem_info();
     cpu_temp();

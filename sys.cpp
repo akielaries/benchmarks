@@ -103,6 +103,7 @@ void mem_info() {
 
 // function to display CPU temperature
 void cpu_temp() {
+    // TODO initialize starting temp here?
     std::string cpu_temp = read_file("/sys/class/thermal/thermal_zone0/temp");
     if (!cpu_temp.compare(0, 5, "Error")) {
         std::cout << "Error reading CPU temperature." << std::endl;
@@ -113,19 +114,9 @@ void cpu_temp() {
                   << " (" << temp_f << "°F)" << std::endl;
     }
 }
-/*
-int main() {
-    // display CPU model and other stats
-    cpu_info();
 
-    // get and display the number of running processes
-    proc_info();
-
-    // display CPU usage, memory statistics, and CPU temperature
-    cpu_usage();
-    mem_info();
-    cpu_temp();
-
-    return 0;
-}
-*/
+// TODO: this function should run for some amount of time for the CPU to 
+// literally cooloff before the next run, the base CPU temp should be determined
+// at the very start of our benchmark and this function should run for ~30s? and
+// get the average temperature to determine the baseline...
+// void cpu_idle() {}
