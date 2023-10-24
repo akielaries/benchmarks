@@ -14,7 +14,7 @@ gprof:
 
 callgrind:
 	valgrind --tool=callgrind ./${BIN}
-	callgrind_annotate callgrind.out
+	#callgrind_annotate callgrind.out
 
 flamegraph:
 	sudo perf record -g ./${BIN}

@@ -10,7 +10,7 @@
 #include <vector>
 
 // function to read and return the contents of a file
-std::string readFromFile(const std::string& filename) {
+std::string read_file(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         return "Error: Unable to read " + filename;
@@ -22,7 +22,7 @@ std::string readFromFile(const std::string& filename) {
 }
 
 // function to get the number of running processes
-int getRunningProcesses() {
+int proc_info() {
     FILE* processPipe = popen("ps aux | wc -l", "r");
     if (!processPipe) {
         std::cerr << "popen failed for processes." << std::endl;
@@ -31,9 +31,9 @@ int getRunningProcesses() {
 
     char processBuffer[128];
     if (fgets(processBuffer, sizeof(processBuffer), processPipe) != nullptr) {
-        int numProcesses = std::stoi(processBuffer);
+        int num_proc = std::stoi(processBuffer);
         pclose(processPipe);
-        return numProcesses;
+        return num_proc;
     } else {
         std::cerr << "Failed to read the output of 'ps'." << std::endl;
         pclose(processPipe);
@@ -43,7 +43,7 @@ int getRunningProcesses() {
 
 // function to display CPU usage
 void cpu_usage() {
-    std::string cpuUsage = readFromFile("/proc/loadavg");
+    std::string cpuUsage = read_file("/proc/loadavg");
     std::cout << "CPU Usage (load average): " << cpuUsage;
 }
 
@@ -99,7 +99,7 @@ void mem_info() {
 
 // function to display CPU temperature
 void cpu_temp() {
-    std::string cpuTemp = readFromFile("/sys/class/thermal/thermal_zone0/temp");
+    std::string cpuTemp = read_file("/sys/class/thermal/thermal_zone0/temp");
     if (!cpuTemp.compare(0, 5, "Error")) {
         std::cout << "Error reading CPU temperature." << std::endl;
     } else {
@@ -113,9 +113,9 @@ int main() {
     cpu_info();
 
     // get and display the number of running processes
-    int numProcesses = getRunningProcesses();
-    if (numProcesses != -1) {
-        std::cout << "Number of running processes: " << numProcesses << std::endl;
+    int num_proc = proc_info();
+    if (num_proc != -1) {
+        std::cout << "Number of running processes: " << num_proc << std::endl;
     }
 
     // display CPU usage, memory statistics, and CPU temperature
