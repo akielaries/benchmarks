@@ -128,7 +128,7 @@ int main() {
     threadpool_primes(nums);
     threadpool_primes_dispatch(nums);
 
-    monte_carlo();
+    //monte_carlo();
 
     return 0;
 }
