@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['readme_2emd_48',['README.md',['../README_8md.html',1,'']]]
+  ['primes_2ecpp_48',['primes.cpp',['../primes_8cpp.html',1,'']]],
+  ['primes_2ehpp_49',['primes.hpp',['../primes_8hpp.html',1,'']]]
 ];
