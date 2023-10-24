@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['stop_25',['stop',['../classThreadPool.html#a04e2cc4b3c979b4e054071436988d23d',1,'ThreadPool']]],
-  ['sysstats_2ecpp_26',['sysstats.cpp',['../sysstats_8cpp.html',1,'']]]
+  ['readfromfile_25',['readFromFile',['../sysstats_8cpp.html#aa03901fab89242b500509c546f684ada',1,'sysstats.cpp']]],
+  ['readme_2emd_26',['README.md',['../README_8md.html',1,'']]]
 ];
