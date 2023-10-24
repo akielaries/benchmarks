@@ -168,32 +168,23 @@ $(function() {
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">// function to display CPU temperature</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">  105</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>() {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::string <a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a> = <a class="code" href="sys_8cpp.html#a0493d1da643dd0e2ded159c13ed9f97e">read_file</a>(<span class="stringliteral">&quot;/sys/class/thermal/thermal_zone0/temp&quot;</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>.compare(0, 5, <span class="stringliteral">&quot;Error&quot;</span>)) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Error reading CPU temperature.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">float</span> temp_c = std::stof(<a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>) / 1000.0; <span class="comment">// convert to Celsius</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordtype">float</span> temp_f = (temp_c * 9 / 5) + 32;       <span class="comment">// convert to Fahrenheit</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;CPU Temperature: &quot;</span> &lt;&lt; temp_c &lt;&lt; <span class="stringliteral">&quot;°C&quot;</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                  &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; temp_f &lt;&lt; <span class="stringliteral">&quot;°F)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">int main() {</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">    // display CPU model and other stats</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">    cpu_info();</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">    // get and display the number of running processes</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">    proc_info();</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">    // display CPU usage, memory statistics, and CPU temperature</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">    cpu_usage();</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">    mem_info();</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">    cpu_temp();</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">    return 0;</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">// TODO initialize starting temp here?</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::string <a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a> = <a class="code" href="sys_8cpp.html#a0493d1da643dd0e2ded159c13ed9f97e">read_file</a>(<span class="stringliteral">&quot;/sys/class/thermal/thermal_zone0/temp&quot;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>.compare(0, 5, <span class="stringliteral">&quot;Error&quot;</span>)) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Error reading CPU temperature.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordtype">float</span> temp_c = std::stof(<a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>) / 1000.0; <span class="comment">// convert to Celsius</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordtype">float</span> temp_f = (temp_c * 9 / 5) + 32;       <span class="comment">// convert to Fahrenheit</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;CPU Temperature: &quot;</span> &lt;&lt; temp_c &lt;&lt; <span class="stringliteral">&quot;°C&quot;</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                  &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; temp_f &lt;&lt; <span class="stringliteral">&quot;°F)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">// TODO: this function should run for some amount of time for the CPU to </span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">// literally cooloff before the next run, the base CPU temp should be determined</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">// at the very start of our benchmark and this function should run for ~30s? and</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">// get the average temperature to determine the baseline...</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">// void cpu_idle() {}</span></div>
 <div class="ttc" id="asys_8cpp_html_a0493d1da643dd0e2ded159c13ed9f97e"><div class="ttname"><a href="sys_8cpp.html#a0493d1da643dd0e2ded159c13ed9f97e">read_file</a></div><div class="ttdeci">std::string read_file(const std::string &amp;filename)</div><div class="ttdoc">reads the contents of a file into a string</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00013">sys.cpp:13</a></div></div>
 <div class="ttc" id="asys_8cpp_html_a1fbd1f1e6ecaf3d95792c9c6a55766d4"><div class="ttname"><a href="sys_8cpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4">mem_info</a></div><div class="ttdeci">void mem_info()</div><div class="ttdoc">get memory info and stats from /proc/meminfo</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00085">sys.cpp:85</a></div></div>
 <div class="ttc" id="asys_8cpp_html_a3af5f80da0eecc96262314c413ff529a"><div class="ttname"><a href="sys_8cpp.html#a3af5f80da0eecc96262314c413ff529a">cpu_info</a></div><div class="ttdeci">void cpu_info()</div><div class="ttdoc">get CPU info, BogoMIPS and Model</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00052">sys.cpp:52</a></div></div>

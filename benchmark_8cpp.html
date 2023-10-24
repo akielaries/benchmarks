@@ -118,68 +118,71 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>();</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">// TODO get idle temperature at the start of this benchmark to determine</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// the &quot;idle starting&quot; temperature. store in struct? </span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Starting with primality testing using the Miller-Rabin &quot;</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                 <span class="stringliteral">&quot;algorithm...\n&quot;</span>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::vector&lt;uint32_t&gt; nums = {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        1000000007, <span class="comment">// A large 32-bit integer PRIME</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        2147483647, <span class="comment">// The largest 32-bit signed integer PRIME</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        97,         <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        123456789,  <span class="comment">// Another large 32-bit integer</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        19,         <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        42,         <span class="comment">// Just a random number</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        31,         <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        987654321,  <span class="comment">// Yet another large 32-bit integer</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        37,         <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        123,        <span class="comment">// Just another number</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        17,         <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        999999999,  <span class="comment">// And another large 32-bit integer</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        23,         <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        777777777,  <span class="comment">// Large 32-bit integer</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        13,         <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        234567890,  <span class="comment">// Large 32-bit integer</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        11,         <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        987654321,  <span class="comment">// Repeating value for demonstration</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        7,          <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        8675309,    <span class="comment">// Another large 32-bit integer</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        709,        <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        5381,       <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        52711,      <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        167449,     <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        648391,     <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        1128889,    <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        2269733,    <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        3042161,    <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        4535189,    <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        7474967,    <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        9737333,    <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        14161729,   <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        17624813,   <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        19734581,   <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        23391799,   <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        29499439,   <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        37139213    <span class="comment">// A PRIME number</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    };</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="benchmark_8cpp.html#a99aac323581ac61f8dbced9694339b0b">naive_primes</a>(nums);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <a class="code" href="benchmark_8cpp.html#a158c34427c2e57ed392688f69fed9936">threadpool_primes</a>(nums);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="sys_8cpp.html#adfbc99b60145b8192a136b725f951e2c">cpu_usage</a>();</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="sys_8cpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4">mem_info</a>();</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <a class="code" href="benchmark_8cpp.html#a2791fa7f9626a2ec2739035004ed8ed1">threadpool_primes_dispatch</a>(nums);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="sys_8cpp.html#adfbc99b60145b8192a136b725f951e2c">cpu_usage</a>();</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="sys_8cpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4">mem_info</a>();</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>();</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// monte_carlo();</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">// when would it get called?</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Starting with primality testing using the Miller-Rabin &quot;</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                 <span class="stringliteral">&quot;algorithm...\n&quot;</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    std::vector&lt;uint32_t&gt; nums = {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        1000000007, <span class="comment">// A large 32-bit integer PRIME</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        2147483647, <span class="comment">// The largest 32-bit signed integer PRIME</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        97,         <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        123456789,  <span class="comment">// Another large 32-bit integer</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        19,         <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        42,         <span class="comment">// Just a random number</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        31,         <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        987654321,  <span class="comment">// Yet another large 32-bit integer</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        37,         <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        123,        <span class="comment">// Just another number</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        17,         <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        999999999,  <span class="comment">// And another large 32-bit integer</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        23,         <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        777777777,  <span class="comment">// Large 32-bit integer</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        13,         <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        234567890,  <span class="comment">// Large 32-bit integer</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        11,         <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        987654321,  <span class="comment">// Repeating value for demonstration</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        7,          <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        8675309,    <span class="comment">// Another large 32-bit integer</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        709,        <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        5381,       <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        52711,      <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        167449,     <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        648391,     <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        1128889,    <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        2269733,    <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        3042161,    <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        4535189,    <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        7474967,    <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        9737333,    <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        14161729,   <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        17624813,   <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        19734581,   <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        23391799,   <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        29499439,   <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        37139213    <span class="comment">// A PRIME number</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    };</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <a class="code" href="benchmark_8cpp.html#a99aac323581ac61f8dbced9694339b0b">naive_primes</a>(nums);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="benchmark_8cpp.html#a158c34427c2e57ed392688f69fed9936">threadpool_primes</a>(nums);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">// TODO where/when should these be called? should these functions update values</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// located within a struct? think about this...</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="sys_8cpp.html#adfbc99b60145b8192a136b725f951e2c">cpu_usage</a>();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <a class="code" href="sys_8cpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4">mem_info</a>();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="benchmark_8cpp.html#a2791fa7f9626a2ec2739035004ed8ed1">threadpool_primes_dispatch</a>(nums);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="sys_8cpp.html#adfbc99b60145b8192a136b725f951e2c">cpu_usage</a>();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="sys_8cpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4">mem_info</a>();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>();</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">// monte_carlo();</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
 <div class="ttc" id="abenchmark_8cpp_html_a158c34427c2e57ed392688f69fed9936"><div class="ttname"><a href="benchmark_8cpp.html#a158c34427c2e57ed392688f69fed9936">threadpool_primes</a></div><div class="ttdeci">void threadpool_primes(std::vector&lt; uint32_t &gt; nums)</div><div class="ttdef"><b>Definition:</b> <a href="benchmark_8cpp_source.html#l00034">benchmark.cpp:34</a></div></div>
 <div class="ttc" id="abenchmark_8cpp_html_a2791fa7f9626a2ec2739035004ed8ed1"><div class="ttname"><a href="benchmark_8cpp.html#a2791fa7f9626a2ec2739035004ed8ed1">threadpool_primes_dispatch</a></div><div class="ttdeci">void threadpool_primes_dispatch(std::vector&lt; uint32_t &gt; nums)</div><div class="ttdef"><b>Definition:</b> <a href="benchmark_8cpp_source.html#l00067">benchmark.cpp:67</a></div></div>
 <div class="ttc" id="abenchmark_8cpp_html_a99aac323581ac61f8dbced9694339b0b"><div class="ttname"><a href="benchmark_8cpp.html#a99aac323581ac61f8dbced9694339b0b">naive_primes</a></div><div class="ttdeci">void naive_primes(std::vector&lt; uint32_t &gt; nums)</div><div class="ttdef"><b>Definition:</b> <a href="benchmark_8cpp_source.html#l00009">benchmark.cpp:9</a></div></div>
