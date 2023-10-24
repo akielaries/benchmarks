@@ -1,6 +1,6 @@
 CC		= g++
 FLGS	= -std=c++20 -march=native -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
-SRC		= primes.cpp montecarlo.cpp benchmark.cpp
+SRC		= primes.cpp montecarlo.cpp benchmark.cpp sys.cpp
 BIN		= BENCHMARK
 
 bench:

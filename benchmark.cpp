@@ -1,6 +1,7 @@
+#include "sys.hpp"
+#include "montecarlo.hpp"
 #include "primes.hpp"
 #include "threadpool.hpp"
-#include "montecarlo.hpp"
 #include <chrono>
 #include <iostream>
 #include <vector>
@@ -97,6 +98,16 @@ void threadpool_primes_dispatch(std::vector<uint32_t> nums) {
 
 int main() {
     std::cout << "Starting benchmark...\n\n";
+    
+    // display CPU information and number of running processes from `ps`
+    cpu_info();
+    proc_info();
+
+    cpu_usage();
+    mem_info();
+    cpu_temp();
+    // TODO get idle temperature at the start of this benchmark to determine
+    // the "idle starting" temperature. store in struct? 
 
     std::cout << "Starting with primality testing using the Miller-Rabin "
                  "algorithm...\n";
@@ -121,14 +132,41 @@ int main() {
         11,         // A PRIME number
         987654321,  // Repeating value for demonstration
         7,          // A PRIME number
-        8675309     // Another large 32-bit integer
+        8675309,    // Another large 32-bit integer
+        709,        // A PRIME number
+        5381,       // A PRIME number
+        52711,      // A PRIME number
+        167449,     // A PRIME number
+        648391,     // A PRIME number
+        1128889,    // A PRIME number
+        2269733,    // A PRIME number
+        3042161,    // A PRIME number
+        4535189,    // A PRIME number
+        7474967,    // A PRIME number
+        9737333,    // A PRIME number
+        14161729,   // A PRIME number
+        17624813,   // A PRIME number
+        19734581,   // A PRIME number
+        23391799,   // A PRIME number
+        29499439,   // A PRIME number
+        37139213    // A PRIME number
     };
 
     naive_primes(nums);
     threadpool_primes(nums);
+
+    cpu_usage();
+    mem_info();
+    cpu_temp();
+
     threadpool_primes_dispatch(nums);
 
-    //monte_carlo();
+    cpu_usage();
+    mem_info();
+    cpu_temp();
+
+
+    // monte_carlo();
 
     return 0;
 }
