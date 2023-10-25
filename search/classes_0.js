@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['threaddispatch_41',['ThreadDispatch',['../classThreadDispatch.html',1,'']]],
-  ['threadpool_42',['ThreadPool',['../classThreadPool.html',1,'']]]
+  ['logger_66',['Logger',['../classLogger.html',1,'']]]
 ];

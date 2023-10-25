@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['main_14',['main',['../benchmark_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;benchmark.cpp'],['../daemon_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;daemon.cpp'],['../fourier_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;fourier.cpp']]],
-  ['mem_5finfo_15',['mem_info',['../sys_8cpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4',1,'mem_info():&#160;sys.cpp'],['../sys_8hpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4',1,'mem_info():&#160;sys.cpp']]],
-  ['miller_5frabin_16',['miller_rabin',['../primes_8cpp.html#a17a2ec835cdd09f99b70cf077c531853',1,'miller_rabin(uint32_t n, uint32_t iters=10):&#160;primes.cpp'],['../primes_8hpp.html#a02dc07b078c4715591f9edca6cc43487',1,'miller_rabin(uint32_t n, uint32_t iters):&#160;primes.cpp']]],
-  ['mod_5fmul_17',['mod_mul',['../primes_8cpp.html#ab96eee0127eb7d17667946535690b925',1,'mod_mul(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp'],['../primes_8hpp.html#ab96eee0127eb7d17667946535690b925',1,'mod_mul(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp']]],
-  ['mod_5fpow_18',['mod_pow',['../primes_8cpp.html#abdc4d3f8c8a5e618d18431625e059fc9',1,'mod_pow(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp'],['../primes_8hpp.html#abdc4d3f8c8a5e618d18431625e059fc9',1,'mod_pow(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp']]],
-  ['monte_5fcarlo_19',['monte_carlo',['../montecarlo_8cpp.html#a2738790f47c831176baa71f79604c07f',1,'monte_carlo():&#160;montecarlo.cpp'],['../montecarlo_8hpp.html#a2738790f47c831176baa71f79604c07f',1,'monte_carlo():&#160;montecarlo.cpp']]],
-  ['montecarlo_2ecpp_20',['montecarlo.cpp',['../montecarlo_8cpp.html',1,'']]],
-  ['montecarlo_2ehpp_21',['montecarlo.hpp',['../montecarlo_8hpp.html',1,'']]]
+  ['log_24',['log',['../classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2',1,'Logger']]],
+  ['log_2ecpp_25',['log.cpp',['../log_8cpp.html',1,'']]],
+  ['log_2ehpp_26',['log.hpp',['../log_8hpp.html',1,'']]],
+  ['logdestination_27',['logDestination',['../classLogger.html#a967857c7128b7c34b79c63248c499235',1,'Logger']]],
+  ['logdestination_28',['LogDestination',['../log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850c',1,'log.hpp']]],
+  ['logfilestream_29',['logFileStream',['../classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b',1,'Logger']]],
+  ['logger_30',['Logger',['../classLogger.html',1,'Logger'],['../classLogger.html#ad41ef6d2d5c25b8d5990a484f058d834',1,'Logger::Logger(LogLevel level=INFO, bool useTimestamp=true)']]],
+  ['loglevel_31',['logLevel',['../classLogger.html#a944f533cd338373621f20a6e20ba525e',1,'Logger']]],
+  ['loglevel_32',['LogLevel',['../log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9',1,'log.hpp']]],
+  ['logtofile_33',['logToFile',['../classLogger.html#ab45d0099fb55c8156305a1ce8490e79b',1,'Logger']]]
 ];

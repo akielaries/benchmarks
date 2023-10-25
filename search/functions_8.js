@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['witness_74',['witness',['../primes_8cpp.html#a80111d35c6263d494061b175ec14c90c',1,'witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s):&#160;primes.cpp'],['../primes_8hpp.html#a80111d35c6263d494061b175ec14c90c',1,'witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s):&#160;primes.cpp']]]
+  ['proc_5finfo_102',['proc_info',['../sys_8cpp.html#a7c9ab01ba23bc15c28de4999146b511c',1,'proc_info():&#160;sys.cpp'],['../sys_8hpp.html#a7c9ab01ba23bc15c28de4999146b511c',1,'proc_info():&#160;sys.cpp']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['naive_5fprimes_68',['naive_primes',['../benchmark_8cpp.html#a99aac323581ac61f8dbced9694339b0b',1,'benchmark.cpp']]]
+  ['getcurrenttimestamp_91',['getCurrentTimestamp',['../classLogger.html#a44caa51276b396938aa0d2b0fa087a5b',1,'Logger']]],
+  ['getlogprefix_92',['getLogPrefix',['../classLogger.html#a7df6cb9a631c1406314c09bdf01e9a6c',1,'Logger']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queue_5fmutex_77',['queue_mutex',['../classThreadPool.html#adf76c928f148e8fdcd7e34c2bbaa97e3',1,'ThreadPool']]]
+  ['enabletimestamp_114',['enableTimestamp',['../classLogger.html#a7e2c6d6e9857936385f0f0027b95a50d',1,'Logger']]]
 ];

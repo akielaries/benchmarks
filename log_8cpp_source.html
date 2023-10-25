@@ -73,8 +73,8 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;gpmp::core::Logger::Logger(LogLevel level, <span class="keywordtype">bool</span> useTimestamp)</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    : logLevel(level), enableTimestamp(useTimestamp), logDestination(CONSOLE),</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;gpmp::core::Logger::Logger(<a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> level, <span class="keywordtype">bool</span> useTimestamp)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    : logLevel(level), enableTimestamp(useTimestamp), logDestination(<a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a>),</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;      logToFile(false) {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> gpmp::core::Logger::setLogLevel(LogLevel level) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> gpmp::core::Logger::setLogLevel(<a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> level) {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    logLevel = level;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
@@ -92,7 +92,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    enableTimestamp = enable;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> gpmp::core::Logger::setLogDestination(LogDestination destination) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> gpmp::core::Logger::setLogDestination(<a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850c">LogDestination</a> destination) {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    logDestination = destination;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
@@ -104,33 +104,33 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> gpmp::core::Logger::log(LogLevel level, <span class="keyword">const</span> std::string &amp;message) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> gpmp::core::Logger::log(<a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> level, <span class="keyword">const</span> std::string &amp;message) {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> (level &gt;= logLevel) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::string prefix = getLogPrefix(level);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::string logMessage = formatLogMessage(prefix, message);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> (logDestination == CONSOLE || logDestination == CONSOLE_AND_FILE) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> (level == ERROR) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> (logDestination == <a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a> || logDestination == <a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca49cf08ff55a779ae12043a83f9176ee2">CONSOLE_AND_FILE</a>) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> (level == <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                std::cerr &lt;&lt; logMessage &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                std::cout &lt;&lt; logMessage &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (logDestination != CONSOLE &amp;&amp; logToFile &amp;&amp; logFileStream.is_open()) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (logDestination != <a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a> &amp;&amp; logToFile &amp;&amp; logFileStream.is_open()) {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            logFileStream &lt;&lt; logMessage &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;std::string gpmp::core::Logger::getLogPrefix(LogLevel level) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;std::string gpmp::core::Logger::getLogPrefix(<a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> level) {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">switch</span> (level) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">case</span> DEBUG:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f">DEBUG</a>:</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[DEBUG]&quot;</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">case</span> INFO:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a>:</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[INFO]&quot;</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">case</span> WARNING:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a>:</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[WARN]&quot;</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">case</span> ERROR:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>:</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[ERR]&quot;</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">default</span>:</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[UNKN]&quot;</span>;</div>
@@ -173,6 +173,14 @@ $(function() {
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">    return 0;</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">}*/</span></div>
+<div class="ttc" id="alog_8hpp_html_a4d96f303a62a42f0088fbafbb30c850c"><div class="ttname"><a href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850c">LogDestination</a></div><div class="ttdeci">LogDestination</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00011">log.hpp:11</a></div></div>
+<div class="ttc" id="alog_8hpp_html_a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc"><div class="ttname"><a href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a></div><div class="ttdeci">@ CONSOLE</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00011">log.hpp:11</a></div></div>
+<div class="ttc" id="alog_8hpp_html_a4d96f303a62a42f0088fbafbb30c850ca49cf08ff55a779ae12043a83f9176ee2"><div class="ttname"><a href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca49cf08ff55a779ae12043a83f9176ee2">CONSOLE_AND_FILE</a></div><div class="ttdeci">@ CONSOLE_AND_FILE</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00011">log.hpp:11</a></div></div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a></div><div class="ttdeci">LogLevel</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f">DEBUG</a></div><div class="ttdeci">@ DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
