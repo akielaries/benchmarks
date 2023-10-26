@@ -1,6 +1,11 @@
 /**
  * File containing functions to display system information
- * TODO
+ * TODO: figure out logic behind collecting information (to variables) and
+ * dumping them en masse to a file. this should be done logically with some
+ * sort of interval / condition on collecting data to log i.e.:
+ *  - before benchmark test
+ *  - during test (how often?)
+ *  - after test
  */
 #include "lib/sys.hpp"
 #include <chrono>
@@ -51,36 +56,6 @@ void System::cpu_usage() {
 }
 
 // function to extract CPU BogoMIPS and model name
-/*void System::cpu_info() {
-    std::ifstream cpu_info_file("/proc/cpuinfo");
-    if (cpu_info_file.is_open()) {
-        std::string line;
-        std::string model;
-        double bogoMIPS = 0.0;
-
-        while (std::getline(cpu_info_file, line)) {
-            if (line.find("BogoMIPS") == 0) {
-                // extract BogoMIPS value
-                size_t colon_pos = line.find(":");
-                if (colon_pos != std::string::npos) {
-                    bogoMIPS = std::stod(line.substr(colon_pos + 1));
-                }
-            } else if (line.find("Model") == 0) {
-                // extract model name
-                size_t colon_pos = line.find(":");
-                if (colon_pos != std::string::npos) {
-                    model = line.substr(colon_pos + 1);
-                }
-            }
-        }
-        // TODO: get info from lscpu!!
-
-        std::cout << "Model: " << model << std::endl;
-        std::cout << "BogoMIPS: " << bogoMIPS << std::endl;
-    } else {
-        std::cerr << "Failed to read /proc/cpuinfo." << std::endl;
-    }
-}*/
 void System::cpu_info() {
     std::string lscpu_output;
     std::string model;
@@ -144,6 +119,8 @@ void System::cpu_info() {
 }
 // function to display memory statistics
 void System::mem_info() {
+    // TODO: save the memory info to variables for a mass dump into file with 
+    // timestamp as KEY
     std::ifstream meminfo_file("/proc/meminfo");
     if (meminfo_file.is_open()) {
         std::string line;
