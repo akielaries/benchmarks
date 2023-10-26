@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['montecarlo_2ecpp_86',['montecarlo.cpp',['../montecarlo_8cpp.html',1,'']]],
-  ['montecarlo_2ehpp_87',['montecarlo.hpp',['../montecarlo_8hpp.html',1,'']]]
+  ['log_2ecpp_86',['log.cpp',['../log_8cpp.html',1,'']]],
+  ['log_2ehpp_87',['log.hpp',['../log_8hpp.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['primes_2ecpp_88',['primes.cpp',['../primes_8cpp.html',1,'']]],
-  ['primes_2ehpp_89',['primes.hpp',['../primes_8hpp.html',1,'']]]
+  ['montecarlo_2ecpp_88',['montecarlo.cpp',['../montecarlo_8cpp.html',1,'']]],
+  ['montecarlo_2ehpp_89',['montecarlo.hpp',['../montecarlo_8hpp.html',1,'']]]
 ];
