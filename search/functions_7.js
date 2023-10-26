@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['naive_5fprimes_110',['naive_primes',['../benchmark_8cpp.html#a99aac323581ac61f8dbced9694339b0b',1,'benchmark.cpp']]]
+  ['naive_5fprimes_115',['naive_primes',['../benchmark_8cpp.html#a99aac323581ac61f8dbced9694339b0b',1,'benchmark.cpp']]]
 ];
