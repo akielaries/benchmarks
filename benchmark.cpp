@@ -1,12 +1,13 @@
-#include "sys.hpp"
-#include "montecarlo.hpp"
-#include "primes.hpp"
-#include "threadpool.hpp"
+#include "lib/montecarlo.hpp"
+#include "lib/primes.hpp"
+#include "lib/sys.hpp"
+#include "lib/threadpool.hpp"
 #include <chrono>
 #include <iostream>
 #include <vector>
 
 void naive_primes(std::vector<uint32_t> nums) {
+    // TODO at the end of each benchmark run we should log memory
     std::cout << "Miller-Rabin sequential...\n";
     // TIME START
     std::chrono::steady_clock::time_point start_time =
@@ -98,16 +99,18 @@ void threadpool_primes_dispatch(std::vector<uint32_t> nums) {
 
 int main() {
     std::cout << "Starting benchmark...\n\n";
-    
-    // display CPU information and number of running processes from `ps`
-    cpu_info();
-    proc_info();
 
-    cpu_usage();
-    mem_info();
-    cpu_temp();
+    System sys;
+
+    // display CPU information and number of running processes from `ps`
+    sys.cpu_info();
+    sys.proc_info();
+
+    sys.cpu_usage();
+    sys.mem_info();
+    sys.cpu_temp();
     // TODO get idle temperature at the start of this benchmark to determine
-    // the "idle starting" temperature. store in struct? 
+    // the "idle starting" temperature. store in struct?
     // when would it get called?
 
     std::cout << "Starting with primality testing using the Miller-Rabin "
@@ -156,18 +159,17 @@ int main() {
     naive_primes(nums);
     threadpool_primes(nums);
 
-    // TODO where/when should these be called? should these functions update values
-    // located within a struct? think about this...
-    cpu_usage();
-    mem_info();
-    cpu_temp();
+    // TODO where/when should these be called? should these functions update
+    // values located within a struct? think about this...
+    sys.cpu_usage();
+    sys.mem_info();
+    sys.cpu_temp();
 
     threadpool_primes_dispatch(nums);
 
-    cpu_usage();
-    mem_info();
-    cpu_temp();
-
+    sys.cpu_usage();
+    sys.mem_info();
+    sys.cpu_temp();
 
     // monte_carlo();
 

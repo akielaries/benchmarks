@@ -1,3 +1,4 @@
+#include "lib/log.hpp"
 #include <chrono>
 #include <ctime>
 #include <fstream>
