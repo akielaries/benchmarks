@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['cpu_5finfo_85',['cpu_info',['../sys_8cpp.html#a3af5f80da0eecc96262314c413ff529a',1,'cpu_info():&#160;sys.cpp'],['../sys_8hpp.html#a3af5f80da0eecc96262314c413ff529a',1,'cpu_info():&#160;sys.cpp']]],
-  ['cpu_5ftemp_86',['cpu_temp',['../sys_8cpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7',1,'cpu_temp():&#160;sys.cpp'],['../sys_8hpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7',1,'cpu_temp():&#160;sys.cpp']]],
-  ['cpu_5fusage_87',['cpu_usage',['../sys_8cpp.html#adfbc99b60145b8192a136b725f951e2c',1,'cpu_usage():&#160;sys.cpp'],['../sys_8hpp.html#adfbc99b60145b8192a136b725f951e2c',1,'cpu_usage():&#160;sys.cpp']]]
+  ['cpu_5fidle_90',['cpu_idle',['../classSystem.html#aa4614d6567e65bb0e7c5c90801bd712f',1,'System']]],
+  ['cpu_5fidle_5ftemp_91',['cpu_idle_temp',['../classSystem.html#aaeeeeeeb7b9bf4c2d3e600c12657ac63',1,'System']]],
+  ['cpu_5finfo_92',['cpu_info',['../classSystem.html#a6503b245b5fdb98b0991865ee1fbd911',1,'System']]],
+  ['cpu_5ftemp_93',['cpu_temp',['../classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb',1,'System']]],
+  ['cpu_5fusage_94',['cpu_usage',['../classSystem.html#a4463a21ab90a0093c416062cc9bc4224',1,'System']]]
 ];

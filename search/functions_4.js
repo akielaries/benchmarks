@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['getcurrenttimestamp_93',['getCurrentTimestamp',['../classLogger.html#a44caa51276b396938aa0d2b0fa087a5b',1,'Logger']]],
-  ['getlogprefix_94',['getLogPrefix',['../classLogger.html#a7df6cb9a631c1406314c09bdf01e9a6c',1,'Logger']]]
+  ['getcurrenttimestamp_100',['getCurrentTimestamp',['../classLogger.html#a44caa51276b396938aa0d2b0fa087a5b',1,'Logger']]],
+  ['getlogprefix_101',['getLogPrefix',['../classLogger.html#a7df6cb9a631c1406314c09bdf01e9a6c',1,'Logger']]]
 ];

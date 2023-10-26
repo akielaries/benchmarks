@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['primes_2ecpp_43',['primes.cpp',['../primes_8cpp.html',1,'']]],
-  ['primes_2ehpp_44',['primes.hpp',['../primes_8hpp.html',1,'']]],
-  ['proc_5finfo_45',['proc_info',['../sys_8cpp.html#a7c9ab01ba23bc15c28de4999146b511c',1,'proc_info():&#160;sys.cpp'],['../sys_8hpp.html#a7c9ab01ba23bc15c28de4999146b511c',1,'proc_info():&#160;sys.cpp']]]
+  ['primes_2ecpp_46',['primes.cpp',['../primes_8cpp.html',1,'']]],
+  ['primes_2ehpp_47',['primes.hpp',['../primes_8hpp.html',1,'']]],
+  ['proc_5finfo_48',['proc_info',['../classSystem.html#a05ddc7cd72bafa8a66d4033483787cdf',1,'System']]]
 ];

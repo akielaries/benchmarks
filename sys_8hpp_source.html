@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>benchmarks: sys.hpp Source File</title>
+<title>benchmarks: lib/sys.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,7 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,6 +60,11 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">sys.hpp</div>  </div>
@@ -70,25 +74,39 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define SYSSTATS_HPP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;std::string <a class="code" href="sys_8hpp.html#a0493d1da643dd0e2ded159c13ed9f97e">read_file</a>(<span class="keyword">const</span> std::string &amp;filename);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">int</span> <a class="code" href="sys_8hpp.html#a7c9ab01ba23bc15c28de4999146b511c">proc_info</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sys_8hpp.html#adfbc99b60145b8192a136b725f951e2c">cpu_usage</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sys_8hpp.html#a3af5f80da0eecc96262314c413ff529a">cpu_info</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sys_8hpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4">mem_info</a>();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sys_8hpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="asys_8hpp_html_a0493d1da643dd0e2ded159c13ed9f97e"><div class="ttname"><a href="sys_8hpp.html#a0493d1da643dd0e2ded159c13ed9f97e">read_file</a></div><div class="ttdeci">std::string read_file(const std::string &amp;filename)</div><div class="ttdoc">reads the contents of a file into a string</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00013">sys.cpp:13</a></div></div>
-<div class="ttc" id="asys_8hpp_html_a1fbd1f1e6ecaf3d95792c9c6a55766d4"><div class="ttname"><a href="sys_8hpp.html#a1fbd1f1e6ecaf3d95792c9c6a55766d4">mem_info</a></div><div class="ttdeci">void mem_info()</div><div class="ttdoc">get memory info and stats from /proc/meminfo</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00085">sys.cpp:85</a></div></div>
-<div class="ttc" id="asys_8hpp_html_a3af5f80da0eecc96262314c413ff529a"><div class="ttname"><a href="sys_8hpp.html#a3af5f80da0eecc96262314c413ff529a">cpu_info</a></div><div class="ttdeci">void cpu_info()</div><div class="ttdoc">get CPU info, BogoMIPS and Model</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00052">sys.cpp:52</a></div></div>
-<div class="ttc" id="asys_8hpp_html_a664ae7fedf2ce5a9d5a72ed7305384e7"><div class="ttname"><a href="sys_8hpp.html#a664ae7fedf2ce5a9d5a72ed7305384e7">cpu_temp</a></div><div class="ttdeci">void cpu_temp()</div><div class="ttdoc">get current CPU temperature from /sys/class/thermal/thermal_zone0/temp</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00105">sys.cpp:105</a></div></div>
-<div class="ttc" id="asys_8hpp_html_a7c9ab01ba23bc15c28de4999146b511c"><div class="ttname"><a href="sys_8hpp.html#a7c9ab01ba23bc15c28de4999146b511c">proc_info</a></div><div class="ttdeci">int proc_info()</div><div class="ttdoc">get number of running processes on the system</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00025">sys.cpp:25</a></div></div>
-<div class="ttc" id="asys_8hpp_html_adfbc99b60145b8192a136b725f951e2c"><div class="ttname"><a href="sys_8hpp.html#adfbc99b60145b8192a136b725f951e2c">cpu_usage</a></div><div class="ttdeci">void cpu_usage()</div><div class="ttdoc">get CPU usage using load average read from /proc/loadavg calculating CPU and IO utilization over the ...</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00046">sys.cpp:46</a></div></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classSystem.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSystem.html">System</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classSystem.html#aa0b1f62ed31502a36544e58d0caba3ae">    8</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSystem.html#aa0b1f62ed31502a36544e58d0caba3ae">cpu_temp_idle</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::string <a class="code" href="classSystem.html#ace3df89ee0981870976a1b6f57cacc0f">read_file</a>(<span class="keyword">const</span> std::string &amp;filename);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classSystem.html#a05ddc7cd72bafa8a66d4033483787cdf">proc_info</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSystem.html#a4463a21ab90a0093c416062cc9bc4224">cpu_usage</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSystem.html#a6503b245b5fdb98b0991865ee1fbd911">cpu_info</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb">cpu_temp</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSystem.html#aaeeeeeeb7b9bf4c2d3e600c12657ac63">cpu_idle_temp</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSystem.html#aa4614d6567e65bb0e7c5c90801bd712f">cpu_idle</a>(<span class="keywordtype">double</span> idle_temp);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="classSystem.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="sys_8hpp_source.html#l00005">sys.hpp:5</a></div></div>
+<div class="ttc" id="aclassSystem_html_a05ddc7cd72bafa8a66d4033483787cdf"><div class="ttname"><a href="classSystem.html#a05ddc7cd72bafa8a66d4033483787cdf">System::proc_info</a></div><div class="ttdeci">int proc_info()</div><div class="ttdoc">get number of running processes on the system</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00027">sys.cpp:27</a></div></div>
+<div class="ttc" id="aclassSystem_html_a4463a21ab90a0093c416062cc9bc4224"><div class="ttname"><a href="classSystem.html#a4463a21ab90a0093c416062cc9bc4224">System::cpu_usage</a></div><div class="ttdeci">void cpu_usage()</div><div class="ttdoc">get CPU usage using load average read from /proc/loadavg calculating CPU and IO utilization over the ...</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00048">sys.cpp:48</a></div></div>
+<div class="ttc" id="aclassSystem_html_a6503b245b5fdb98b0991865ee1fbd911"><div class="ttname"><a href="classSystem.html#a6503b245b5fdb98b0991865ee1fbd911">System::cpu_info</a></div><div class="ttdeci">void cpu_info()</div><div class="ttdoc">get CPU info, BogoMIPS and Model</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00084">sys.cpp:84</a></div></div>
+<div class="ttc" id="aclassSystem_html_aa0b1f62ed31502a36544e58d0caba3ae"><div class="ttname"><a href="classSystem.html#aa0b1f62ed31502a36544e58d0caba3ae">System::cpu_temp_idle</a></div><div class="ttdeci">double cpu_temp_idle</div><div class="ttdef"><b>Definition:</b> <a href="sys_8hpp_source.html#l00008">sys.hpp:8</a></div></div>
+<div class="ttc" id="aclassSystem_html_aa4614d6567e65bb0e7c5c90801bd712f"><div class="ttname"><a href="classSystem.html#aa4614d6567e65bb0e7c5c90801bd712f">System::cpu_idle</a></div><div class="ttdeci">void cpu_idle(double idle_temp)</div><div class="ttdoc">pause program execution until idle CPU temp is reached</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00216">sys.cpp:216</a></div></div>
+<div class="ttc" id="aclassSystem_html_aaeeeeeeb7b9bf4c2d3e600c12657ac63"><div class="ttname"><a href="classSystem.html#aaeeeeeeb7b9bf4c2d3e600c12657ac63">System::cpu_idle_temp</a></div><div class="ttdeci">double cpu_idle_temp()</div><div class="ttdoc">get idle CPU temp based on a 20 second cooldown</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00185">sys.cpp:185</a></div></div>
+<div class="ttc" id="aclassSystem_html_abcfd5636545c444e85919381442a62ed"><div class="ttname"><a href="classSystem.html#abcfd5636545c444e85919381442a62ed">System::mem_info</a></div><div class="ttdeci">void mem_info()</div><div class="ttdoc">get memory info and stats from /proc/meminfo</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00146">sys.cpp:146</a></div></div>
+<div class="ttc" id="aclassSystem_html_ace3df89ee0981870976a1b6f57cacc0f"><div class="ttname"><a href="classSystem.html#ace3df89ee0981870976a1b6f57cacc0f">System::read_file</a></div><div class="ttdeci">std::string read_file(const std::string &amp;filename)</div><div class="ttdoc">reads the contents of a file into a string</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00015">sys.cpp:15</a></div></div>
+<div class="ttc" id="aclassSystem_html_ae1e6c15817bd0705dbcb76e9038ae8cb"><div class="ttname"><a href="classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb">System::cpu_temp</a></div><div class="ttdeci">double cpu_temp()</div><div class="ttdoc">get current CPU temperature from /sys/class/thermal/thermal_zone0/temp</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00166">sys.cpp:166</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

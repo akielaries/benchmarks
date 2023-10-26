@@ -66,12 +66,12 @@ $(function() {
 <div class="title">primes.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="primes_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="primes_8hpp.html">primes.hpp</a>&quot;</span></div>
+<a href="primes_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="primes_8hpp.html">lib/primes.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="primes_8cpp.html#ab96eee0127eb7d17667946535690b925">    6</a></span>&#160;uint32_t <a class="code" href="primes_8cpp.html#ab96eee0127eb7d17667946535690b925">mod_mul</a>(uint32_t a, uint32_t b, uint32_t m) {</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="primes_8hpp.html#ab96eee0127eb7d17667946535690b925">    6</a></span>&#160;uint32_t <a class="code" href="primes_8cpp.html#ab96eee0127eb7d17667946535690b925">mod_mul</a>(uint32_t a, uint32_t b, uint32_t m) {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    uint32_t res = 0;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">while</span> (b &gt; 0) {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordflow">if</span> (b &amp; 1) {</div>
@@ -83,7 +83,7 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> res;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="primes_8cpp.html#abdc4d3f8c8a5e618d18431625e059fc9">   18</a></span>&#160;uint32_t <a class="code" href="primes_8cpp.html#abdc4d3f8c8a5e618d18431625e059fc9">mod_pow</a>(uint32_t a, uint32_t b, uint32_t m) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="primes_8hpp.html#abdc4d3f8c8a5e618d18431625e059fc9">   18</a></span>&#160;uint32_t <a class="code" href="primes_8cpp.html#abdc4d3f8c8a5e618d18431625e059fc9">mod_pow</a>(uint32_t a, uint32_t b, uint32_t m) {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    uint32_t res = 1;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    a %= m;</div>
@@ -97,7 +97,7 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> res;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="primes_8cpp.html#a80111d35c6263d494061b175ec14c90c">   32</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="primes_8cpp.html#a80111d35c6263d494061b175ec14c90c">witness</a>(uint32_t n, uint32_t d, uint32_t a, uint32_t s) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="primes_8hpp.html#a80111d35c6263d494061b175ec14c90c">   32</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="primes_8cpp.html#a80111d35c6263d494061b175ec14c90c">witness</a>(uint32_t n, uint32_t d, uint32_t a, uint32_t s) {</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    uint32_t x = <a class="code" href="primes_8cpp.html#abdc4d3f8c8a5e618d18431625e059fc9">mod_pow</a>(a, d, n);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// likely prime, return false</span></div>
@@ -114,7 +114,7 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="primes_8cpp.html#a17a2ec835cdd09f99b70cf077c531853">   49</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="primes_8cpp.html#a17a2ec835cdd09f99b70cf077c531853">miller_rabin</a>(uint32_t n, uint32_t iters = 10) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="primes_8hpp.html#a02dc07b078c4715591f9edca6cc43487">   49</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="primes_8cpp.html#a17a2ec835cdd09f99b70cf077c531853">miller_rabin</a>(uint32_t n, uint32_t iters = 10) {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (n &lt; 2) {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
