@@ -4,7 +4,7 @@
  * dumping them en masse to a file. this should be done logically with some
  * sort of interval / condition on collecting data to log i.e.:
  *  - before benchmark test
- *  - during test (how often?)
+ *  - during test (how often?, pause/resume timers before/after check_mem call?)
  *  - after test
  */
 #include "lib/sys.hpp"
