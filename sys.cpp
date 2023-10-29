@@ -63,7 +63,7 @@ void System::cpu_info() {
     int numCPUs = 0;
 
     // Run the lscpu command and capture its output
-    FILE* pipe = popen("lscpu", "r");
+    FILE *pipe = popen("lscpu", "r");
     if (pipe) {
         char buffer[128];
         while (!feof(pipe)) {
@@ -90,7 +90,8 @@ void System::cpu_info() {
                 size_t colon_pos = line.find(":");
                 if (colon_pos != std::string::npos) {
                     model = line.substr(colon_pos + 1);
-                    model = model.substr(model.find_first_not_of(" \t"), model.find_last_not_of(" \t") + 1);
+                    model = model.substr(model.find_first_not_of(" \t"),
+                                         model.find_last_not_of(" \t") + 1);
                 }
             } else if (line.find("bogomips") != std::string::npos) {
                 // Extract BogoMIPS value
@@ -184,7 +185,7 @@ double System::cpu_idle_temp() {
     }
     double idle_temp = sum / temperatures.size();
 
-    // set class var 
+    // set class var
     System::cpu_temp_idle = idle_temp;
 
     return idle_temp;
