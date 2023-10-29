@@ -77,18 +77,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2006877b77351f61dfc38b8e2a9d1e2b"><td class="memTemplParams" colspan="2">template&lt;typename Function , typename... Args&gt; </td></tr>
-<tr class="memitem:a2006877b77351f61dfc38b8e2a9d1e2b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classThreadDispatch.html#a2006877b77351f61dfc38b8e2a9d1e2b">dispatch</a> (<a class="el" href="classThreadPool.html">ThreadPool</a> &amp;pool, Function &amp;&amp;func, Args &amp;&amp;... args) -&gt; std::future&lt; typename std::result_of&lt; Function(Args...)&gt;::type &gt;</td></tr>
-<tr class="memdesc:a2006877b77351f61dfc38b8e2a9d1e2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatches a function call to a <a class="el" href="classThreadPool.html">ThreadPool</a> and returns a future object for obtaining the result.  <a href="classThreadDispatch.html#a2006877b77351f61dfc38b8e2a9d1e2b">More...</a><br /></td></tr>
-<tr class="separator:a2006877b77351f61dfc38b8e2a9d1e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d29a682b49267b57972ee22d9081d4"><td class="memTemplParams" colspan="2">template&lt;typename Function , typename... Args&gt; </td></tr>
+<tr class="memitem:ac7d29a682b49267b57972ee22d9081d4"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classThreadDispatch.html#ac7d29a682b49267b57972ee22d9081d4">dispatch</a> (<a class="el" href="classThreadPool.html">ThreadPool</a> &amp;pool, Function &amp;&amp;func, Args &amp;&amp;...args) -&gt; std::future&lt; typename std::result_of&lt; Function(Args...)&gt;::type &gt;</td></tr>
+<tr class="memdesc:ac7d29a682b49267b57972ee22d9081d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatches a function call to a <a class="el" href="classThreadPool.html">ThreadPool</a> and returns a future object for obtaining the result.  <a href="classThreadDispatch.html#ac7d29a682b49267b57972ee22d9081d4">More...</a><br /></td></tr>
+<tr class="separator:ac7d29a682b49267b57972ee22d9081d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class that provides a function to dispatch a function call to a thread pool and return a future object for obtaining the result. </p>
 
 <p class="definition">Definition at line <a class="el" href="threadpool_8hpp_source.html#l00153">153</a> of file <a class="el" href="threadpool_8hpp_source.html">threadpool.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2006877b77351f61dfc38b8e2a9d1e2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2006877b77351f61dfc38b8e2a9d1e2b">&#9670;&nbsp;</a></span>dispatch()</h2>
+<a id="ac7d29a682b49267b57972ee22d9081d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7d29a682b49267b57972ee22d9081d4">&#9670;&nbsp;</a></span>dispatch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,13 +151,13 @@ template&lt;typename Function , typename... Args&gt; </div>
 <div class="fragment"><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                                                   {</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="comment">// enqueue the function call to the thread pool</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">auto</span> result = pool.<a class="code" href="classThreadPool.html#a8f628893c030552d9714c25f68656adc">enqueue</a>(std::forward&lt;Function&gt;(func),</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">auto</span> result = pool.<a class="code" href="classThreadPool.html#a72b4c3f76abfbed3bb346c9ba2de02ed">enqueue</a>(std::forward&lt;Function&gt;(func),</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                   std::forward&lt;Args&gt;(args)...);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="comment">// return the future object to get the result later</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
-<div class="ttc" id="aclassThreadPool_html_a8f628893c030552d9714c25f68656adc"><div class="ttname"><a href="classThreadPool.html#a8f628893c030552d9714c25f68656adc">ThreadPool::enqueue</a></div><div class="ttdeci">auto enqueue(F &amp;&amp;f, Args &amp;&amp;... args) -&gt; std::future&lt; typename std::result_of&lt; F(Args...)&gt;::type &gt;</div><div class="ttdoc">Enqueues a task to the thread pool.</div><div class="ttdef"><b>Definition:</b> <a href="threadpool_8hpp_source.html#l00100">threadpool.hpp:100</a></div></div>
+<div class="ttc" id="aclassThreadPool_html_a72b4c3f76abfbed3bb346c9ba2de02ed"><div class="ttname"><a href="classThreadPool.html#a72b4c3f76abfbed3bb346c9ba2de02ed">ThreadPool::enqueue</a></div><div class="ttdeci">auto enqueue(F &amp;&amp;f, Args &amp;&amp;...args) -&gt; std::future&lt; typename std::result_of&lt; F(Args...)&gt;::type &gt;</div><div class="ttdoc">Enqueues a task to the thread pool.</div><div class="ttdef"><b>Definition:</b> <a href="threadpool_8hpp_source.html#l00100">threadpool.hpp:100</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
