@@ -15,6 +15,10 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include <algorithm>
+#include "sys/types.h"
+#include "sys/sysinfo.h"
+
 
 // function to read and return the contents of a file
 std::string System::read_file(const std::string &filename) {
@@ -62,7 +66,7 @@ void System::cpu_info() {
     double bogoMIPS = 0.0;
     int numCPUs = 0;
 
-    // Run the lscpu command and capture its output
+    // run the lscpu command and capture its output
     FILE *pipe = popen("lscpu", "r");
     if (pipe) {
         char buffer[128];
@@ -73,7 +77,7 @@ void System::cpu_info() {
         }
         pclose(pipe);
 
-        // Parse lscpu output to extract information
+        // parse lscpu output to extract information
         size_t pos = 0;
         while (pos < lscpu_output.size()) {
             size_t newline_pos = lscpu_output.find('\n', pos);
@@ -82,11 +86,11 @@ void System::cpu_info() {
             }
             std::string line = lscpu_output.substr(pos, newline_pos - pos);
 
-            // Convert the line to lowercase for case-insensitive matching
+            // convert the line to lowercase for case-insensitive matching
             std::transform(line.begin(), line.end(), line.begin(), ::tolower);
 
             if (line.find("model name") != std::string::npos) {
-                // Extract model name
+                // extract model name
                 size_t colon_pos = line.find(":");
                 if (colon_pos != std::string::npos) {
                     model = line.substr(colon_pos + 1);
@@ -94,13 +98,13 @@ void System::cpu_info() {
                                          model.find_last_not_of(" \t") + 1);
                 }
             } else if (line.find("bogomips") != std::string::npos) {
-                // Extract BogoMIPS value
+                // extract BogoMIPS value
                 size_t colon_pos = line.find(":");
                 if (colon_pos != std::string::npos) {
                     bogoMIPS = std::stod(line.substr(colon_pos + 1));
                 }
             } else if (line.find("cpu(s):") != std::string::npos) {
-                // Extract the number of CPU(s)
+                // extract the number of CPU(s)
                 size_t colon_pos = line.find(":");
                 if (colon_pos != std::string::npos) {
                     numCPUs = std::stoi(line.substr(colon_pos + 1));
@@ -110,7 +114,7 @@ void System::cpu_info() {
             pos = newline_pos + 1;
         }
 
-        // Print the extracted information
+        // print the extracted information
         std::cout << "Model: " << model << std::endl;
         std::cout << "BogoMIPS: " << bogoMIPS << std::endl;
         std::cout << "Number of CPU(s): " << numCPUs << std::endl;
@@ -120,7 +124,7 @@ void System::cpu_info() {
 }
 // function to display memory statistics
 void System::mem_info() {
-    // TODO: save the memory info to variables for a mass dump into file with 
+    // TODO: save the memory info to variables for a mass dump into file with
     // timestamp as KEY
     std::ifstream meminfo_file("/proc/meminfo");
     if (meminfo_file.is_open()) {
@@ -202,12 +206,72 @@ void System::cpu_idle(double idle_temp) {
     }
 }
 
-/*int main() {
-    System sys;
-    double temp = sys.cpu_idle_temp();
-    sys.cpu_idle(temp);
+void mem_stats() {
+    struct sysinfo memInfo;
 
-    std::cout << "IDLE TEMP: " << temp << std::endl;
+    sysinfo(&memInfo);
+    
+    long long totalVirtualMem = (memInfo.totalram + memInfo.totalswap) * memInfo.mem_unit;
+    long long virtualMemUsed = (memInfo.totalram - memInfo.freeram + memInfo.totalswap - memInfo.freeswap) * memInfo.mem_unit;
+    
+    long long totalPhysMem = memInfo.totalram * memInfo.mem_unit;
+    long long physMemUsed = (memInfo.totalram - memInfo.freeram) * memInfo.mem_unit;
 
+    std::cout << "VIRTUAL MEM AVAIL: " << totalVirtualMem / 1000 << " KB" << std::endl;
+    std::cout << "VIRTUAL MEM USED: " << virtualMemUsed / 1000 << " KB" << std::endl;
+
+    std::cout << "PHYSICAL MEM AVAIL: " << totalPhysMem / 1000 << " KB" << std::endl;
+    std::cout << "PHYSICAL MEM USED: " << physMemUsed / 1000 << " KB" << std::endl;
+    std::cout << "PHYSICAL MEM FREE: " << (totalPhysMem - physMemUsed) / 1000 << " KB" << std::endl;
+}
+
+double cpu_stats() {
+    std::ifstream file("/proc/stat");
+    if (!file.is_open()) {
+        std::cerr << "Failed to open /proc/stat" << std::endl;
+        return -1.0;
+    }
+
+    std::string line;
+    std::getline(file, line);
+
+    std::istringstream iss(line);
+    std::string cpuLabel;
+    iss >> cpuLabel;
+
+    if (cpuLabel != "cpu") {
+        std::cerr << "Failed to parse /proc/stat" << std::endl;
+        return -1.0;
+    }
+
+    std::vector<long long> values;
+    long long value;
+    while (iss >> value) {
+        values.push_back(value);
+    }
+
+    if (values.size() < 7) {
+        std::cerr << "Failed to parse /proc/stat" << std::endl;
+        return -1.0;
+    }
+
+    long long idle = values[3];
+    long long total = 0;
+    for (int i = 0; i < 7; i++) {
+        total += values[i];
+    }
+
+    // Calculate CPU usage as a percentage
+    double usage = 100.0 * (1.0 - static_cast<double>(idle) / total);
+
+    std::cout << "CPU USAGE: " << usage << std::endl;
+
+    return usage;
+}
+
+int main() {
+
+    mem_stats();
+    cpu_stats();
     return 0;
-}*/
+}
