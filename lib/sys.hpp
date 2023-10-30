@@ -6,6 +6,7 @@ class System {
   private:
     /** Idle CPU temp set in cpu_idle_temp() */
     double cpu_temp_idle;
+    float cpu_usage;
     uint32_t mem_total;
     uint32_t mem_free;
     uint32_t mem_avail;
