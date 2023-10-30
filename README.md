@@ -26,4 +26,22 @@ Logic/algorithms implemented
 * TODO...
 
 
+# Installing CUDA
 
+See here: https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=arm64-sbsa&Compilation=Native&Distribution=Ubuntu&target_version=20.04&target_type=deb_network
+
+### Base installation
+```
+$ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/sbsa/cuda-keyring_1.1-1_all.deb
+$ sudo dpkg -i cuda-keyring_1.1-1_all.deb
+$ sudo apt-get update
+$ sudo apt-get -y install cuda-toolkit-12-3
+```
+
+### NVIDIA CUDA Drivers
+```
+$ sudo apt-get install -y cuda-drivers
+$ sudo apt-get install -y nvidia-kernel-open-545
+$ sudo apt-get install -y cuda-drivers-545
+```
+See here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#switching-between-driver-module-flavors
