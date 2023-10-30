@@ -174,7 +174,7 @@ $(function() {
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    sys.<a class="code" href="classSystem.html#a6503b245b5fdb98b0991865ee1fbd911">cpu_info</a>();</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    sys.<a class="code" href="classSystem.html#a05ddc7cd72bafa8a66d4033483787cdf">proc_info</a>();</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    sys.<a class="code" href="classSystem.html#a4463a21ab90a0093c416062cc9bc4224">cpu_usage</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    sys.<a class="code" href="classSystem.html#a0e878029e2eeda85d475b3d4525ad0e2">cpu_usage</a>();</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    sys.<a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>();</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    sys.<a class="code" href="classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb">cpu_temp</a>();</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// TODO get idle temperature at the start of this benchmark to determine</span></div>
@@ -229,13 +229,13 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">// TODO where/when should these be called? should these functions update</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">// values located within a struct? think about this...</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    sys.<a class="code" href="classSystem.html#a4463a21ab90a0093c416062cc9bc4224">cpu_usage</a>();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    sys.<a class="code" href="classSystem.html#a0e878029e2eeda85d475b3d4525ad0e2">cpu_usage</a>();</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    sys.<a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>();</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    sys.<a class="code" href="classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb">cpu_temp</a>();</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="benchmark_8cpp.html#a2791fa7f9626a2ec2739035004ed8ed1">threadpool_primes_dispatch</a>(nums);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    sys.<a class="code" href="classSystem.html#a4463a21ab90a0093c416062cc9bc4224">cpu_usage</a>();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    sys.<a class="code" href="classSystem.html#a0e878029e2eeda85d475b3d4525ad0e2">cpu_usage</a>();</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    sys.<a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>();</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    sys.<a class="code" href="classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb">cpu_temp</a>();</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
@@ -249,7 +249,7 @@ $(function() {
 <div class="ttc" id="abenchmark_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="benchmark_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="benchmark_8cpp_source.html#l00100">benchmark.cpp:100</a></div></div>
 <div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="classSystem.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="sys_8hpp_source.html#l00005">sys.hpp:5</a></div></div>
 <div class="ttc" id="aclassSystem_html_a05ddc7cd72bafa8a66d4033483787cdf"><div class="ttname"><a href="classSystem.html#a05ddc7cd72bafa8a66d4033483787cdf">System::proc_info</a></div><div class="ttdeci">int proc_info()</div><div class="ttdoc">get number of running processes on the system</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00036">sys.cpp:36</a></div></div>
-<div class="ttc" id="aclassSystem_html_a4463a21ab90a0093c416062cc9bc4224"><div class="ttname"><a href="classSystem.html#a4463a21ab90a0093c416062cc9bc4224">System::cpu_usage</a></div><div class="ttdeci">void cpu_usage()</div><div class="ttdoc">get CPU usage using load average read from /proc/loadavg calculating CPU and IO utilization over the ...</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00057">sys.cpp:57</a></div></div>
+<div class="ttc" id="aclassSystem_html_a0e878029e2eeda85d475b3d4525ad0e2"><div class="ttname"><a href="classSystem.html#a0e878029e2eeda85d475b3d4525ad0e2">System::cpu_usage</a></div><div class="ttdeci">float cpu_usage</div><div class="ttdef"><b>Definition:</b> <a href="sys_8hpp_source.html#l00009">sys.hpp:9</a></div></div>
 <div class="ttc" id="aclassSystem_html_a6503b245b5fdb98b0991865ee1fbd911"><div class="ttname"><a href="classSystem.html#a6503b245b5fdb98b0991865ee1fbd911">System::cpu_info</a></div><div class="ttdeci">void cpu_info()</div><div class="ttdoc">get CPU info, BogoMIPS and Model</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00063">sys.cpp:63</a></div></div>
 <div class="ttc" id="aclassSystem_html_abcfd5636545c444e85919381442a62ed"><div class="ttname"><a href="classSystem.html#abcfd5636545c444e85919381442a62ed">System::mem_info</a></div><div class="ttdeci">void mem_info()</div><div class="ttdoc">get memory info and stats from /proc/meminfo</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00126">sys.cpp:126</a></div></div>
 <div class="ttc" id="aclassSystem_html_ae1e6c15817bd0705dbcb76e9038ae8cb"><div class="ttname"><a href="classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb">System::cpu_temp</a></div><div class="ttdeci">double cpu_temp()</div><div class="ttdoc">get current CPU temperature from /sys/class/thermal/thermal_zone0/temp</div><div class="ttdef"><b>Definition:</b> <a href="sys_8cpp_source.html#l00148">sys.cpp:148</a></div></div>

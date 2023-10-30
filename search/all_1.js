@@ -9,5 +9,5 @@ var searchData=
   ['cpu_5fstats_9',['cpu_stats',['../sys_8cpp.html#a130e8a0cdba3a698827225b25b60d600',1,'sys.cpp']]],
   ['cpu_5ftemp_10',['cpu_temp',['../classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb',1,'System']]],
   ['cpu_5ftemp_5fidle_11',['cpu_temp_idle',['../classSystem.html#aa0b1f62ed31502a36544e58d0caba3ae',1,'System']]],
-  ['cpu_5fusage_12',['cpu_usage',['../classSystem.html#a4463a21ab90a0093c416062cc9bc4224',1,'System']]]
+  ['cpu_5fusage_12',['cpu_usage',['../classSystem.html#a0e878029e2eeda85d475b3d4525ad0e2',1,'System::cpu_usage()'],['../classSystem.html#a4463a21ab90a0093c416062cc9bc4224',1,'System::cpu_usage()']]]
 ];
