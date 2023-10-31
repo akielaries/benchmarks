@@ -5,6 +5,6 @@
  * @brief Monte Carlo method for predicting the number representing pi
  * TODO
  */
-int monte_carlo();
+double monte_carlo(int total_trials);
 
 #endif

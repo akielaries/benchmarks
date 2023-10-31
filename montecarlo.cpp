@@ -12,31 +12,67 @@
 #include "lib/montecarlo.hpp"
 #include <iostream>
 #include <random>
+#include <chrono>
+#include <cstdint>
 
-int monte_carlo() {
-    int total_points = 10000000;
+#define PI 3.1415926535
+
+double monte_carlo(int total_trials) {
     int successes = 0;
+    double x, y;
 
-    // initialize a random number generator
+    // Initialize a random number generator
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<double> dis(0.0, 1.0);
 
-    for (int i = 0; i < total_points; i++) {
-        // generate random points within the unit square
-        double x = dis(gen);
-        double y = dis(gen);
-
-        // check if the point is inside the unit circle
-        if (x * x + y * y <= 1.0) {
-            successes++;
-        }
+    for (int i = 0; i < total_trials; i++) {
+        x = dis(gen);
+        y = dis(gen);
+        // Check if the point is inside the unit circle
+        successes += (x * x + y * y <= 1.0);
     }
 
-    // estimate pi
-    double predicted_pi = 4.0 * static_cast<double>(successes) / total_points;
+    // Estimate pi
+    double predicted_pi = 4.0 * static_cast<double>(successes) / total_trials;
 
-    std::cout << "Estimated value of pi: " << predicted_pi << std::endl;
+    return predicted_pi;
+}
+
+float host_monte_carlo(long trials) {
+	float x, y;
+	long points_in_circle;
+	for(long i = 0; i < trials; i++) {
+		x = rand() / (float) RAND_MAX;
+		y = rand() / (float) RAND_MAX;
+		points_in_circle += (x*x + y*y <= 1.0f);
+	}
+	return 4.0f * points_in_circle / trials;
+}
+
+int main() {
+    int trials_per_thread = 4096;
+    int threads = 256;
+    int blocks = 256;
+    int total_trials = trials_per_thread * threads * blocks;
+
+    std::cout << "Trials/thread: " << trials_per_thread << std::endl;
+    std::cout << "Threads: " << threads << std::endl;
+    std::cout << "Blocks: " << blocks << std::endl;
+    std::cout << "Total trials: " << total_trials << std::endl;
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+
+    double predicted_pi = monte_carlo(total_trials);
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed_time = end_time - start_time;
+
+    std::cout << "Estimated value of pi: " << predicted_pi 
+        << " in : " << elapsed_time.count() << " seconds" << std::endl;
+
+    long double err = predicted_pi - PI;
+    std::cout << "Error of " << err << std::endl;
 
     return 0;
 }
