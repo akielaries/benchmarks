@@ -63,6 +63,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">montecarlo.cpp File Reference</div>  </div>
@@ -71,24 +72,84 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="montecarlo_8hpp_source.html">lib/montecarlo.hpp</a>&quot;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
 </div>
 <p><a href="montecarlo_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a598a3330b3c21701223ee0ca14316eca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>&#160;&#160;&#160;3.1415926535</td></tr>
+<tr class="separator:a598a3330b3c21701223ee0ca14316eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2738790f47c831176baa71f79604c07f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#a2738790f47c831176baa71f79604c07f">monte_carlo</a> ()</td></tr>
-<tr class="memdesc:a2738790f47c831176baa71f79604c07f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monte Carlo method for predicting the number representing pi TODO.  <a href="montecarlo_8cpp.html#a2738790f47c831176baa71f79604c07f">More...</a><br /></td></tr>
-<tr class="separator:a2738790f47c831176baa71f79604c07f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cfb44d14ad67d6f3c3f8cc38c223960"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">monte_carlo</a> (int total_trials)</td></tr>
+<tr class="memdesc:a1cfb44d14ad67d6f3c3f8cc38c223960"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monte Carlo method for predicting the number representing pi TODO.  <a href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">More...</a><br /></td></tr>
+<tr class="separator:a1cfb44d14ad67d6f3c3f8cc38c223960"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4669755f9ef5ae0738f3b5f73f00d6e1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#a4669755f9ef5ae0738f3b5f73f00d6e1">host_monte_carlo</a> (long trials)</td></tr>
+<tr class="separator:a4669755f9ef5ae0738f3b5f73f00d6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a2738790f47c831176baa71f79604c07f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2738790f47c831176baa71f79604c07f">&#9670;&nbsp;</a></span>monte_carlo()</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a598a3330b3c21701223ee0ca14316eca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a598a3330b3c21701223ee0ca14316eca">&#9670;&nbsp;</a></span>PI</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int monte_carlo </td>
+          <td class="memname">#define PI&#160;&#160;&#160;3.1415926535</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A Monte Carlo method is really a problem dealing with random distribution and random sampling related technique. In this case and within this file we use a "Monte Carlo Method" from what is talked about in the video below specifically when the author talks about predicting the number pi π using random sampling by "dropping marbles" into a square and determining how many are dropped within 1/4 of the square. The number of successes divided by the number of total attempts will our prediction of pi π</p>
+<p><a href="https://www.youtube.com/watch?v=7ESK5SaP-bc">https://www.youtube.com/watch?v=7ESK5SaP-bc</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="montecarlo_8cpp_source.html#l00018">18</a> of file <a class="el" href="montecarlo_8cpp_source.html">montecarlo.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a4669755f9ef5ae0738f3b5f73f00d6e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4669755f9ef5ae0738f3b5f73f00d6e1">&#9670;&nbsp;</a></span>host_monte_carlo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float host_monte_carlo </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>trials</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="montecarlo_8cpp_source.html#l00042">42</a> of file <a class="el" href="montecarlo_8cpp_source.html">montecarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">float</span> x, y;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">long</span> points_in_circle;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">long</span> i = 0; i &lt; trials; i++) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        x = rand() / (float) RAND_MAX;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        y = rand() / (float) RAND_MAX;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        points_in_circle += (x*x + y*y &lt;= 1.0f);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> 4.0f * points_in_circle / trials;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -96,39 +157,83 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Monte Carlo method for predicting the number representing pi TODO. </p>
-<p>A Monte Carlo method is really a problem dealing with random distribution and random sampling related technique. In this case and within this file we use a "Monte Carlo Method" from what is talked about in the video below specifically when the author talks about predicting the number pi π using random sampling by "dropping marbles" into a square and determining how many are dropped within 1/4 of the square. The number of successes divided by the number of total attempts will our prediction of pi π</p>
-<p><a href="https://www.youtube.com/watch?v=7ESK5SaP-bc">https://www.youtube.com/watch?v=7ESK5SaP-bc</a> </p>
+<p class="definition">Definition at line <a class="el" href="montecarlo_8cpp_source.html#l00053">53</a> of file <a class="el" href="montecarlo_8cpp_source.html">montecarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;           {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> trials_per_thread = 4096;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">int</span> threads = 256;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> blocks = 256;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> total_trials = trials_per_thread * threads * blocks;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Trials/thread: &quot;</span> &lt;&lt; trials_per_thread &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Threads: &quot;</span> &lt;&lt; threads &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Blocks: &quot;</span> &lt;&lt; blocks &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Total trials: &quot;</span> &lt;&lt; total_trials &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">auto</span> start_time = std::chrono::high_resolution_clock::now();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">double</span> predicted_pi = <a class="code" href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">monte_carlo</a>(total_trials);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">auto</span> end_time = std::chrono::high_resolution_clock::now();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::chrono::duration&lt;double&gt; elapsed_time = end_time - start_time;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Estimated value of pi: &quot;</span> &lt;&lt; predicted_pi </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        &lt;&lt; <span class="stringliteral">&quot; in : &quot;</span> &lt;&lt; elapsed_time.count() &lt;&lt; <span class="stringliteral">&quot; seconds&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">double</span> err = predicted_pi - <a class="code" href="montecarlo_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Error of &quot;</span> &lt;&lt; err &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="ttc" id="amontecarlo_8cpp_html_a1cfb44d14ad67d6f3c3f8cc38c223960"><div class="ttname"><a href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">monte_carlo</a></div><div class="ttdeci">double monte_carlo(int total_trials)</div><div class="ttdoc">Monte Carlo method for predicting the number representing pi TODO.</div><div class="ttdef"><b>Definition:</b> <a href="montecarlo_8cpp_source.html#l00020">montecarlo.cpp:20</a></div></div>
+<div class="ttc" id="amontecarlo_8cpp_html_a598a3330b3c21701223ee0ca14316eca"><div class="ttname"><a href="montecarlo_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a></div><div class="ttdeci">#define PI</div><div class="ttdef"><b>Definition:</b> <a href="montecarlo_8cpp_source.html#l00018">montecarlo.cpp:18</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">monte_carlo()</a>, and <a class="el" href="montecarlo_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="montecarlo_8cpp_source.html#l00016">16</a> of file <a class="el" href="montecarlo_8cpp_source.html">montecarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                  {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> total_points = 10000000;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> successes = 0;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// initialize a random number generator</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::random_device rd;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::mt19937 gen(rd());</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::uniform_real_distribution&lt;double&gt; dis(0.0, 1.0);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; total_points; i++) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// generate random points within the unit square</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">double</span> x = dis(gen);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">double</span> y = dis(gen);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// check if the point is inside the unit circle</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">if</span> (x * x + y * y &lt;= 1.0) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            successes++;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+</div>
+</div>
+<a id="a1cfb44d14ad67d6f3c3f8cc38c223960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cfb44d14ad67d6f3c3f8cc38c223960">&#9670;&nbsp;</a></span>monte_carlo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double monte_carlo </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>total_trials</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Monte Carlo method for predicting the number representing pi TODO. </p>
+
+<p class="definition">Definition at line <a class="el" href="montecarlo_8cpp_source.html#l00020">20</a> of file <a class="el" href="montecarlo_8cpp_source.html">montecarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                     {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> successes = 0;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">double</span> x, y;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// Initialize a random number generator</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::random_device rd;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::mt19937 gen(rd());</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::uniform_real_distribution&lt;double&gt; dis(0.0, 1.0);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; total_trials; i++) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        x = dis(gen);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        y = dis(gen);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">// Check if the point is inside the unit circle</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        successes += (x * x + y * y &lt;= 1.0);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// estimate pi</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">double</span> predicted_pi = 4.0 * <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(successes) / total_points;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// Estimate pi</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">double</span> predicted_pi = 4.0 * <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(successes) / total_trials;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Estimated value of pi: &quot;</span> &lt;&lt; predicted_pi &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> predicted_pi;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="montecarlo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->

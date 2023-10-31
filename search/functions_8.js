@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['proc_5finfo_120',['proc_info',['../classSystem.html#a05ddc7cd72bafa8a66d4033483787cdf',1,'System']]]
+  ['naive_5fprimes_122',['naive_primes',['../benchmark_8cpp.html#a99aac323581ac61f8dbced9694339b0b',1,'benchmark.cpp']]]
 ];

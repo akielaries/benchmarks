@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['warning_73',['WARNING',['../log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81',1,'log.hpp']]],
-  ['witness_74',['witness',['../primes_8hpp.html#a80111d35c6263d494061b175ec14c90c',1,'witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s):&#160;primes.cpp'],['../primes_8cpp.html#a80111d35c6263d494061b175ec14c90c',1,'witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s):&#160;primes.cpp']]],
-  ['workers_75',['workers',['../classThreadPool.html#a9ef531ca4b7d046f3acaf4b5b36cdeff',1,'ThreadPool']]]
+  ['tasks_68',['tasks',['../classThreadPool.html#aecd2f98ff952b12bcd21102df80bdfe9',1,'ThreadPool']]],
+  ['test_5fsys_2ecpp_69',['test_sys.cpp',['../test__sys_8cpp.html',1,'']]],
+  ['threaddispatch_70',['ThreadDispatch',['../classThreadDispatch.html',1,'']]],
+  ['threadpool_71',['ThreadPool',['../classThreadPool.html',1,'ThreadPool'],['../classThreadPool.html#a3225e86aa7835545b3f6c2c8d363d5e5',1,'ThreadPool::ThreadPool()'],['../classThreadPool.html#a3e0ddf4638e66015010fd3e0cdeed3ff',1,'ThreadPool::ThreadPool(int numThreads)']]],
+  ['threadpool_2ehpp_72',['threadpool.hpp',['../threadpool_8hpp.html',1,'']]],
+  ['threadpool_5fprimes_73',['threadpool_primes',['../benchmark_8cpp.html#a158c34427c2e57ed392688f69fed9936',1,'benchmark.cpp']]],
+  ['threadpool_5fprimes_5fdispatch_74',['threadpool_primes_dispatch',['../benchmark_8cpp.html#a2791fa7f9626a2ec2739035004ed8ed1',1,'benchmark.cpp']]]
 ];

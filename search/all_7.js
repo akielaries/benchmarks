@@ -1,13 +1,5 @@
 var searchData=
 [
-  ['log_28',['log',['../classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2',1,'Logger']]],
-  ['log_2ecpp_29',['log.cpp',['../log_8cpp.html',1,'']]],
-  ['log_2ehpp_30',['log.hpp',['../log_8hpp.html',1,'']]],
-  ['logdestination_31',['logDestination',['../classLogger.html#a967857c7128b7c34b79c63248c499235',1,'Logger']]],
-  ['logdestination_32',['LogDestination',['../log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850c',1,'log.hpp']]],
-  ['logfilestream_33',['logFileStream',['../classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b',1,'Logger']]],
-  ['logger_34',['Logger',['../classLogger.html',1,'Logger'],['../classLogger.html#ad41ef6d2d5c25b8d5990a484f058d834',1,'Logger::Logger(LogLevel level=INFO, bool useTimestamp=true)']]],
-  ['loglevel_35',['logLevel',['../classLogger.html#a944f533cd338373621f20a6e20ba525e',1,'Logger']]],
-  ['loglevel_36',['LogLevel',['../log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9',1,'log.hpp']]],
-  ['logtofile_37',['logToFile',['../classLogger.html#ab45d0099fb55c8156305a1ce8490e79b',1,'Logger']]]
+  ['index_2emd_27',['index.md',['../index_8md.html',1,'']]],
+  ['info_28',['INFO',['../log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806',1,'log.hpp']]]
 ];

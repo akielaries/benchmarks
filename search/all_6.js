@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['index_2emd_26',['index.md',['../index_8md.html',1,'']]],
-  ['info_27',['INFO',['../log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806',1,'log.hpp']]]
+  ['host_5fmonte_5fcarlo_26',['host_monte_carlo',['../montecarlo_8cpp.html#a4669755f9ef5ae0738f3b5f73f00d6e1',1,'montecarlo.cpp']]]
 ];
