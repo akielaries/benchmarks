@@ -7,9 +7,9 @@ else
 	CC = g++-12
 endif
 
-FLGS	= -std=c++20 -march=native -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
-SRC		= primes.cpp montecarlo.cpp benchmark.cpp sys.cpp -lpthread
-BIN		= BENCHMARK
+FLGS 	= -std=c++20 -march=native -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
+SRC 	= primes.cpp montecarlo.cpp benchmark.cpp sys.cpp -lpthread
+BIN 	= BENCHMARK
 
 bench:
 	${CC} ${FLGS} ${SRC} -o ${BIN}
@@ -32,7 +32,7 @@ build_img:
 	sudo docker build . -t benchmarks
 
 run_container:
-	sudo docker run -it benchmarks:latest /bin/bash
+	sudo docker run --privileged -it benchmarks:latest /bin/bash
 
 clean:
 	rm -f ${BIN}
