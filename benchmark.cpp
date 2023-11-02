@@ -3,10 +3,11 @@
 #include "lib/sys.hpp"
 #include "lib/threadpool.hpp"
 #include <chrono>
+#include <cstring>
 #include <iostream>
 #include <vector>
 
-void naive_primes(std::vector<uint32_t> nums) {
+void bench_naive_primes(std::vector<uint32_t> nums) {
     // TODO at the end of each benchmark run we should log memory
     std::cout << "Miller-Rabin sequential...\n";
     // TIME START
@@ -32,7 +33,7 @@ void naive_primes(std::vector<uint32_t> nums) {
               << " ms" << std::endl;
 }
 
-void threadpool_primes(std::vector<uint32_t> nums) {
+void bench_threadpool_primes(std::vector<uint32_t> nums) {
     // declares a threadpool with 4 threads
     ThreadPool *pool = new ThreadPool(4);
 
@@ -65,7 +66,7 @@ void threadpool_primes(std::vector<uint32_t> nums) {
               << " ms" << std::endl;
 }
 
-void threadpool_primes_dispatch(std::vector<uint32_t> nums) {
+void bench_threadpool_primes_dispatch(std::vector<uint32_t> nums) {
     std::vector<std::future<bool>> miller_results;
 
     ThreadPool *pool = new ThreadPool(4);
@@ -97,81 +98,140 @@ void threadpool_primes_dispatch(std::vector<uint32_t> nums) {
               << " ms" << std::endl;
 }
 
-int main() {
-    std::cout << "Starting benchmark...\n\n";
+void bench_monte_carlo() {
+    int trials_per_thread = 4096;
+    int threads = 256;
+    int blocks = 256;
+    int total_trials = trials_per_thread * threads * blocks;
 
-    System sys;
+    std::cout << "Trials/thread: " << trials_per_thread << std::endl;
+    std::cout << "Threads: " << threads << std::endl;
+    std::cout << "Blocks: " << blocks << std::endl;
+    std::cout << "Total trials: " << total_trials << std::endl;
 
-    // display CPU information and number of running processes from `ps`
-    sys.cpu_info();
-    sys.proc_info();
+    auto start_time = std::chrono::high_resolution_clock::now();
 
-    sys.cpu_usage();
-    sys.mem_info();
-    sys.cpu_temp();
-    // TODO get idle temperature at the start of this benchmark to determine
-    // the "idle starting" temperature. store in struct?
-    // when would it get called?
+    double predicted_pi = monte_carlo(total_trials);
 
-    std::cout << "Starting with primality testing using the Miller-Rabin "
-                 "algorithm...\n";
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed_time = end_time - start_time;
 
-    std::vector<uint32_t> nums = {
-        1000000007, // A large 32-bit integer PRIME
-        2147483647, // The largest 32-bit signed integer PRIME
-        97,         // A PRIME number
-        123456789,  // Another large 32-bit integer
-        19,         // A PRIME number
-        42,         // Just a random number
-        31,         // A PRIME number
-        987654321,  // Yet another large 32-bit integer
-        37,         // A PRIME number
-        123,        // Just another number
-        17,         // A PRIME number
-        999999999,  // And another large 32-bit integer
-        23,         // A PRIME number
-        777777777,  // Large 32-bit integer
-        13,         // A PRIME number
-        234567890,  // Large 32-bit integer
-        11,         // A PRIME number
-        987654321,  // Repeating value for demonstration
-        7,          // A PRIME number
-        8675309,    // Another large 32-bit integer
-        709,        // A PRIME number
-        5381,       // A PRIME number
-        52711,      // A PRIME number
-        167449,     // A PRIME number
-        648391,     // A PRIME number
-        1128889,    // A PRIME number
-        2269733,    // A PRIME number
-        3042161,    // A PRIME number
-        4535189,    // A PRIME number
-        7474967,    // A PRIME number
-        9737333,    // A PRIME number
-        14161729,   // A PRIME number
-        17624813,   // A PRIME number
-        19734581,   // A PRIME number
-        23391799,   // A PRIME number
-        29499439,   // A PRIME number
-        37139213    // A PRIME number
-    };
+    std::cout << "Estimated value of pi: " << predicted_pi 
+        << " in : " << elapsed_time.count() << " seconds" << std::endl;
 
-    naive_primes(nums);
-    threadpool_primes(nums);
+    long double err = predicted_pi - PI; 
+    std::cout << "Error of " << err << std::endl;
+}
 
-    // TODO where/when should these be called? should these functions update
-    // values located within a struct? think about this...
-    sys.cpu_usage();
-    sys.mem_info();
-    sys.cpu_temp();
+#if defined(__linux__)
+// if host has NVCC installed
+#ifdef __NVCC__
+void gpu_bench_monte_carlo() {
+    std::cout << "This should be a call to some GPU monte carlo method...\n";
+}
+#endif
+#endif
 
-    threadpool_primes_dispatch(nums);
+void usage(const char *programName) {
+    std::cout << "Usage: " << programName << " [-d | -b]" << std::endl;
+    std::cout << "  -d : daemon mode to monitor system information\n";
+    std::cout << "  -b : benchmark mode to run system stress tests with live monitoring\n";
+}
 
-    sys.cpu_usage();
-    sys.mem_info();
-    sys.cpu_temp();
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        usage(argv[0]);
+        exit(EXIT_FAILURE);
+    } 
+    else {
+        if (strcmp(argv[1], "-b") == 0) {
+            std::cout << "Starting benchmark...\n\n";
 
-    // monte_carlo();
+            System sys;
 
+            // display CPU information and number of running processes from `ps`
+            sys.cpu_info();
+            sys.proc_info();
+
+            sys.cpu_usage();
+            sys.mem_info();
+            sys.cpu_temp();
+            // TODO get idle temperature at the start of this benchmark to
+            // determine the "idle starting" temperature. store in struct? when
+            // would it get called?
+            // TODO FIXME I am thinking this system info should be logged from a
+            // separate thread
+
+            std::cout
+                << "Starting with primality testing using the Miller-Rabin "
+                   "algorithm...\n";
+
+            std::vector<uint32_t> nums = {
+                1000000007, // A large 32-bit integer PRIME
+                2147483647, // The largest 32-bit signed integer PRIME
+                97,         // A PRIME number
+                123456789,  // Another large 32-bit integer
+                19,         // A PRIME number
+                42,         // Just a random number
+                31,         // A PRIME number
+                987654321,  // Yet another large 32-bit integer
+                37,         // A PRIME number
+                123,        // Just another number
+                17,         // A PRIME number
+                999999999,  // And another large 32-bit integer
+                23,         // A PRIME number
+                777777777,  // Large 32-bit integer
+                13,         // A PRIME number
+                234567890,  // Large 32-bit integer
+                11,         // A PRIME number
+                987654321,  // Repeating value for demonstration
+                7,          // A PRIME number
+                8675309,    // Another large 32-bit integer
+                709,        // A PRIME number
+                5381,       // A PRIME number
+                52711,      // A PRIME number
+                167449,     // A PRIME number
+                648391,     // A PRIME number
+                1128889,    // A PRIME number
+                2269733,    // A PRIME number
+                3042161,    // A PRIME number
+                4535189,    // A PRIME number
+                7474967,    // A PRIME number
+                9737333,    // A PRIME number
+                14161729,   // A PRIME number
+                17624813,   // A PRIME number
+                19734581,   // A PRIME number
+                23391799,   // A PRIME number
+                29499439,   // A PRIME number
+                37139213    // A PRIME number
+            };
+
+            bench_naive_primes(nums);
+            bench_threadpool_primes(nums);
+
+            // TODO where/when should these be called? should these functions
+            // update values located within a struct? think about this...
+            sys.cpu_usage();
+            sys.mem_info();
+            sys.cpu_temp();
+
+            bench_threadpool_primes_dispatch(nums);
+
+            sys.cpu_usage();
+            sys.mem_info();
+            sys.cpu_temp();
+
+            // if host has NVCC installed
+            #ifdef __NVCC__
+            std::cout << "NVIDIA DEVICE!\n";
+            #endif
+
+            // monte_carlo();
+        }
+        if (strcmp(argv[1], "-d") == 0) {
+            // TODO implement "daemon"
+            std::cout << "Running as daemon...\n";
+        }
+    }
     return 0;
 }

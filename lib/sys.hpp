@@ -3,17 +3,16 @@
 #include <string>
 
 class System {
-  private:
+  public:
     /** Idle CPU temp set in cpu_idle_temp() */
     double cpu_temp_idle;
-    float cpu_usage;
+    float cpu_use;
     uint32_t mem_total;
     uint32_t mem_free;
     uint32_t mem_avail;
     uint32_t mem_buffer;
     uint32_t mem_cached;
 
-  public:
     /**
      * @brief reads the contents of a file into a string
      *

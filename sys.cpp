@@ -8,6 +8,9 @@
  *  - after test
  */
 #include "lib/sys.hpp"
+#include "sys/sysinfo.h"
+#include "sys/types.h"
+#include <algorithm>
 #include <chrono>
 #include <fstream>
 #include <iostream>
@@ -15,10 +18,6 @@
 #include <string>
 #include <thread>
 #include <vector>
-#include <algorithm>
-#include "sys/types.h"
-#include "sys/sysinfo.h"
-
 
 // function to read and return the contents of a file
 std::string System::read_file(const std::string &filename) {
@@ -210,19 +209,28 @@ void mem_stats() {
     struct sysinfo memInfo;
 
     sysinfo(&memInfo);
-    
-    long long totalVirtualMem = (memInfo.totalram + memInfo.totalswap) * memInfo.mem_unit;
-    long long virtualMemUsed = (memInfo.totalram - memInfo.freeram + memInfo.totalswap - memInfo.freeswap) * memInfo.mem_unit;
-    
+
+    long long totalVirtualMem =
+        (memInfo.totalram + memInfo.totalswap) * memInfo.mem_unit;
+    long long virtualMemUsed = (memInfo.totalram - memInfo.freeram +
+                                memInfo.totalswap - memInfo.freeswap) *
+                               memInfo.mem_unit;
+
     long long totalPhysMem = memInfo.totalram * memInfo.mem_unit;
-    long long physMemUsed = (memInfo.totalram - memInfo.freeram) * memInfo.mem_unit;
+    long long physMemUsed =
+        (memInfo.totalram - memInfo.freeram) * memInfo.mem_unit;
 
-    std::cout << "VIRTUAL MEM AVAIL: " << totalVirtualMem / 1000 << " KB" << std::endl;
-    std::cout << "VIRTUAL MEM USED: " << virtualMemUsed / 1000 << " KB" << std::endl;
+    std::cout << "VIRTUAL MEM AVAIL: " << totalVirtualMem / 1000 << " KB"
+              << std::endl;
+    std::cout << "VIRTUAL MEM USED: " << virtualMemUsed / 1000 << " KB"
+              << std::endl;
 
-    std::cout << "PHYSICAL MEM AVAIL: " << totalPhysMem / 1000 << " KB" << std::endl;
-    std::cout << "PHYSICAL MEM USED: " << physMemUsed / 1000 << " KB" << std::endl;
-    std::cout << "PHYSICAL MEM FREE: " << (totalPhysMem - physMemUsed) / 1000 << " KB" << std::endl;
+    std::cout << "PHYSICAL MEM AVAIL: " << totalPhysMem / 1000 << " KB"
+              << std::endl;
+    std::cout << "PHYSICAL MEM USED: " << physMemUsed / 1000 << " KB"
+              << std::endl;
+    std::cout << "PHYSICAL MEM FREE: " << (totalPhysMem - physMemUsed) / 1000
+              << " KB" << std::endl;
 }
 
 double cpu_stats() {
@@ -269,9 +277,10 @@ double cpu_stats() {
     return usage;
 }
 
+/*
 int main() {
 
     mem_stats();
     cpu_stats();
     return 0;
-}
+}*/

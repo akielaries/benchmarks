@@ -10,10 +10,10 @@
  * https://www.youtube.com/watch?v=7ESK5SaP-bc
  */
 #include "lib/montecarlo.hpp"
-#include <iostream>
-#include <random>
 #include <chrono>
 #include <cstdint>
+#include <iostream>
+#include <random>
 
 #define PI 3.1415926535
 
@@ -40,16 +40,16 @@ double monte_carlo(int total_trials) {
 }
 
 float host_monte_carlo(long trials) {
-	float x, y;
-	long points_in_circle;
-	for(long i = 0; i < trials; i++) {
-		x = rand() / (float) RAND_MAX;
-		y = rand() / (float) RAND_MAX;
-		points_in_circle += (x*x + y*y <= 1.0f);
-	}
-	return 4.0f * points_in_circle / trials;
+    float x, y;
+    long points_in_circle;
+    for (long i = 0; i < trials; i++) {
+        x = rand() / (float)RAND_MAX;
+        y = rand() / (float)RAND_MAX;
+        points_in_circle += (x * x + y * y <= 1.0f);
+    }
+    return 4.0f * points_in_circle / trials;
 }
-
+/*
 int main() {
     int trials_per_thread = 4096;
     int threads = 256;
@@ -68,11 +68,12 @@ int main() {
     auto end_time = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_time = end_time - start_time;
 
-    std::cout << "Estimated value of pi: " << predicted_pi 
-        << " in : " << elapsed_time.count() << " seconds" << std::endl;
+    std::cout << "Estimated value of pi: " << predicted_pi
+              << " in : " << elapsed_time.count() << " seconds" << std::endl;
 
     long double err = predicted_pi - PI;
     std::cout << "Error of " << err << std::endl;
 
     return 0;
 }
+*/
