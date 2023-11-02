@@ -70,10 +70,10 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="montecarlo_8hpp_source.html">lib/montecarlo.hpp</a>&quot;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;random&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;random&gt;</code><br />
 </div>
 <p><a href="montecarlo_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -89,8 +89,6 @@ Functions</h2></td></tr>
 <tr class="separator:a1cfb44d14ad67d6f3c3f8cc38c223960"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4669755f9ef5ae0738f3b5f73f00d6e1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#a4669755f9ef5ae0738f3b5f73f00d6e1">host_monte_carlo</a> (long trials)</td></tr>
 <tr class="separator:a4669755f9ef5ae0738f3b5f73f00d6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a598a3330b3c21701223ee0ca14316eca"></a>
@@ -132,63 +130,14 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                    {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">float</span> x, y;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">long</span> points_in_circle;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">long</span> i = 0; i &lt; trials; i++) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        x = rand() / (float) RAND_MAX;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        y = rand() / (float) RAND_MAX;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        points_in_circle += (x*x + y*y &lt;= 1.0f);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">long</span> i = 0; i &lt; trials; i++) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        x = rand() / (float)RAND_MAX;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        y = rand() / (float)RAND_MAX;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        points_in_circle += (x * x + y * y &lt;= 1.0f);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> 4.0f * points_in_circle / trials;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int main </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="montecarlo_8cpp_source.html#l00053">53</a> of file <a class="el" href="montecarlo_8cpp_source.html">montecarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;           {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> trials_per_thread = 4096;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">int</span> threads = 256;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> blocks = 256;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> total_trials = trials_per_thread * threads * blocks;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Trials/thread: &quot;</span> &lt;&lt; trials_per_thread &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Threads: &quot;</span> &lt;&lt; threads &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Blocks: &quot;</span> &lt;&lt; blocks &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Total trials: &quot;</span> &lt;&lt; total_trials &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">auto</span> start_time = std::chrono::high_resolution_clock::now();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">double</span> predicted_pi = <a class="code" href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">monte_carlo</a>(total_trials);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">auto</span> end_time = std::chrono::high_resolution_clock::now();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::chrono::duration&lt;double&gt; elapsed_time = end_time - start_time;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Estimated value of pi: &quot;</span> &lt;&lt; predicted_pi </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        &lt;&lt; <span class="stringliteral">&quot; in : &quot;</span> &lt;&lt; elapsed_time.count() &lt;&lt; <span class="stringliteral">&quot; seconds&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">double</span> err = predicted_pi - <a class="code" href="montecarlo_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Error of &quot;</span> &lt;&lt; err &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="ttc" id="amontecarlo_8cpp_html_a1cfb44d14ad67d6f3c3f8cc38c223960"><div class="ttname"><a href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">monte_carlo</a></div><div class="ttdeci">double monte_carlo(int total_trials)</div><div class="ttdoc">Monte Carlo method for predicting the number representing pi TODO.</div><div class="ttdef"><b>Definition:</b> <a href="montecarlo_8cpp_source.html#l00020">montecarlo.cpp:20</a></div></div>
-<div class="ttc" id="amontecarlo_8cpp_html_a598a3330b3c21701223ee0ca14316eca"><div class="ttname"><a href="montecarlo_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a></div><div class="ttdeci">#define PI</div><div class="ttdef"><b>Definition:</b> <a href="montecarlo_8cpp_source.html#l00018">montecarlo.cpp:18</a></div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">monte_carlo()</a>, and <a class="el" href="montecarlo_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>.</p>
-
 </div>
 </div>
 <a id="a1cfb44d14ad67d6f3c3f8cc38c223960"></a>
@@ -232,7 +181,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> predicted_pi;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="montecarlo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="benchmark_8cpp.html#aca5c914ba402c541b788eb8a6930f595">bench_monte_carlo()</a>.</p>
 
 </div>
 </div>

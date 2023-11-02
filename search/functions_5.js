@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['host_5fmonte_5fcarlo_112',['host_monte_carlo',['../montecarlo_8cpp.html#a4669755f9ef5ae0738f3b5f73f00d6e1',1,'montecarlo.cpp']]]
+  ['getcurrenttimestamp_117',['getCurrentTimestamp',['../classLogger.html#a44caa51276b396938aa0d2b0fa087a5b',1,'Logger']]],
+  ['getlogprefix_118',['getLogPrefix',['../classLogger.html#a7df6cb9a631c1406314c09bdf01e9a6c',1,'Logger']]]
 ];
