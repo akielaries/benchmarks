@@ -8,8 +8,8 @@
  *  - after test
  */
 #include "lib/sys.hpp"
-#include "sys/sysinfo.h"
-#include "sys/types.h"
+#include <sys/sysinfo.h>
+#include <sys/types.h>
 #include <algorithm>
 #include <chrono>
 #include <fstream>
