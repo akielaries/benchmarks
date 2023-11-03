@@ -1,4 +1,4 @@
-#include "lib/log.hpp"
+#include "../lib/log.hpp"
 #include <chrono>
 #include <ctime>
 #include <fstream>
@@ -6,30 +6,30 @@
 #include <iostream>
 #include <string>
 
-gpmp::core::Logger::Logger(LogLevel level, bool useTimestamp)
+Logger::Logger(LogLevel level, bool useTimestamp)
     : logLevel(level), enableTimestamp(useTimestamp), logDestination(CONSOLE),
       logToFile(false) {
 }
 
-gpmp::core::Logger::~Logger() {
+Logger::~Logger() {
     if (logToFile) {
         logFileStream.close();
     }
 }
 
-void gpmp::core::Logger::setLogLevel(LogLevel level) {
+void Logger::setLogLevel(LogLevel level) {
     logLevel = level;
 }
 
-void gpmp::core::Logger::enableTimestamps(bool enable) {
+void Logger::enableTimestamps(bool enable) {
     enableTimestamp = enable;
 }
 
-void gpmp::core::Logger::setLogDestination(LogDestination destination) {
+void Logger::setLogDestination(LogDestination destination) {
     logDestination = destination;
 }
 
-void gpmp::core::Logger::setLogFile(const std::string &logFile) {
+void Logger::setLogFile(const std::string &logFile) {
     logToFile = true;
     logFileStream.open(logFile, std::ios::out | std::ios::app);
     if (!logFileStream.is_open()) {
@@ -37,7 +37,7 @@ void gpmp::core::Logger::setLogFile(const std::string &logFile) {
     }
 }
 
-void gpmp::core::Logger::log(LogLevel level, const std::string &message) {
+void Logger::log(LogLevel level, const std::string &message) {
     if (level >= logLevel) {
         std::string prefix = getLogPrefix(level);
         std::string logMessage = formatLogMessage(prefix, message);
@@ -55,7 +55,7 @@ void gpmp::core::Logger::log(LogLevel level, const std::string &message) {
     }
 }
 
-std::string gpmp::core::Logger::getLogPrefix(LogLevel level) {
+std::string Logger::getLogPrefix(LogLevel level) {
     switch (level) {
     case DEBUG:
         return "[DEBUG]";
@@ -70,7 +70,7 @@ std::string gpmp::core::Logger::getLogPrefix(LogLevel level) {
     }
 }
 
-std::string gpmp::core::Logger::getCurrentTimestamp() {
+std::string Logger::getCurrentTimestamp() {
     auto now = std::chrono::system_clock::now();
     auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
                   now.time_since_epoch()) %
@@ -85,7 +85,7 @@ std::string gpmp::core::Logger::getCurrentTimestamp() {
     return oss.str();
 }
 
-std::string gpmp::core::Logger::formatLogMessage(const std::string &prefix,
+std::string Logger::formatLogMessage(const std::string &prefix,
                                                  const std::string &message) {
     std::string logMessage = prefix + " " + message;
     if (enableTimestamp) {
@@ -96,7 +96,7 @@ std::string gpmp::core::Logger::formatLogMessage(const std::string &prefix,
 
 /*int main() {
     // Create a logger with default settings (log to console with timestamps)
-    gpmp::core::Logger logger;
+    Logger logger;
 
     // Log messages at various log levels
     logger.log(DEBUG, "This is a debug message.");

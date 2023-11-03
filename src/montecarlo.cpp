@@ -9,7 +9,7 @@
  *
  * https://www.youtube.com/watch?v=7ESK5SaP-bc
  */
-#include "lib/montecarlo.hpp"
+#include "../lib/montecarlo.hpp"
 #include <chrono>
 #include <cstdint>
 #include <iostream>

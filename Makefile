@@ -8,7 +8,11 @@ else
 endif
 
 FLGS 	= -std=c++20 -march=native -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
-SRC 	= primes.cpp montecarlo.cpp benchmark.cpp sys.cpp -lpthread
+PROJDIR	= $(realpath$(CURDIR))
+SRCDIR	= $(PROJDIR) src
+CPP		= $(SRCDIR) *.cpp
+CUDA	= $(SRCDIR) *.cu
+SRC 	= benchmark.cpp $(CPP) -lpthread
 BIN 	= benchsys
 
 bench:

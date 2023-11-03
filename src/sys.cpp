@@ -7,7 +7,7 @@
  *  - during test (how often?, pause/resume timers before/after check_mem call?)
  *  - after test
  */
-#include "lib/sys.hpp"
+#include "../lib/sys.hpp"
 #include <sys/sysinfo.h>
 #include <sys/types.h>
 #include <algorithm>

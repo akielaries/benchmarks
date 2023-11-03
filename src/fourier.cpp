@@ -25,6 +25,7 @@ DFT(const std::vector<std::complex<double>> &x) {
     return X;
 }
 
+/*
 int main() {
     std::vector<std::complex<double>> input_signal =
         {1.0, 2.0, 3.0, 4.0, 9.0, 1.0, 20.0, 11.0};
@@ -36,4 +37,4 @@ int main() {
     }
 
     return 0;
-}
+}*/

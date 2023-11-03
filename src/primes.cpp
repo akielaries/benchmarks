@@ -1,4 +1,4 @@
-#include "lib/primes.hpp"
+#include "../lib/primes.hpp"
 #include <iostream>
 #include <random>
 #include <vector>
