@@ -94,20 +94,20 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> X;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="fourier_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   28</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="fourier_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::vector&lt;std::complex&lt;double&gt;&gt; input_signal =</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {1.0, 2.0, 3.0, 4.0, 9.0, 1.0, 20.0, 11.0};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::vector&lt;std::complex&lt;double&gt;&gt; result = <a class="code" href="fourier_8cpp.html#a5a8ea07c15bc6fefaec2c4fce2d226a3">DFT</a>(input_signal);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Print the DFT result</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; result.size(); k++) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;X[&quot;</span> &lt;&lt; k &lt;&lt; <span class="stringliteral">&quot;] = &quot;</span> &lt;&lt; result[k] &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">int main() {</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    std::vector&lt;std::complex&lt;double&gt;&gt; input_signal =</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">        {1.0, 2.0, 3.0, 4.0, 9.0, 1.0, 20.0, 11.0};</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">    std::vector&lt;std::complex&lt;double&gt;&gt; result = DFT(input_signal);</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">    // Print the DFT result</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">    for (int k = 0; k &lt; result.size(); k++) {</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">        std::cout &lt;&lt; &quot;X[&quot; &lt;&lt; k &lt;&lt; &quot;] = &quot; &lt;&lt; result[k] &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">    return 0;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">}*/</span></div>
 <div class="ttc" id="afourier_8cpp_html_a5a8ea07c15bc6fefaec2c4fce2d226a3"><div class="ttname"><a href="fourier_8cpp.html#a5a8ea07c15bc6fefaec2c4fce2d226a3">DFT</a></div><div class="ttdeci">std::vector&lt; std::complex&lt; double &gt; &gt; DFT(const std::vector&lt; std::complex&lt; double &gt;&gt; &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="fourier_8cpp_source.html#l00012">fourier.cpp:12</a></div></div>
-<div class="ttc" id="afourier_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="fourier_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="fourier_8cpp_source.html#l00028">fourier.cpp:28</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

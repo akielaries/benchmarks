@@ -169,6 +169,16 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00009">9</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    : <a class="code" href="classLogger.html#a944f533cd338373621f20a6e20ba525e">logLevel</a>(level), <a class="code" href="classLogger.html#a7e2c6d6e9857936385f0f0027b95a50d">enableTimestamp</a>(useTimestamp), <a class="code" href="classLogger.html#a967857c7128b7c34b79c63248c499235">logDestination</a>(<a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a>),</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <a class="code" href="classLogger.html#ab45d0099fb55c8156305a1ce8490e79b">logToFile</a>(<span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
+<div class="ttc" id="aclassLogger_html_a7e2c6d6e9857936385f0f0027b95a50d"><div class="ttname"><a href="classLogger.html#a7e2c6d6e9857936385f0f0027b95a50d">Logger::enableTimestamp</a></div><div class="ttdeci">bool enableTimestamp</div><div class="ttdoc">Flag indicating whether to include timestamps in log messages.</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00074">log.hpp:74</a></div></div>
+<div class="ttc" id="aclassLogger_html_a944f533cd338373621f20a6e20ba525e"><div class="ttname"><a href="classLogger.html#a944f533cd338373621f20a6e20ba525e">Logger::logLevel</a></div><div class="ttdeci">LogLevel logLevel</div><div class="ttdoc">The minimum log level to record.</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00069">log.hpp:69</a></div></div>
+<div class="ttc" id="aclassLogger_html_a967857c7128b7c34b79c63248c499235"><div class="ttname"><a href="classLogger.html#a967857c7128b7c34b79c63248c499235">Logger::logDestination</a></div><div class="ttdeci">LogDestination logDestination</div><div class="ttdoc">The log destination, which can be CONSOLE, FILE_ONLY, or CONSOLE_AND_FILE.</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00080">log.hpp:80</a></div></div>
+<div class="ttc" id="aclassLogger_html_ab45d0099fb55c8156305a1ce8490e79b"><div class="ttname"><a href="classLogger.html#ab45d0099fb55c8156305a1ce8490e79b">Logger::logToFile</a></div><div class="ttdeci">bool logToFile</div><div class="ttdoc">Flag indicating whether to log messages to a file.</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00085">log.hpp:85</a></div></div>
+<div class="ttc" id="alog_8hpp_html_a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc"><div class="ttname"><a href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a></div><div class="ttdeci">@ CONSOLE</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00011">log.hpp:11</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="acb668a9e186a25fbaad2e4af6d1ed00a"></a>
@@ -187,6 +197,16 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="classLogger.html">Logger</a> destructor, destroys the <a class="el" href="classLogger.html">Logger</a> instance. </p>
+
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00014">14</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classLogger.html#ab45d0099fb55c8156305a1ce8490e79b">logToFile</a>) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">logFileStream</a>.close();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="ttc" id="aclassLogger_html_a7bcb7e35acb7b1c70b5cef1800e2506b"><div class="ttname"><a href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">Logger::logFileStream</a></div><div class="ttdeci">std::ofstream logFileStream</div><div class="ttdoc">The output stream for logging to a file.</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00090">log.hpp:90</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">logFileStream</a>, and <a class="el" href="classLogger.html#ab45d0099fb55c8156305a1ce8490e79b">logToFile</a>.</p>
 
 </div>
 </div>
@@ -214,6 +234,13 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00024">24</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                         {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classLogger.html#a7e2c6d6e9857936385f0f0027b95a50d">enableTimestamp</a> = enable;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classLogger.html#a7e2c6d6e9857936385f0f0027b95a50d">enableTimestamp</a>.</p>
 
 </div>
 </div>
@@ -261,6 +288,20 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The formatted log message as a string. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00088">88</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                                                           {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::string logMessage = prefix + <span class="stringliteral">&quot; &quot;</span> + message;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classLogger.html#a7e2c6d6e9857936385f0f0027b95a50d">enableTimestamp</a>) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        logMessage = <a class="code" href="classLogger.html#a44caa51276b396938aa0d2b0fa087a5b">getCurrentTimestamp</a>() + <span class="stringliteral">&quot; &quot;</span> + logMessage;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> logMessage;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="ttc" id="aclassLogger_html_a44caa51276b396938aa0d2b0fa087a5b"><div class="ttname"><a href="classLogger.html#a44caa51276b396938aa0d2b0fa087a5b">Logger::getCurrentTimestamp</a></div><div class="ttdeci">std::string getCurrentTimestamp()</div><div class="ttdoc">Gets the current timestamp as a string.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.html#l00073">log.cpp:73</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classLogger.html#a7e2c6d6e9857936385f0f0027b95a50d">enableTimestamp</a>, and <a class="el" href="classLogger.html#a44caa51276b396938aa0d2b0fa087a5b">getCurrentTimestamp()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2">log()</a>.</p>
+
 </div>
 </div>
 <a id="a44caa51276b396938aa0d2b0fa087a5b"></a>
@@ -288,6 +329,24 @@ Private Attributes</h2></td></tr>
 
 <p>Gets the current timestamp as a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string representing the current timestamp. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00073">73</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                      {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">auto</span> now = std::chrono::system_clock::now();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">auto</span> ms = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                  now.time_since_epoch()) %</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;              1000;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::time_t nowTime = std::chrono::system_clock::to_time_t(now);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    std::tm tm = *std::localtime(&amp;nowTime);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::ostringstream oss;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    oss &lt;&lt; std::put_time(&amp;tm, <span class="stringliteral">&quot;%H:%M:%S&quot;</span>) &lt;&lt; <span class="charliteral">&#39;.&#39;</span> &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        &lt;&lt; std::setw(3) &lt;&lt; ms.count();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> oss.str();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="classLogger.html#a29eb3173d3c3a8b1f613e1823e919c63">formatLogMessage()</a>.</p>
 
 </div>
 </div>
@@ -323,6 +382,30 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string representing the log prefix. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00058">58</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                             {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">switch</span> (level) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f">DEBUG</a>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[DEBUG]&quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[INFO]&quot;</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[WARN]&quot;</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[ERR]&quot;</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[UNKN]&quot;</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f">DEBUG</a></div><div class="ttdeci">@ DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
+<div class="ttc" id="alog_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81"><div class="ttname"><a href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00009">log.hpp:9</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f">DEBUG</a>, <a class="el" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>, <a class="el" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a>, and <a class="el" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2">log()</a>.</p>
 
 </div>
 </div>
@@ -361,6 +444,30 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00040">40</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                         {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (level &gt;= <a class="code" href="classLogger.html#a944f533cd338373621f20a6e20ba525e">logLevel</a>) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::string prefix = <a class="code" href="classLogger.html#a7df6cb9a631c1406314c09bdf01e9a6c">getLogPrefix</a>(level);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        std::string logMessage = <a class="code" href="classLogger.html#a29eb3173d3c3a8b1f613e1823e919c63">formatLogMessage</a>(prefix, message);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classLogger.html#a967857c7128b7c34b79c63248c499235">logDestination</a> == <a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a> || <a class="code" href="classLogger.html#a967857c7128b7c34b79c63248c499235">logDestination</a> == <a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca49cf08ff55a779ae12043a83f9176ee2">CONSOLE_AND_FILE</a>) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">if</span> (level == <a class="code" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                std::cerr &lt;&lt; logMessage &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                std::cout &lt;&lt; logMessage &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classLogger.html#a967857c7128b7c34b79c63248c499235">logDestination</a> != <a class="code" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a> &amp;&amp; <a class="code" href="classLogger.html#ab45d0099fb55c8156305a1ce8490e79b">logToFile</a> &amp;&amp; <a class="code" href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">logFileStream</a>.is_open()) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <a class="code" href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">logFileStream</a> &lt;&lt; logMessage &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="ttc" id="aclassLogger_html_a29eb3173d3c3a8b1f613e1823e919c63"><div class="ttname"><a href="classLogger.html#a29eb3173d3c3a8b1f613e1823e919c63">Logger::formatLogMessage</a></div><div class="ttdeci">std::string formatLogMessage(const std::string &amp;prefix, const std::string &amp;message)</div><div class="ttdoc">Formats a log message with a specified prefix.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.html#l00088">log.cpp:88</a></div></div>
+<div class="ttc" id="aclassLogger_html_a7df6cb9a631c1406314c09bdf01e9a6c"><div class="ttname"><a href="classLogger.html#a7df6cb9a631c1406314c09bdf01e9a6c">Logger::getLogPrefix</a></div><div class="ttdeci">std::string getLogPrefix(LogLevel level)</div><div class="ttdoc">Gets the log prefix based on the log level.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.html#l00058">log.cpp:58</a></div></div>
+<div class="ttc" id="alog_8hpp_html_a4d96f303a62a42f0088fbafbb30c850ca49cf08ff55a779ae12043a83f9176ee2"><div class="ttname"><a href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca49cf08ff55a779ae12043a83f9176ee2">CONSOLE_AND_FILE</a></div><div class="ttdeci">@ CONSOLE_AND_FILE</div><div class="ttdef"><b>Definition:</b> <a href="log_8hpp_source.html#l00011">log.hpp:11</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca1f7a5574b76195a27b04152509632efc">CONSOLE</a>, <a class="el" href="log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850ca49cf08ff55a779ae12043a83f9176ee2">CONSOLE_AND_FILE</a>, <a class="el" href="log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>, <a class="el" href="classLogger.html#a29eb3173d3c3a8b1f613e1823e919c63">formatLogMessage()</a>, <a class="el" href="classLogger.html#a7df6cb9a631c1406314c09bdf01e9a6c">getLogPrefix()</a>, <a class="el" href="classLogger.html#a967857c7128b7c34b79c63248c499235">logDestination</a>, <a class="el" href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">logFileStream</a>, <a class="el" href="classLogger.html#a944f533cd338373621f20a6e20ba525e">logLevel</a>, and <a class="el" href="classLogger.html#ab45d0099fb55c8156305a1ce8490e79b">logToFile</a>.</p>
+
 </div>
 </div>
 <a id="a656a669c2e93021464272575d6690d6a"></a>
@@ -386,6 +493,13 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00028">28</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                                         {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classLogger.html#a967857c7128b7c34b79c63248c499235">logDestination</a> = destination;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classLogger.html#a967857c7128b7c34b79c63248c499235">logDestination</a>.</p>
 
 </div>
 </div>
@@ -413,6 +527,17 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00032">32</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                                {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classLogger.html#ab45d0099fb55c8156305a1ce8490e79b">logToFile</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">logFileStream</a>.open(logFile, std::ios::out | std::ios::app);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">logFileStream</a>.is_open()) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: Could not open log file &quot;</span> &lt;&lt; logFile &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b">logFileStream</a>, and <a class="el" href="classLogger.html#ab45d0099fb55c8156305a1ce8490e79b">logToFile</a>.</p>
+
 </div>
 </div>
 <a id="a00fdcdbeb39a2d5d4fb27cc36c35c101"></a>
@@ -438,6 +563,13 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00020">20</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                       {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classLogger.html#a944f533cd338373621f20a6e20ba525e">logLevel</a> = level;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classLogger.html#a944f533cd338373621f20a6e20ba525e">logLevel</a>.</p>
 
 </div>
 </div>
@@ -466,6 +598,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="log_8hpp_source.html#l00074">74</a> of file <a class="el" href="log_8hpp_source.html">log.hpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="classLogger.html#a110a3a0f24e794a35856bfe77f1da62b">enableTimestamps()</a>, and <a class="el" href="classLogger.html#a29eb3173d3c3a8b1f613e1823e919c63">formatLogMessage()</a>.</p>
+
 </div>
 </div>
 <a id="a967857c7128b7c34b79c63248c499235"></a>
@@ -491,6 +625,8 @@ Private Attributes</h2></td></tr>
 <p>The log destination, which can be CONSOLE, FILE_ONLY, or CONSOLE_AND_FILE. </p>
 
 <p class="definition">Definition at line <a class="el" href="log_8hpp_source.html#l00080">80</a> of file <a class="el" href="log_8hpp_source.html">log.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2">log()</a>, and <a class="el" href="classLogger.html#a656a669c2e93021464272575d6690d6a">setLogDestination()</a>.</p>
 
 </div>
 </div>
@@ -518,6 +654,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="log_8hpp_source.html#l00090">90</a> of file <a class="el" href="log_8hpp_source.html">log.hpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2">log()</a>, <a class="el" href="classLogger.html#aca73d3b79aaef706c4621d681e7bf662">setLogFile()</a>, and <a class="el" href="classLogger.html#acb668a9e186a25fbaad2e4af6d1ed00a">~Logger()</a>.</p>
+
 </div>
 </div>
 <a id="a944f533cd338373621f20a6e20ba525e"></a>
@@ -543,6 +681,8 @@ Private Attributes</h2></td></tr>
 <p>The minimum log level to record. </p>
 
 <p class="definition">Definition at line <a class="el" href="log_8hpp_source.html#l00069">69</a> of file <a class="el" href="log_8hpp_source.html">log.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2">log()</a>, and <a class="el" href="classLogger.html#a00fdcdbeb39a2d5d4fb27cc36c35c101">setLogLevel()</a>.</p>
 
 </div>
 </div>
@@ -570,10 +710,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="log_8hpp_source.html#l00085">85</a> of file <a class="el" href="log_8hpp_source.html">log.hpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2">log()</a>, <a class="el" href="classLogger.html#aca73d3b79aaef706c4621d681e7bf662">setLogFile()</a>, and <a class="el" href="classLogger.html#acb668a9e186a25fbaad2e4af6d1ed00a">~Logger()</a>.</p>
+
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>lib/<a class="el" href="log_8hpp_source.html">log.hpp</a></li>
+<li>src/<a class="el" href="log_8cpp_source.html">log.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
