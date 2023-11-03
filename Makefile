@@ -8,10 +8,10 @@ else
 endif
 
 FLGS 	= -std=c++20 -march=native -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
-PROJDIR	= $(realpath$(CURDIR))
-SRCDIR	= $(PROJDIR) src
-CPP		= $(SRCDIR) *.cpp
-CUDA	= $(SRCDIR) *.cu
+PROJDIR = $(realpath $(CURDIR))
+SRCDIR	= $(PROJDIR)/src
+CPP		= $(shell find $(PROJDIR)/src -name '*.cpp')
+CUDA	= $(shell find $(PROJDIR)/src -name '*.cu')
 SRC 	= benchmark.cpp $(CPP) -lpthread
 BIN 	= benchsys
 
