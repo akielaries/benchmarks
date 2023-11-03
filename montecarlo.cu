@@ -15,11 +15,11 @@ __global__ void gpu_monte_carlo(float *estimate, curandState *states) {
     unsigned int thread_id = threadIdx.x + blockDim.x * blockIdx.x;
     int points_in_circle = 0;
     float x, y;
-
+    // Initialize CURAND
     curand_init(1234,
                 thread_id,
                 0,
-                &states[thread_id]); // 	Initialize CURAND
+                &states[thread_id]);
 
     for (int i = 0; i < TRIALS_PER_THREAD; i++) {
         x = curand_uniform(&states[thread_id]);
