@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['index_2emd_90',['index.md',['../index_8md.html',1,'']]]
+  ['log_2ecpp_89',['log.cpp',['../log_8cpp.html',1,'']]],
+  ['log_2ehpp_90',['log.hpp',['../log_8hpp.html',1,'']]]
 ];

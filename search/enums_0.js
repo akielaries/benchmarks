@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['logdestination_156',['LogDestination',['../log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850c',1,'log.hpp']]],
-  ['loglevel_157',['LogLevel',['../log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9',1,'log.hpp']]]
+  ['logdestination_154',['LogDestination',['../log_8hpp.html#a4d96f303a62a42f0088fbafbb30c850c',1,'log.hpp']]],
+  ['loglevel_155',['LogLevel',['../log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9',1,'log.hpp']]]
 ];
