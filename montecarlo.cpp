@@ -22,6 +22,7 @@ double monte_carlo(int total_trials) {
     double x, y;
 
     // Initialize a random number generator
+    // TODO set a seed to be used for this PRNG and in montecarlo.cu
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<double> dis(0.0, 1.0);
