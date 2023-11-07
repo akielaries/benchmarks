@@ -954,6 +954,7 @@ FILE_PATTERNS          = *.c \
                          *.cxx \
                          *.cpp \
                          *.c++ \
+                         *.cu \
                          *.java \
                          *.ii \
                          *.ixx \
