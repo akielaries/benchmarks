@@ -6,6 +6,9 @@
 #include <cstring>
 #include <iostream>
 #include <vector>
+#include <thread>
+#include <fstream>
+#include <ctime>
 
 void bench_naive_primes(std::vector<uint32_t> nums) {
     // TODO at the end of each benchmark run we should log memory
@@ -132,6 +135,62 @@ void gpu_bench_monte_carlo() {
 #endif
 #endif
 
+// Function to run system monitor as a background process
+void daemon() {
+    std::cout << "DAEMON CODE??\n";
+
+    // System class obj
+    System sys;
+    // GET BASE READINGS
+    //      - available mem
+    //      - starting (idle) CPU temp
+    //      - TODO
+    float starting_cpu_temp = sys.cpu_idle_temp();
+    float starting_cpu_usg = sys.cpu_stats();
+
+
+    // IDLE CPU TEMPERATURE
+    std::cout << starting_cpu_temp << starting_cpu_usg << std::endl;
+
+    // infinite loop for continuous collection
+    while (true) {
+        std::cout << "SLEEPING\n";
+        // sleep 
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+
+        // GET CURRENT DATE FMT IN mmddyyyy
+        auto now = std::chrono::system_clock::now();
+        std::time_t time = std::chrono::system_clock::to_time_t(now);
+        std::tm local_tm = *std::localtime(&time);
+        char date_str[9]; // MMDDYYYY + '\0'
+        std::strftime(date_str, sizeof(date_str), "%m%d%Y", &local_tm);
+
+        // CSV FILE NAME
+        std::string filename = "sysinfo_" + std::string(date_str) + ".csv";
+
+        // Open the CSV file for appending
+        std::ofstream csvFile(filename, std::ios::app);
+
+        if (csvFile.is_open()) {
+            // CURRENT CPU TEMPERATURE
+            float curr_cpu_temp = sys.cpu_temp();
+            // CURRENT CPU USAGE (%)
+            float curr_cpu_usg = sys.cpu_stats();
+            // CURRENT MEMORY USAGE, THIS METHOD POPULATE VARIOUS CLASS VARS
+            sys.mem_stats();
+
+            // WRITE ALL INFO TO CSV FILE
+            csvFile << starting_cpu_temp << ","; // Add other data as needed
+            // Add more fields and data to the CSV file as needed
+
+            csvFile << "\n"; // Move to the next line for the next entry
+            csvFile.close(); // Close the file after writing
+        } else {
+            std::cerr << "Error: Unable to open file " << filename << " for writing.\n";
+        }
+    }
+}
+
 void usage(const char *programName) {
     std::cout << "Usage: " << programName << " [-d | -b]" << std::endl;
     std::cout << "  -d : daemon mode to monitor system information\n";
@@ -231,6 +290,7 @@ int main(int argc, char *argv[]) {
         if (strcmp(argv[1], "-d") == 0) {
             // TODO implement "daemon"
             std::cout << "Running as daemon...\n";
+            daemon();
         }
     }
     return 0;

@@ -65,6 +65,14 @@ class System {
      * @param idle_temp idle CPU temp
      */
     void cpu_idle(double idle_temp);
+
+    /**
+     * @brief get CPU usage 
+     * @return usage as a percentage
+     */
+    double cpu_stats();
+
+    void mem_stats();
 };
 
 #endif

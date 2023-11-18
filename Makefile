@@ -56,4 +56,4 @@ clean:
 	rm -f *.out
 	rm -f *.data*
 	rm -f *perf
-
+	rm -f *.csv

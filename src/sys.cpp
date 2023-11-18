@@ -114,32 +114,11 @@ void System::cpu_info() {
         }
 
         // print the extracted information
-        std::cout << "Model: " << model << std::endl;
+        std::cout << "CPU model: " << model << std::endl;
         std::cout << "BogoMIPS: " << bogoMIPS << std::endl;
         std::cout << "Number of CPU(s): " << numCPUs << std::endl;
     } else {
         std::cerr << "Failed to run lscpu command." << std::endl;
-    }
-}
-// function to display memory statistics
-void System::mem_info() {
-    // TODO: save the memory info to variables for a mass dump into file with
-    // timestamp as KEY
-    std::ifstream meminfo_file("/proc/meminfo");
-    if (meminfo_file.is_open()) {
-        std::string line;
-        std::vector<std::string> fetched_stats =
-            {"MemTotal:", "MemFree:", "MemAvailable:", "Buffers:", "Cached:"};
-
-        while (std::getline(meminfo_file, line)) {
-            for (const std::string &stat : fetched_stats) {
-                if (line.find(stat) == 0) {
-                    std::cout << line << std::endl;
-                }
-            }
-        }
-    } else {
-        std::cerr << "Failed to read /proc/meminfo." << std::endl;
     }
 }
 
@@ -189,7 +168,7 @@ double System::cpu_idle_temp() {
     double idle_temp = sum / temperatures.size();
 
     // set class var
-    System::cpu_temp_idle = idle_temp;
+    //System::cpu_temp_idle = idle_temp;
 
     return idle_temp;
 }
@@ -205,35 +184,8 @@ void System::cpu_idle(double idle_temp) {
     }
 }
 
-void mem_stats() {
-    struct sysinfo memInfo;
 
-    sysinfo(&memInfo);
-
-    long long totalVirtualMem =
-        (memInfo.totalram + memInfo.totalswap) * memInfo.mem_unit;
-    long long virtualMemUsed = (memInfo.totalram - memInfo.freeram +
-                                memInfo.totalswap - memInfo.freeswap) *
-                               memInfo.mem_unit;
-
-    long long totalPhysMem = memInfo.totalram * memInfo.mem_unit;
-    long long physMemUsed =
-        (memInfo.totalram - memInfo.freeram) * memInfo.mem_unit;
-
-    std::cout << "VIRTUAL MEM AVAIL: " << totalVirtualMem / 1000 << " KB"
-              << std::endl;
-    std::cout << "VIRTUAL MEM USED: " << virtualMemUsed / 1000 << " KB"
-              << std::endl;
-
-    std::cout << "PHYSICAL MEM AVAIL: " << totalPhysMem / 1000 << " KB"
-              << std::endl;
-    std::cout << "PHYSICAL MEM USED: " << physMemUsed / 1000 << " KB"
-              << std::endl;
-    std::cout << "PHYSICAL MEM FREE: " << (totalPhysMem - physMemUsed) / 1000
-              << " KB" << std::endl;
-}
-
-double cpu_stats() {
+double System::cpu_stats() {
     std::ifstream file("/proc/stat");
     if (!file.is_open()) {
         std::cerr << "Failed to open /proc/stat" << std::endl;
@@ -277,6 +229,56 @@ double cpu_stats() {
     return usage;
 }
 
+// function to display memory statistics
+void System::mem_info() {
+    // TODO: save the memory info to variables for a mass dump into file with
+    // timestamp as KEY
+    std::ifstream meminfo_file("/proc/meminfo");
+    if (meminfo_file.is_open()) {
+        std::string line;
+        std::vector<std::string> fetched_stats =
+            {"MemTotal:", "MemFree:", "MemAvailable:", "Buffers:", "Cached:"};
+
+        while (std::getline(meminfo_file, line)) {
+            for (const std::string &stat : fetched_stats) {
+                if (line.find(stat) == 0) {
+                    std::cout << line << std::endl;
+                }
+            }
+        }
+    } else {
+        std::cerr << "Failed to read /proc/meminfo." << std::endl;
+    }
+}
+
+// get memory usage info programmatically
+void System::mem_stats() {
+    struct sysinfo memInfo;
+
+    sysinfo(&memInfo);
+
+    long long totalVirtualMem =
+        (memInfo.totalram + memInfo.totalswap) * memInfo.mem_unit;
+    long long virtualMemUsed = (memInfo.totalram - memInfo.freeram +
+                                memInfo.totalswap - memInfo.freeswap) *
+                               memInfo.mem_unit;
+
+    long long totalPhysMem = memInfo.totalram * memInfo.mem_unit;
+    long long physMemUsed =
+        (memInfo.totalram - memInfo.freeram) * memInfo.mem_unit;
+
+    std::cout << "VIRTUAL MEM AVAIL: " << totalVirtualMem / 1000 << " KB"
+              << std::endl;
+    std::cout << "VIRTUAL MEM USED: " << virtualMemUsed / 1000 << " KB"
+              << std::endl;
+
+    std::cout << "PHYSICAL MEM AVAIL: " << totalPhysMem / 1000 << " KB"
+              << std::endl;
+    std::cout << "PHYSICAL MEM USED: " << physMemUsed / 1000 << " KB"
+              << std::endl;
+    std::cout << "PHYSICAL MEM FREE: " << (totalPhysMem - physMemUsed) / 1000
+              << " KB" << std::endl;
+}
 /*
 int main() {
 
