@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['warning_80',['WARNING',['../log_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81',1,'log.hpp']]],
-  ['witness_81',['witness',['../primes_8hpp.html#a80111d35c6263d494061b175ec14c90c',1,'witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s):&#160;primes.cpp'],['../primes_8cpp.html#a80111d35c6263d494061b175ec14c90c',1,'witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s):&#160;primes.cpp']]],
-  ['workers_82',['workers',['../classThreadPool.html#a9ef531ca4b7d046f3acaf4b5b36cdeff',1,'ThreadPool']]]
+  ['v_5fmem_5ffree_78',['v_mem_free',['../classSystem.html#a3d2296132de5f258dc8870961cb71edc',1,'System']]],
+  ['v_5fmem_5ftotal_79',['v_mem_total',['../classSystem.html#abb7d1169cff7933c79787113db774da4',1,'System']]],
+  ['v_5fmem_5fused_80',['v_mem_used',['../classSystem.html#a3992f83086e6bc542f6e2c49b50a1a3b',1,'System']]]
 ];

@@ -1,18 +1,13 @@
 var searchData=
 [
   ['main_44',['main',['../benchmark_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'benchmark.cpp']]],
-  ['mem_5favail_45',['mem_avail',['../classSystem.html#a6f1fc55285c908b71c849fe9156b7945',1,'System']]],
-  ['mem_5fbuffer_46',['mem_buffer',['../classSystem.html#a15aeb118d04b045688ac11874eaaa56c',1,'System']]],
-  ['mem_5fcached_47',['mem_cached',['../classSystem.html#a29da9803e77bfddfba5d584b20d5d11a',1,'System']]],
-  ['mem_5ffree_48',['mem_free',['../classSystem.html#a9c76d51651fb146ba27d58dfa67c5c06',1,'System']]],
-  ['mem_5finfo_49',['mem_info',['../classSystem.html#abcfd5636545c444e85919381442a62ed',1,'System']]],
-  ['mem_5fstats_50',['mem_stats',['../classSystem.html#a54ff7af75d11de4340bd999d4f7f2e58',1,'System']]],
-  ['mem_5ftotal_51',['mem_total',['../classSystem.html#ae9ea652b17fee6057e11a6687c225878',1,'System']]],
-  ['miller_5frabin_52',['miller_rabin',['../primes_8hpp.html#a02dc07b078c4715591f9edca6cc43487',1,'miller_rabin(uint32_t n, uint32_t iters):&#160;primes.cpp'],['../primes_8cpp.html#a17a2ec835cdd09f99b70cf077c531853',1,'miller_rabin(uint32_t n, uint32_t iters=10):&#160;primes.cpp']]],
-  ['mod_5fmul_53',['mod_mul',['../primes_8hpp.html#ab96eee0127eb7d17667946535690b925',1,'mod_mul(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp'],['../primes_8cpp.html#ab96eee0127eb7d17667946535690b925',1,'mod_mul(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp']]],
-  ['mod_5fpow_54',['mod_pow',['../primes_8cpp.html#abdc4d3f8c8a5e618d18431625e059fc9',1,'mod_pow(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp'],['../primes_8hpp.html#abdc4d3f8c8a5e618d18431625e059fc9',1,'mod_pow(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp']]],
-  ['monte_5fcarlo_55',['monte_carlo',['../montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960',1,'monte_carlo(int total_trials):&#160;montecarlo.cpp'],['../montecarlo_8hpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960',1,'monte_carlo(int total_trials):&#160;montecarlo.cpp']]],
-  ['montecarlo_2ecpp_56',['montecarlo.cpp',['../montecarlo_8cpp.html',1,'']]],
-  ['montecarlo_2ecu_57',['montecarlo.cu',['../montecarlo_8cu.html',1,'']]],
-  ['montecarlo_2ehpp_58',['montecarlo.hpp',['../montecarlo_8hpp.html',1,'']]]
+  ['mem_5finfo_45',['mem_info',['../classSystem.html#abcfd5636545c444e85919381442a62ed',1,'System']]],
+  ['mem_5fstats_46',['mem_stats',['../classSystem.html#a54ff7af75d11de4340bd999d4f7f2e58',1,'System']]],
+  ['miller_5frabin_47',['miller_rabin',['../primes_8hpp.html#a02dc07b078c4715591f9edca6cc43487',1,'miller_rabin(uint32_t n, uint32_t iters):&#160;primes.cpp'],['../primes_8cpp.html#a17a2ec835cdd09f99b70cf077c531853',1,'miller_rabin(uint32_t n, uint32_t iters=10):&#160;primes.cpp']]],
+  ['mod_5fmul_48',['mod_mul',['../primes_8hpp.html#ab96eee0127eb7d17667946535690b925',1,'mod_mul(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp'],['../primes_8cpp.html#ab96eee0127eb7d17667946535690b925',1,'mod_mul(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp']]],
+  ['mod_5fpow_49',['mod_pow',['../primes_8hpp.html#abdc4d3f8c8a5e618d18431625e059fc9',1,'mod_pow(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp'],['../primes_8cpp.html#abdc4d3f8c8a5e618d18431625e059fc9',1,'mod_pow(uint32_t a, uint32_t b, uint32_t m):&#160;primes.cpp']]],
+  ['monte_5fcarlo_50',['monte_carlo',['../montecarlo_8hpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960',1,'monte_carlo(int total_trials):&#160;montecarlo.cpp'],['../montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960',1,'monte_carlo(int total_trials):&#160;montecarlo.cpp']]],
+  ['montecarlo_2ecpp_51',['montecarlo.cpp',['../montecarlo_8cpp.html',1,'']]],
+  ['montecarlo_2ecu_52',['montecarlo.cu',['../montecarlo_8cu.html',1,'']]],
+  ['montecarlo_2ehpp_53',['montecarlo.hpp',['../montecarlo_8hpp.html',1,'']]]
 ];
