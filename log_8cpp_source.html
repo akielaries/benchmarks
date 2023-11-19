@@ -158,7 +158,7 @@ $(function() {
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classLogger.html#a29eb3173d3c3a8b1f613e1823e919c63">   88</a></span>&#160;std::string <a class="code" href="classLogger.html#a29eb3173d3c3a8b1f613e1823e919c63">Logger::formatLogMessage</a>(<span class="keyword">const</span> std::string &amp;prefix,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                                 <span class="keyword">const</span> std::string &amp;message) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                     <span class="keyword">const</span> std::string &amp;message) {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::string logMessage = prefix + <span class="stringliteral">&quot; &quot;</span> + message;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classLogger.html#a7e2c6d6e9857936385f0f0027b95a50d">enableTimestamp</a>) {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        logMessage = <a class="code" href="classLogger.html#a44caa51276b396938aa0d2b0fa087a5b">getCurrentTimestamp</a>() + <span class="stringliteral">&quot; &quot;</span> + logMessage;</div>
