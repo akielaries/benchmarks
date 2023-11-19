@@ -173,6 +173,7 @@ double System::cpu_idle_temp() {
     return idle_temp;
 }
 
+// wait until idle CPU temp is met
 void System::cpu_idle(double idle_temp) {
     while (true) {
         double temp_now = cpu_temp();
@@ -184,7 +185,7 @@ void System::cpu_idle(double idle_temp) {
     }
 }
 
-
+// get CPU usage
 double System::cpu_stats() {
     std::ifstream file("/proc/stat");
     if (!file.is_open()) {
@@ -204,8 +205,8 @@ double System::cpu_stats() {
         return -1.0;
     }
 
-    std::vector<long long> values;
-    long long value;
+    std::vector<uint64_t> values;
+    uint64_t value;
     while (iss >> value) {
         values.push_back(value);
     }
@@ -215,8 +216,8 @@ double System::cpu_stats() {
         return -1.0;
     }
 
-    long long idle = values[3];
-    long long total = 0;
+    uint64_t idle = values[3];
+    uint64_t total = 0;
     for (int i = 0; i < 7; i++) {
         total += values[i];
     }
@@ -249,31 +250,29 @@ void System::mem_info() {
 
 // get memory usage info programmatically
 void System::mem_stats() {
-    struct sysinfo memInfo;
+    struct sysinfo mem_info;
 
-    sysinfo(&memInfo);
+    sysinfo(&mem_info);
 
-    long long totalVirtualMem =
-        (memInfo.totalram + memInfo.totalswap) * memInfo.mem_unit;
-    long long virtualMemUsed = (memInfo.totalram - memInfo.freeram +
-                                memInfo.totalswap - memInfo.freeswap) *
-                               memInfo.mem_unit;
+    uint64_t virt_total =
+        (mem_info.totalram + mem_info.totalswap) * mem_info.mem_unit;
+    uint64_t virt_used = (mem_info.totalram - mem_info.freeram +
+                                mem_info.totalswap - mem_info.freeswap) *
+                               mem_info.mem_unit;
 
-    long long totalPhysMem = memInfo.totalram * memInfo.mem_unit;
-    long long physMemUsed =
-        (memInfo.totalram - memInfo.freeram) * memInfo.mem_unit;
+    uint64_t phys_total = mem_info.totalram * mem_info.mem_unit;
+    uint64_t phys_used =
+        (mem_info.totalram - mem_info.freeram) * mem_info.mem_unit;
 
-    std::cout << "VIRTUAL MEM AVAIL: " << totalVirtualMem / 1000 << " KB"
-              << std::endl;
-    std::cout << "VIRTUAL MEM USED: " << virtualMemUsed / 1000 << " KB"
-              << std::endl;
+    // VIRTUAL MEM in KB
+    System::v_mem_total = virt_total / 1000;
+    System::v_mem_used = virt_used / 1000;
+    System::v_mem_free = (virt_total - virt_used) / 1000;
 
-    std::cout << "PHYSICAL MEM AVAIL: " << totalPhysMem / 1000 << " KB"
-              << std::endl;
-    std::cout << "PHYSICAL MEM USED: " << physMemUsed / 1000 << " KB"
-              << std::endl;
-    std::cout << "PHYSICAL MEM FREE: " << (totalPhysMem - physMemUsed) / 1000
-              << " KB" << std::endl;
+    // PHYSICAL MEM in KB
+    System::p_mem_total = phys_total / 1000;
+    System::p_mem_used = phys_used / 1000;
+    System::p_mem_free = (phys_total - phys_used) / 1000;
 }
 /*
 int main() {

@@ -7,11 +7,15 @@ class System {
     /** Idle CPU temp set in cpu_idle_temp() */
     double cpu_temp_idle;
     float cpu_use;
-    uint32_t mem_total;
-    uint32_t mem_free;
-    uint32_t mem_avail;
-    uint32_t mem_buffer;
-    uint32_t mem_cached;
+    // VIRTUAL MEMORY IN KB
+    uint64_t v_mem_total;
+    uint64_t v_mem_used;
+    uint64_t v_mem_free;
+
+    // PHYSICAL MEMORY IN KB
+    uint64_t p_mem_total;
+    uint64_t p_mem_used;
+    uint64_t p_mem_free;
 
     /**
      * @brief reads the contents of a file into a string
@@ -67,7 +71,7 @@ class System {
     void cpu_idle(double idle_temp);
 
     /**
-     * @brief get CPU usage
+     * @brief get CPU usage 
      * @return usage as a percentage
      */
     double cpu_stats();
