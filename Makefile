@@ -50,6 +50,12 @@ gpu_docker_run:
 avail_macros:
 	gcc -dM -E - </dev/null
 
+install:
+	mv ${BIN} /usr/bin
+
+uninstall:
+	rm -f /usr/bin/${BIN}
+
 clean:
 	rm -f ${BIN}
 	rm -f *.txt
