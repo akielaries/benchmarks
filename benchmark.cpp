@@ -1,6 +1,6 @@
 /**
- * Driver for this benchmarks project featuring a CLI and additional
- * drivers for benchmark program runs...
+ * Driver for this benchmarks project featuring cmd line options and functions
+ * for benchmark program runs...
  *
  * -d (DAEMON)      live system monitoring
  * -b (BENCHMARK)   run benchmark system stress programs
