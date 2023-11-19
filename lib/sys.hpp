@@ -67,7 +67,7 @@ class System {
     void cpu_idle(double idle_temp);
 
     /**
-     * @brief get CPU usage 
+     * @brief get CPU usage
      * @return usage as a percentage
      */
     double cpu_stats();

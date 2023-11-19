@@ -1,14 +1,25 @@
-#include "lib/montecarlo.hpp"
-#include "lib/primes.hpp"
-#include "lib/sys.hpp"
-#include "lib/threadpool.hpp"
-#include <chrono>
-#include <cstring>
-#include <iostream>
-#include <vector>
-#include <thread>
-#include <fstream>
-#include <ctime>
+/**
+ * Driver for this benchmarks project featuring a CLI and additional
+ * drivers for benchmark program runs...
+ *
+ * -d (DAEMON)      live system monitoring
+ * -b (BENCHMARK)   run benchmark system stress programs
+ */
+
+#include "lib/montecarlo.hpp"   // monte carlo methods
+#include "lib/primes.hpp"       // prime number methods
+#include "lib/sys.hpp"          // system information methods
+#include "lib/threadpool.hpp"   // threadpool methods
+#include <chrono>               // cpp timing related methods
+#include <cstring>              // C styled strings
+#include <ctime>                // C time related methods
+#include <fstream>              // for file RW
+#include <iostream>             // for std IO
+#include <thread>               // for thread access
+#include <vector>               // vector DS
+#include <unistd.h>             // POSIX API
+#include <limits.h>             // defined limit constants
+
 
 void bench_naive_primes(std::vector<uint32_t> nums) {
     // TODO at the end of each benchmark run we should log memory
@@ -119,10 +130,10 @@ void bench_monte_carlo() {
     auto end_time = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_time = end_time - start_time;
 
-    std::cout << "Estimated value of pi: " << predicted_pi 
-        << " in : " << elapsed_time.count() << " seconds" << std::endl;
+    std::cout << "Estimated value of pi: " << predicted_pi
+              << " in : " << elapsed_time.count() << " seconds" << std::endl;
 
-    long double err = predicted_pi - PI; 
+    long double err = predicted_pi - PI;
     std::cout << "Error of " << err << std::endl;
 }
 
@@ -137,38 +148,41 @@ void gpu_bench_monte_carlo() {
 
 // Function to run system monitor as a background process
 void daemon() {
-    std::cout << "DAEMON CODE??\n";
-
     // System class obj
     System sys;
     // GET BASE READINGS
     //      - available mem
     //      - starting (idle) CPU temp
     //      - TODO
-    float starting_cpu_temp = sys.cpu_idle_temp();
-    float starting_cpu_usg = sys.cpu_stats();
-
+    //float starting_cpu_temp = sys.cpu_idle_temp();
+    //float starting_cpu_usg = sys.cpu_stats();
 
     // IDLE CPU TEMPERATURE
-    std::cout << starting_cpu_temp << starting_cpu_usg << std::endl;
+    // std::cout << starting_cpu_temp << starting_cpu_usg << std::endl;
 
+    // GET CURRENT DATE FMT IN mmddyyyy
+    // this will rely on system timezone (/etc/timezone)
     // infinite loop for continuous collection
     while (true) {
-        std::cout << "SLEEPING\n";
-        // sleep 
-        std::this_thread::sleep_for(std::chrono::seconds(5));
-
-        // GET CURRENT DATE FMT IN mmddyyyy
         auto now = std::chrono::system_clock::now();
         std::time_t time = std::chrono::system_clock::to_time_t(now);
         std::tm local_tm = *std::localtime(&time);
-        char date_str[9]; // MMDDYYYY + '\0'
-        std::strftime(date_str, sizeof(date_str), "%m%d%Y", &local_tm);
 
-        // CSV FILE NAME
+        // Separate variables for date and time
+        char date_str[9]; // MMDDYYYY + '\0'
+        char time_str[7]; // HHMMSS + '\0'
+
+        std::strftime(date_str, sizeof(date_str), "%m%d%Y", &local_tm);
+        std::strftime(time_str, sizeof(time_str), "%H%M%S", &local_tm);
+
+        // Print date and time
+        std::cout << "Current date: " << date_str << std::endl;
+        std::cout << "Current time: " << time_str << std::endl;
+
+        // CSV FILE NAME with only the date
         std::string filename = "sysinfo_" + std::string(date_str) + ".csv";
 
-        // Open the CSV file for appending
+        // open the CSV file for appending
         std::ofstream csvFile(filename, std::ios::app);
 
         if (csvFile.is_open()) {
@@ -179,30 +193,37 @@ void daemon() {
             // CURRENT MEMORY USAGE, THIS METHOD POPULATE VARIOUS CLASS VARS
             sys.mem_stats();
 
+            std::cout << curr_cpu_temp << "\n" << curr_cpu_usg << std::endl;
+
             // WRITE ALL INFO TO CSV FILE
-            csvFile << starting_cpu_temp << ","; // Add other data as needed
+            csvFile << curr_cpu_temp << ","; // Add other data as needed
             // Add more fields and data to the CSV file as needed
 
             csvFile << "\n"; // Move to the next line for the next entry
             csvFile.close(); // Close the file after writing
         } else {
-            std::cerr << "Error: Unable to open file " << filename << " for writing.\n";
+            std::cerr << "Error: Unable to open file " << filename
+                      << " for writing.\n";
         }
+
+        std::cout << "SLEEPING\n";
+        // sleep
+        std::this_thread::sleep_for(std::chrono::seconds(5));
     }
 }
 
 void usage(const char *programName) {
     std::cout << "Usage: " << programName << " [-d | -b]" << std::endl;
     std::cout << "  -d : daemon mode to monitor system information\n";
-    std::cout << "  -b : benchmark mode to run system stress tests with live monitoring\n";
+    std::cout << "  -b : benchmark mode to run system stress tests with live "
+                 "monitoring\n";
 }
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         usage(argv[0]);
         exit(EXIT_FAILURE);
-    } 
-    else {
+    } else {
         if (strcmp(argv[1], "-b") == 0) {
             std::cout << "Starting benchmark...\n\n";
 
@@ -280,10 +301,10 @@ int main(int argc, char *argv[]) {
             sys.mem_info();
             sys.cpu_temp();
 
-            // if host has NVCC installed
-            #ifdef __NVCC__
+// if host has NVCC installed
+#ifdef __NVCC__
             std::cout << "NVIDIA DEVICE!\n";
-            #endif
+#endif
 
             // monte_carlo();
         }

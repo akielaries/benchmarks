@@ -86,7 +86,7 @@ std::string Logger::getCurrentTimestamp() {
 }
 
 std::string Logger::formatLogMessage(const std::string &prefix,
-                                                 const std::string &message) {
+                                     const std::string &message) {
     std::string logMessage = prefix + " " + message;
     if (enableTimestamp) {
         logMessage = getCurrentTimestamp() + " " + logMessage;

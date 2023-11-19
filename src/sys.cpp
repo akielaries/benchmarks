@@ -130,7 +130,7 @@ double System::cpu_temp() {
         std::cout << "Error reading CPU temperature." << std::endl;
     } else {
         float temp_c = std::stof(cpu_temp) / 1000.0; // convert to Celsius
-        float temp_f = (temp_c * 9 / 5) + 32;        // convert to Fahrenheit
+        //float temp_f = (temp_c * 9 / 5) + 32;        // convert to Fahrenheit
         // std::cout << "CPU Temperature: " << temp_c << "°C"
         //          << " (" << temp_f << "°F)" << std::endl;
         return temp_c;
@@ -223,16 +223,12 @@ double System::cpu_stats() {
 
     // Calculate CPU usage as a percentage
     double usage = 100.0 * (1.0 - static_cast<double>(idle) / total);
-
-    std::cout << "CPU USAGE: " << usage << std::endl;
-
+    //std::cout << "CPU USAGE: " << usage << std::endl;
     return usage;
 }
 
 // function to display memory statistics
 void System::mem_info() {
-    // TODO: save the memory info to variables for a mass dump into file with
-    // timestamp as KEY
     std::ifstream meminfo_file("/proc/meminfo");
     if (meminfo_file.is_open()) {
         std::string line;
