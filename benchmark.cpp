@@ -150,20 +150,14 @@ void gpu_bench_monte_carlo() {
 void daemon() {
     // System class obj
     System sys;
-    // GET BASE READINGS
-    //      - available mem
-    //      - starting (idle) CPU temp
-    //      - TODO
     //float starting_cpu_temp = sys.cpu_idle_temp();
     //float starting_cpu_usg = sys.cpu_stats();
-
-    // IDLE CPU TEMPERATURE
     // std::cout << starting_cpu_temp << starting_cpu_usg << std::endl;
 
-    // GET CURRENT DATE FMT IN mmddyyyy
-    // this will rely on system timezone (/etc/timezone)
     // infinite loop for continuous collection
     while (true) {
+        // GET CURRENT DATE FMT IN mmddyyyy
+        // this will rely on system timezone (/etc/timezone)
         auto now = std::chrono::system_clock::now();
         std::time_t time = std::chrono::system_clock::to_time_t(now);
         std::tm local_tm = *std::localtime(&time);
@@ -194,6 +188,16 @@ void daemon() {
             sys.mem_stats();
 
             std::cout << curr_cpu_temp << "\n" << curr_cpu_usg << std::endl;
+
+            // virtual memory
+            std::cout << "TOTAL VMEM: " << sys.v_mem_total 
+                    << "\n FREE VMEM: " << sys.v_mem_free 
+                    << "\n USED VMEM: " << sys.v_mem_used << std::endl;
+            // physical memory
+            std::cout << "TOTAL PMEM: " << sys.p_mem_total 
+                    << "\n FREE PMEM: " << sys.p_mem_free 
+                    << "\n USED PMEM: " << sys.p_mem_used << std::endl;
+
 
             // WRITE ALL INFO TO CSV FILE
             csvFile << curr_cpu_temp << ","; // Add other data as needed
