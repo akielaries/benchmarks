@@ -90,15 +90,27 @@ TODO, add a table here with some result</h1>
 <li>TODO...</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
+Installation &amp; Usage</h1>
+<div class="fragment"><div class="line"># compile</div>
+<div class="line">$ make compile</div>
+<div class="line"># install binary to /usr/bin</div>
+<div class="line">$ make install</div>
+<div class="line"># uninstall</div>
+<div class="line">$ make uninstall</div>
+</div><!-- fragment --><div class="fragment"><div class="line">$ ./benchsys </div>
+<div class="line">Usage: benchsys [-d | -b]</div>
+<div class="line">  -d : daemon mode to monitor system information</div>
+<div class="line">  -b : benchmark mode to run system stress tests with live monitoring</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Installing CUDA</h1>
 <p>See here: <a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=arm64-sbsa&Compilation=Native&Distribution=Ubuntu&target_version=20.04&target_type=deb_network">https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=arm64-sbsa&amp;Compilation=Native&amp;Distribution=Ubuntu&amp;target_version=20.04&amp;target_type=deb_network</a></p>
-<h3><a class="anchor" id="autotoc_md4"></a>
+<h3><a class="anchor" id="autotoc_md5"></a>
 Base installation</h3>
 <div class="fragment"><div class="line">$ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/sbsa/cuda-keyring_1.1-1_all.deb</div>
 <div class="line">$ sudo dpkg -i cuda-keyring_1.1-1_all.deb</div>
 <div class="line">$ sudo apt-get update</div>
 <div class="line">$ sudo apt-get -y install cuda-toolkit-12-3</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
 NVIDIA CUDA Drivers</h3>
 <div class="fragment"><div class="line">$ sudo apt-get install -y cuda-drivers</div>
 <div class="line">$ sudo apt-get install -y nvidia-kernel-open-545</div>
