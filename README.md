@@ -26,6 +26,13 @@ Logic/algorithms implemented
 * TODO...
 
 # Installation & Usage
+
+Prerequisites:
+* g++ v10+
+* C++-20
+* NVCC v10.2+
+* Docker (optional)
+
 ```
 # compile
 $ make compile
