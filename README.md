@@ -25,6 +25,22 @@ Logic/algorithms implemented
 * Primality Tests & Generation
 * TODO...
 
+# Installation & Usage
+```
+# compile
+$ make compile
+# install binary to /usr/bin
+$ make install
+# uninstall
+$ make uninstall
+```
+
+```
+$ ./benchsys 
+Usage: benchsys [-d | -b]
+  -d : daemon mode to monitor system information
+  -b : benchmark mode to run system stress tests with live monitoring
+```
 
 # Installing CUDA
 
