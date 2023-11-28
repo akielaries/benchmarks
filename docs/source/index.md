@@ -5,7 +5,7 @@ TODO
 This project serves as a simple way to benchmark and monitor a given linux system. The
 primary focsus on the NVIDIA Jetson Nano and the Rapsberry Pi series. 
 
-# Installation
+# Installation & Usage
 ## Prerequisites
 For running on bare system:
 - gcc/g++ v10+
@@ -31,3 +31,11 @@ $ make docker_img
 # run 
 $ make docker_run
 ```
+
+```
+$ ./benchsys 
+Usage: benchsys [-d | -b]
+  -d : daemon mode to monitor system information
+  -b : benchmark mode to run system stress tests with live monitoring
+```
+
