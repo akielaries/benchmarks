@@ -1,10 +1,13 @@
-#CC		= g++-10
-
 # USE G++-10 for baremetal testing, G++-12 for Docker use
-ifeq ($(shell command -v g++-12 2>/dev/null),)
-	CC = g++-10
+# Check if running within a Docker container
+IS_DOCKER := $(shell test -f /.dockerenv && echo 1)
+
+ifeq ($(IS_DOCKER),1)
+    # If running within a Docker container, use g++-12
+    CC := g++-12
 else
-	CC = g++-12
+    # If not running within a Docker container, use g++-10
+    CC := g++-10
 endif
 
 FLGS 	= -std=c++20 -march=native -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
