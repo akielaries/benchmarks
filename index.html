@@ -66,8 +66,31 @@ $(function() {
 <div class="title">Benchmark documentation... </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_docs_source_index"></a> TODO </p>
-</div></div><!-- PageDoc -->
+<div class="textblock"><p><a class="anchor" id="md_docs_source_index"></a> TODO</p>
+<p>This project serves as a simple way to benchmark and monitor a given linux system. The primary focsus on the NVIDIA Jetson Nano and the Rapsberry Pi series.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Installation</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Prerequisites</h2>
+<p>For running on bare system:</p><ul>
+<li>gcc/g++ v10+</li>
+<li>C++-20</li>
+<li>nvcc v10.2+</li>
+<li><a href="https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html">gprof</a></li>
+<li><a href="https://perf.wiki.kernel.org/index.php/Main_Page">perf</a></li>
+<li><a href="https://github.com/brendangregg/FlameGraph">Flamegraph</a></li>
+</ul>
+<div class="fragment"><div class="line"># compile</div>
+<div class="line">$ make compile</div>
+<div class="line"># install binary to /usr/bin</div>
+<div class="line">$ make install</div>
+<div class="line"># uninstall</div>
+<div class="line">$ make uninstall</div>
+</div><!-- fragment --><p>Otherwise, use Docker... </p><div class="fragment"><div class="line"># create docker image</div>
+<div class="line">$ make docker_img</div>
+<div class="line"># run </div>
+<div class="line">$ make docker_run</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
