@@ -26,12 +26,14 @@ Logic/algorithms implemented
 * TODO...
 
 # Installation & Usage
-
-Prerequisites:
-* g++ v10+
-* C++-20
-* NVCC v10.2+
-* Docker (optional)
+## Prerequisites
+For running on bare system:
+- gcc/g++ v10+
+- C++-20
+- nvcc v10.2+
+- [gprof](https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html)
+- [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
+- [Flamegraph](https://github.com/brendangregg/FlameGraph)
 
 ```
 # compile
@@ -40,6 +42,14 @@ $ make compile
 $ make install
 # uninstall
 $ make uninstall
+```
+
+Otherwise, use Docker...
+```
+# create docker image
+$ make docker_img
+# run
+$ make docker_run
 ```
 
 ```
