@@ -11,6 +11,7 @@ For running on bare system:
 - gcc/g++ v10+
 - C++-20
 - nvcc v10.2+
+- [openGPMP](https://github.com/akielaries/openGPMP/tree/main)
 - [gprof](https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html)
 - [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
 - [Flamegraph](https://github.com/brendangregg/FlameGraph)
