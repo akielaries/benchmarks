@@ -147,6 +147,8 @@ void gpu_bench_monte_carlo() {
 #endif
 
 // Function to run system monitor as a background process
+// TODO this should be run even when -b is passed in but on a seperate
+// thread?
 void daemon() {
     // System class obj
     System sys;
