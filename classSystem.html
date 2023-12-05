@@ -214,7 +214,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordtype">double</span> idle_temp = sum / temperatures.size();</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment">// set class var</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment">//System::cpu_temp_idle = idle_temp;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment">// System::cpu_temp_idle = idle_temp;</span></div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> idle_temp;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
@@ -365,10 +365,10 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="comment">// Calculate CPU usage as a percentage</span></div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="benchmark_8cpp.html#a1ff022344debd4323f3df7b0dabc088a">usage</a> = 100.0 * (1.0 - <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(idle) / total);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="comment">//std::cout &lt;&lt; &quot;CPU USAGE: &quot; &lt;&lt; usage &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="comment">// std::cout &lt;&lt; &quot;CPU USAGE: &quot; &lt;&lt; usage &lt;&lt; std::endl;</span></div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="benchmark_8cpp.html#a1ff022344debd4323f3df7b0dabc088a">usage</a>;</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
-<div class="ttc" id="abenchmark_8cpp_html_a1ff022344debd4323f3df7b0dabc088a"><div class="ttname"><a href="benchmark_8cpp.html#a1ff022344debd4323f3df7b0dabc088a">usage</a></div><div class="ttdeci">void usage(const char *programName)</div><div class="ttdef"><b>Definition:</b> <a href="benchmark_8cpp_source.html#l00221">benchmark.cpp:221</a></div></div>
+<div class="ttc" id="abenchmark_8cpp_html_a1ff022344debd4323f3df7b0dabc088a"><div class="ttname"><a href="benchmark_8cpp.html#a1ff022344debd4323f3df7b0dabc088a">usage</a></div><div class="ttdeci">void usage(const char *programName)</div><div class="ttdef"><b>Definition:</b> <a href="benchmark_8cpp_source.html#l00219">benchmark.cpp:219</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="benchmark_8cpp.html#a1ff022344debd4323f3df7b0dabc088a">usage()</a>.</p>
 
@@ -401,7 +401,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Error reading CPU temperature.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordtype">float</span> temp_c = std::stof(<a class="code" href="classSystem.html#ae1e6c15817bd0705dbcb76e9038ae8cb">cpu_temp</a>) / 1000.0; <span class="comment">// convert to Celsius</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">//float temp_f = (temp_c * 9 / 5) + 32;        // convert to Fahrenheit</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">// float temp_f = (temp_c * 9 / 5) + 32;        // convert to Fahrenheit</span></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">// std::cout &lt;&lt; &quot;CPU Temperature: &quot; &lt;&lt; temp_c &lt;&lt; &quot;°C&quot;</span></div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">//          &lt;&lt; &quot; (&quot; &lt;&lt; temp_f &lt;&lt; &quot;°F)&quot; &lt;&lt; std::endl;</span></div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">return</span> temp_c;</div>
@@ -512,8 +512,8 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    uint64_t virt_total =</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        (<a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.totalram + <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.totalswap) * <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.mem_unit;</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    uint64_t virt_used = (<a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.totalram - <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.freeram +</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                                <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.totalswap - <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.freeswap) *</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                               <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.mem_unit;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                          <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.totalswap - <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.freeswap) *</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                         <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.mem_unit;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    uint64_t phys_total = <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.totalram * <a class="code" href="classSystem.html#abcfd5636545c444e85919381442a62ed">mem_info</a>.mem_unit;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    uint64_t phys_used =</div>
