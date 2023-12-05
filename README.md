@@ -54,9 +54,11 @@ $ make docker_run
 
 ```
 $ ./benchsys 
-Usage: benchsys [-d | -b]
+Usage: benchsys [-d | -b cpu | gpu ]
   -d : daemon mode to monitor system information
   -b : benchmark mode to run system stress tests with live monitoring
+    cpu - run CPU-based benchmarks
+    gpu - run GPU-based benchmarks
 ```
 
 # Installing CUDA
