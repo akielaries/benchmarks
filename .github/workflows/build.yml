@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches: 
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++-10 g++-12
+
+    - name: Compile
+      run: |
+        make
+
+    - name: Run CPU benchmarks
+      run: |
+          ./benchsys -b
+
