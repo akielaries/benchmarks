@@ -76,7 +76,13 @@ class System {
      */
     double cpu_stats();
 
+    /**
+     * @brief get memory stats and populate Sys class variables
+     */
     void mem_stats();
+
+    bool has_nvidia_gpu();
+
 };
 
 #endif

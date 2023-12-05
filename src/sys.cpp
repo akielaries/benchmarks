@@ -9,6 +9,7 @@
  */
 #include "../lib/sys.hpp"
 #include <algorithm>
+#include <cstdio>
 #include <chrono>
 #include <fstream>
 #include <iostream>
@@ -18,6 +19,7 @@
 #include <sys/types.h>
 #include <thread>
 #include <vector>
+#include <stdexcept>
 
 // function to read and return the contents of a file
 std::string System::read_file(const std::string &filename) {
@@ -274,6 +276,36 @@ void System::mem_stats() {
     System::p_mem_used = phys_used / 1000;
     System::p_mem_free = (phys_total - phys_used) / 1000;
 }
+
+bool has_nvidia_gpu() {
+    std::string command = "nvcc -V";
+    std::string result;
+
+    FILE* pipe = popen(command.c_str(), "r");
+    if (!pipe) {
+        std::cerr << "Error: Unable to execute command" << std::endl;
+        return false;
+    }   
+
+    // fetch command output
+    char buffer[128];
+    while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
+        result += buffer;
+    }   
+
+    // close the pipe for cmd
+    int status = pclose(pipe);
+    if (status == -1) {
+        std::cerr << "Error: Unable to close command pipe" << std::endl;
+        return false;
+    }   
+
+    // check if "nvcc" was found in the output
+    return result.find("nvcc") != std::string::npos;
+}
+
+void 
+
 /*
 int main() {
 
