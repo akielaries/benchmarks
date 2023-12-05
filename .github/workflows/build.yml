@@ -27,5 +27,5 @@ jobs:
 
     - name: Run CPU benchmarks
       run: |
-          ./benchsys -b
+          ./benchsys -b cpu
 
