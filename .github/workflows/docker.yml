@@ -1,0 +1,20 @@
+# BUILDS AND RUNS DOCKER IMAGE
+name: Docker
+
+on:
+  push:
+    branches:
+      # any branch
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build Docker Image
+      run: make docker_img
+
