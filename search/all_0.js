@@ -5,6 +5,5 @@ var searchData=
   ['bench_5fthreadpool_5fprimes_2',['bench_threadpool_primes',['../benchmark_8cpp.html#ad598690a4aea45940c2a914225192468',1,'benchmark.cpp']]],
   ['bench_5fthreadpool_5fprimes_5fdispatch_3',['bench_threadpool_primes_dispatch',['../benchmark_8cpp.html#aa90ee33569dfed1a18b777be3dbf5950',1,'benchmark.cpp']]],
   ['benchmark_20documentation_2e_2e_2e_4',['Benchmark documentation...',['../index.html',1,'']]],
-  ['benchmark_2ecpp_5',['benchmark.cpp',['../benchmark_8cpp.html',1,'']]],
-  ['benchmarks_6',['Benchmarks',['../md_README.html',1,'']]]
+  ['benchmark_2ecpp_5',['benchmark.cpp',['../benchmark_8cpp.html',1,'']]]
 ];
