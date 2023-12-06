@@ -304,7 +304,6 @@ bool has_nvidia_gpu() {
     return result.find("nvcc") != std::string::npos;
 }
 
-void 
 
 /*
 int main() {
