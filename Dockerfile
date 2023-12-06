@@ -11,6 +11,7 @@ RUN apt-get update -qy \
     g++-10 \
     libperl-dev \
     linux-tools-generic \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /benchmarks
@@ -18,3 +19,7 @@ RUN git clone https://github.com/brendangregg/FlameGraph.git
 RUN git clone https://github.com/jrfonseca/gprof2dot.git
 
 COPY . /benchmarks
+
+WORKDIR /benchmarks
+
+RUN make
