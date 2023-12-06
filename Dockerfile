@@ -8,6 +8,7 @@ RUN apt-get update -qy \
     git \
     bridge-utils \
     g++-12 \
+    g++-10 \
     libperl-dev \
     linux-tools-generic \
     && rm -rf /var/lib/apt/lists/*
