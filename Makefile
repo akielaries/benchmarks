@@ -26,7 +26,7 @@ ifeq ($(shell command -v nvcc -V 2> /dev/null),)
     CUDA_FLAG =
 else
     CUDA_SRC = $(CUDA)
-    CUDA_FLAG = -DUSE_CUDA
+    CUDA_FLAG = -D__HAS_CUDA__
 endif
 
 bench:
