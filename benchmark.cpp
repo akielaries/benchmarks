@@ -79,38 +79,6 @@ void bench_threadpool_primes(std::vector<uint32_t> nums) {
               << " ms" << std::endl;
 }
 
-void bench_threadpool_primes_dispatch(std::vector<uint32_t> nums) {
-    std::vector<std::future<bool>> miller_results;
-
-    ThreadPool *pool = new ThreadPool(4);
-
-    std::chrono::steady_clock::time_point start_time =
-        std::chrono::steady_clock::now();
-
-    for (auto n : nums) {
-        // enqueue the function call to the thread pool using the
-        // ThreadDispatch.dispatch() function
-        miller_results.emplace_back(
-            ThreadDispatch().dispatch(*pool, miller_rabin, n, 120000));
-    }
-
-    for (size_t i = 0; i < miller_results.size(); i++) {
-        bool is_prime = miller_results[i].get();
-        std::cout << nums[i] << " is " << (is_prime ? "PRIME" : "COMPOSITE")
-                  << "\n";
-    }
-    delete pool;
-
-    std::chrono::steady_clock::time_point end_time =
-        std::chrono::steady_clock::now();
-
-    std::cout << "Time elapsed: "
-              << std::chrono::duration_cast<std::chrono::milliseconds>(
-                     end_time - start_time)
-                     .count()
-              << " ms" << std::endl;
-}
-
 void bench_monte_carlo() {
     int trials_per_thread = 4096;
     int threads = 256;
@@ -221,8 +189,8 @@ void usage(const char *programName) {
     std::cout << "  -d : daemon mode to monitor system information\n";
     std::cout << "  -b : benchmark mode to run system stress tests with live "
                  "monitoring\n";
-    std::cout << "    cpu - run CPU-based benchmarks";
-    std::cout << "    gpu - run GPU-based benchmarks";
+    std::cout << "    cpu - run CPU-based benchmarks\n";
+    std::cout << "    gpu - run GPU-based benchmarks\n";
 }
 
 int main(int argc, char *argv[]) {
@@ -312,8 +280,6 @@ int main(int argc, char *argv[]) {
                 sys.mem_info();
                 sys.cpu_temp();
 
-                bench_threadpool_primes_dispatch(nums);
-
                 sys.cpu_usage();
                 sys.mem_info();
                 sys.cpu_temp();
@@ -322,7 +288,7 @@ int main(int argc, char *argv[]) {
             // if -b gpu
             else if (mode == "gpu") {
 // if host has NVCC installed
-#ifdef __NVCC__
+#ifdef USE_CUDA
                 std::cout << "NVIDIA DEVICE!\n";
 #endif
 

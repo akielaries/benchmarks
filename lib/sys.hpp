@@ -81,6 +81,10 @@ class System {
      */
     void mem_stats();
 
+    /**
+     * @brief determine if host has Nvidia GPU/NVCC compiler
+     * @return true/false
+     */
     bool has_nvidia_gpu();
 
 };

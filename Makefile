@@ -10,6 +10,8 @@ else
     CC := g++-10
 endif
 
+NVCC 	= nvcc
+
 FLGS 	= -std=c++20 -march=native -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
 PROJDIR = $(realpath $(CURDIR))
 SRCDIR	= $(PROJDIR)/src
@@ -18,8 +20,17 @@ CUDA	= $(shell find $(PROJDIR)/src -name '*.cu')
 SRC 	= benchmark.cpp $(CPP) -lpthread
 BIN 	= benchsys
 
+# Check if nvcc (CUDA compiler) is available
+ifeq ($(shell command -v nvcc -V 2> /dev/null),)
+    CUDA_SRC =
+    CUDA_FLAG =
+else
+    CUDA_SRC = $(CUDA)
+    CUDA_FLAG = -DUSE_CUDA
+endif
+
 bench:
-	${CC} ${FLGS} ${SRC} -o ${BIN}
+	${CC} ${CUDA_FLAG} ${FLGS} ${SRC} -o ${BIN}
 
 run_bench:
 	./${BIN} -b
