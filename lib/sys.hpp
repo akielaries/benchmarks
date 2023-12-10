@@ -4,18 +4,29 @@
 
 class System {
   public:
+    /** CPU/PROC info */
+    std::string cpu_model;      // proc model
+    double bogus_mips;     // proc speed
+    int num_proc;       // # of processors
+
     /** Idle CPU temp set in cpu_idle_temp() */
     double cpu_temp_idle;
     float cpu_use;
-    // VIRTUAL MEMORY IN KB
+    /** IRTUAL MEMORY IN KB */
     uint64_t v_mem_total;
     uint64_t v_mem_used;
     uint64_t v_mem_free;
 
-    // PHYSICAL MEMORY IN KB
+    /** PHYSICAL MEMORY IN KB */
     uint64_t p_mem_total;
     uint64_t p_mem_used;
     uint64_t p_mem_free;
+
+#ifdef __HAS_NVCC__
+    /** NVIDIA GPU INFO */
+
+#endif
+
 
     /**
      * @brief reads the contents of a file into a string
@@ -31,7 +42,7 @@ class System {
      *
      * @return number of running processes or error code
      */
-    int proc_info();
+    int ps_count();
 
     /**
      * @brief get CPU usage using load average read from /proc/loadavg
@@ -74,7 +85,7 @@ class System {
      * @brief get CPU usage
      * @return usage as a percentage
      */
-    double cpu_stats();
+    double cpu_load();
 
     /**
      * @brief get memory stats and populate Sys class variables
@@ -86,6 +97,42 @@ class System {
      * @return true/false
      */
     bool has_nvidia_gpu();
+
+
+#ifdef __HAS_NVCC__
+    /** NVIDIA GPU INFO */
+    /** GPU name */
+    std::string name;
+    /** CUDA driver version */
+    int driverVersion;
+    /** CUDA runtime version */
+    int runtimeVersion;
+    int major;
+    int minor;
+    /** total memory in KB */
+    float totalGlobalMemMB;
+    /** GPU count */
+    int multiProcessorCount;
+    /** CUDA GPU cores */
+    int cudaCores;
+    /** max GPU clock rate in GHx */
+    float maxClockRateGHz;
+    /** total GPU memory */
+    size_t totalConstMem;
+    /** shared memory / block */
+    size_t sharedMemPerBlock;
+    /** max threads per GPU */
+    int maxThreadsPerMultiProcessor;
+    /** max thread per GPU block */
+    int maxThreadsPerBlock;
+    /** GPU threads MAX dimension */
+    int maxThreadsDim[3];
+    /** GPU MAX grid size */
+    int maxGridSize[3];
+
+
+#endif
+
 
 };
 

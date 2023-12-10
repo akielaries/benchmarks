@@ -1,4 +1,4 @@
-#include "lib/montecarlo.hpp"
+#include "../lib/montecarlo.hpp"
 #include <cuda.h>
 #include <curand_kernel.h>
 #include <math.h>
@@ -39,6 +39,7 @@ float host_monte_carlo(long trials) {
     return 4.0f * points_in_circle / trials;
 }
 
+/*
 int main(int argc, char *argv[]) {
     clock_t start, stop;
     float host[BLOCKS * THREADS];
@@ -88,4 +89,4 @@ int main(int argc, char *argv[]) {
     printf("CPU estimate of PI = %f [error of %f]\n", pi_cpu, pi_cpu - PI);
 
     return 0;
-}
+}*/

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include <curand_kernel.h>
 
 __device__ uint32_t mod_mul(uint32_t a, uint32_t b, uint32_t m) {
     uint32_t res = 0;
@@ -71,17 +72,21 @@ miller_rabin_kernel(const uint32_t *input, bool *output, int iters) {
         s++;
     }
 
+    curandState state;
+    curand_init(clock64(), idx, 0, &state);
+
     for (int i = 0; i < iters; i++) {
-        uint32_t a = rand() % (num - 3) + 2;
+        uint32_t a = curand(&state) % (num - 3) + 2;
         if (witness(num, d, a, s)) {
             output[idx] = false;
             return;
         }
     }
+
     output[idx] = true;
 }
 
-int main() {
+/*int main() {
     std::vector<uint32_t> nums = {
         1000000007, // A large 32-bit integer PRIME
         2147483647, // The largest 32-bit signed integer PRIME
@@ -154,4 +159,4 @@ int main() {
     delete[] results;
 
     return 0;
-}
+}*/
