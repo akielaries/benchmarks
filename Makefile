@@ -24,7 +24,6 @@ OBJDIR  = $(PROJDIR)/obj
 
 # check if nvcc (CUDA compiler) is available
 ifeq ($(shell command -v nvcc -V 2> /dev/null),)
-	CUDA_SRC 	=
 	HAS_NVCC 	=
 	OBJ_CUDA	=
 
@@ -32,7 +31,6 @@ ifeq ($(shell command -v nvcc -V 2> /dev/null),)
 else
 	# set CUDA defs
 	CUDA    	= $(shell find $(PROJDIR)/src -name '*.cu')
-	CUDA_SRC 	= $(CUDA)
 	HAS_NVCC 	= -D__HAS_NVCC__
 	NVCC_FLGS	= -pg -g -Wno-deprecated-gpu-targets
 	OBJ_CUDA	= $(patsubst $(SRCDIR)/%.cu,$(OBJDIR)/%.o,$(CUDA))

@@ -6,11 +6,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define TRIALS_PER_THREAD 4096
-#define BLOCKS 256
-#define THREADS 256
-#define PI 3.1415926535 // known value of pi
-
 __global__ void gpu_monte_carlo(float *estimate, curandState *states) {
     unsigned int thread_id = threadIdx.x + blockDim.x * blockIdx.x;
     int points_in_circle = 0;
@@ -37,6 +32,12 @@ float host_monte_carlo(long trials) {
         points_in_circle += (x * x + y * y <= 1.0f);
     }
     return 4.0f * points_in_circle / trials;
+}
+
+void run_gpu_monte_carlo(float *dev, curandState *devStates) {
+
+    gpu_monte_carlo<<<BLOCKS, THREADS>>>(dev, devStates);
+
 }
 
 /*

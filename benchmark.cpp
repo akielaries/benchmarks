@@ -10,10 +10,14 @@
 #include "lib/primes.hpp"       // prime number methods
 #include "lib/sys.hpp"          // system information methods
 #include "lib/threadpool.hpp"   // threadpool methods
+
 #ifdef __HAS_NVCC__
 
 #include "lib/montecarlo.cuh"   // CUDA monte carlo methods
-#include "lib/primes.cuh"        // CUDA prime number methods
+#include "lib/primes.cuh"       // CUDA prime number methods
+#include <cuda.h>               // CUDA C header
+#include <curand_kernel.h>      // RAND for CUDA devices
+#include <stdio.h>              // C STD IO
 
 #endif
 
@@ -158,7 +162,47 @@ void bench_monte_carlo() {
 #ifdef __HAS_NVCC__
 
 void gpu_bench_monte_carlo() {
-    std::cout << "This should be a call to some GPU monte carlo method...\n";
+    clock_t start, stop;
+    float host[BLOCKS * THREADS];
+    float *dev;
+    curandState *devStates;
+
+    printf("# of trials per thread = %d, # of blocks = %d, # of threads/block "
+           "= %d.\n",
+           TRIALS_PER_THREAD,
+           BLOCKS,
+           THREADS);
+
+    start = clock();
+
+    cudaMalloc((void **)&dev,
+               BLOCKS * THREADS *
+                   sizeof(float)); // allocate device mem. for counts
+
+    cudaMalloc((void **)&devStates, THREADS * BLOCKS * sizeof(curandState));
+
+    //gpu_monte_carlo<<<BLOCKS, THREADS>>>(dev, devStates);
+    run_gpu_monte_carlo(dev, devStates);
+
+    cudaMemcpy(host,
+               dev,
+               BLOCKS * THREADS * sizeof(float),
+               cudaMemcpyDeviceToHost); // return results
+
+    float pi_gpu;
+    for (int i = 0; i < BLOCKS * THREADS; i++) {
+        pi_gpu += host[i];
+    }
+
+    pi_gpu /= (BLOCKS * THREADS);
+
+    stop = clock();
+
+    printf("GPU pi calculated in %f s.\n",
+           (stop - start) / (float)CLOCKS_PER_SEC);
+
+    printf("CUDA estimate of PI = %f [error of %f]\n", pi_gpu, pi_gpu - PI);
+
 }
 
 #endif
@@ -287,6 +331,7 @@ int main(int argc, char *argv[]) {
 
             // if -b cpu
             if (mode == "cpu") {
+                std::cout << "<--------- CPU TESTS --------->";
                 // display CPU information and number of running processes from
                 // `ps`
                 sys.cpu_info();
@@ -301,9 +346,7 @@ int main(int argc, char *argv[]) {
                 // TODO FIXME I am thinking this system info should be logged
                 // from a separate thread
 
-                std::cout
-                    << "Starting with primality testing using the Miller-Rabin "
-                       "algorithm...\n";
+                std::cout << "Primality tests with Miller-Rabin algorithm...\n";
 
                 bench_naive_primes(nums);
                 bench_threadpool_primes(nums);
@@ -315,6 +358,8 @@ int main(int argc, char *argv[]) {
                 sys.mem_info();
                 sys.cpu_temp();
 
+                std::cout << "Pi estimation using Monte Carlo methods...\n";
+                bench_monte_carlo();
                 sys.cpu_usage();
                 sys.mem_info();
                 sys.cpu_temp();
@@ -326,6 +371,8 @@ int main(int argc, char *argv[]) {
                 
 #ifdef __HAS_NVCC__
                 
+                std::cout << "<--------- GPU TESTS --------->";
+
                 std::cout << "NVIDIA DEVICE!\n";
                 gpu_bench_monte_carlo();
                 
