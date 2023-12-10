@@ -40,7 +40,7 @@ double monte_carlo(int total_trials) {
     return predicted_pi;
 }
 
-float host_monte_carlo(long trials) {
+/*float host_monte_carlo(long trials) {
     float x, y;
     long points_in_circle;
     for (long i = 0; i < trials; i++) {
@@ -49,7 +49,7 @@ float host_monte_carlo(long trials) {
         points_in_circle += (x * x + y * y <= 1.0f);
     }
     return 4.0f * points_in_circle / trials;
-}
+}*/
 /*
 int main() {
     int trials_per_thread = 4096;

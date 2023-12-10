@@ -10,49 +10,51 @@ else
     CC := g++-10
 endif
 
+CCSTD	= -std=c++20 -march=native -lpthread
+CCFLGS	= -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
+
 NVCC 	= nvcc
 
 PROJDIR = $(realpath $(CURDIR))
 SRCDIR	= $(PROJDIR)/src
 CPP		= $(shell find $(PROJDIR)/src -name '*.cpp')
-SRC 	= benchmark.cpp $(CPP) -lpthread
+MAIN	= benchmark.cpp
 BIN 	= benchsys
 OBJDIR  = $(PROJDIR)/obj
 
-# Check if nvcc (CUDA compiler) is available
+# check if nvcc (CUDA compiler) is available
 ifeq ($(shell command -v nvcc -V 2> /dev/null),)
 	CUDA_SRC 	=
 	HAS_NVCC 	=
-	STD			= -std=c++20 -march=native
-	FLGS		= -pg -g -Wall -Wextra -pedantic -Wno-unused-result -Wparentheses -Wsign-compare
+	OBJ_CUDA	=
+
+# has NVCC
 else
-	CC 			= nvcc
+	# set CUDA defs
 	CUDA    	= $(shell find $(PROJDIR)/src -name '*.cu')
 	CUDA_SRC 	= $(CUDA)
 	HAS_NVCC 	= -D__HAS_NVCC__
-	STD			=
-	SRC			+= $(CUDA)
-	FLGS		= -pg -g -Wno-deprecated-gpu-targets
+	NVCC_FLGS	= -pg -g -Wno-deprecated-gpu-targets
 	OBJ_CUDA	= $(patsubst $(SRCDIR)/%.cu,$(OBJDIR)/%.o,$(CUDA))
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cu
 	@mkdir -p $(@D)
-	$(NVCC) -c ${HAS_NVCC} $(FLGS) $< -o $@
+	$(NVCC) -c ${HAS_NVCC} $(NVCC_FLGS) $< -o $@
 
 endif
 OBJ_CPP = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(CPP))
-OBJ = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRC)) $(OBJ_CUDA)
+OBJ 	= $(OBJ_CPP) $(OBJ_CUDA)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@mkdir -p $(@D)
-	$(CC) -c $(STD) $(FLGS) $< -o $@
+	$(CC) -c  $(HAS_NVCC) $(CCSTD) $(CCFLGS) $< -o $@
 
 $(BIN): $(OBJ)
-	$(CC) $(STD) $(FLGS) $^ -o $@
-
-
-#bench:
-#	${CC} ${STD} ${HAS_NVCC} ${FLGS} ${SRC} -o ${BIN}
+ifeq ($(HAS_NVCC), -D__HAS_NVCC__)
+	$(NVCC) $(MAIN) $(HAS_NVCC) $(NVCC_FLGS) $^ -o $@
+else
+	$(CC) $(MAIN) $(HAS_NVCC) $(CCSTD) $(CCFLGS) $^ -o $@
+endif
 
 run_bench:
 	./${BIN} -b

@@ -1,4 +1,4 @@
-#include "../lib/montecarlo.hpp"
+#include "../lib/montecarlo.cuh"
 #include <cuda.h>
 #include <curand_kernel.h>
 #include <math.h>

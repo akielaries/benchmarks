@@ -1,3 +1,4 @@
+#include "../lib/primes.cuh"
 #include <ctime>
 #include <cuda_runtime.h>
 #include <iostream>
@@ -5,7 +6,7 @@
 #include <vector>
 #include <curand_kernel.h>
 
-__device__ uint32_t mod_mul(uint32_t a, uint32_t b, uint32_t m) {
+__device__ uint32_t gpu_mod_mul(uint32_t a, uint32_t b, uint32_t m) {
     uint32_t res = 0;
     while (b > 0) {
         if (b & 1) {
@@ -17,29 +18,29 @@ __device__ uint32_t mod_mul(uint32_t a, uint32_t b, uint32_t m) {
     return res;
 }
 
-__device__ uint32_t mod_pow(uint32_t a, uint32_t b, uint32_t m) {
+__device__ uint32_t gpu_mod_pow(uint32_t a, uint32_t b, uint32_t m) {
     uint32_t res = 1;
 
     a %= m;
     while (b > 0) {
         if (b & 1) {
-            res = mod_mul(res, a, m);
+            res = gpu_mod_mul(res, a, m);
         }
-        a = mod_mul(a, a, m);
+        a = gpu_mod_mul(a, a, m);
         b >>= 1;
     }
     return res;
 }
 
-__device__ bool witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s) {
-    uint32_t x = mod_pow(a, d, n);
+__device__ bool gpu_witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s) {
+    uint32_t x = gpu_mod_pow(a, d, n);
 
     if (x == 1 || x == n - 1) {
         return false;
     }
 
     for (uint32_t r = 1; r < s; r++) {
-        x = mod_mul(x, x, n);
+        x = gpu_mod_mul(x, x, n);
         if (x == n - 1) {
             return false;
         }
@@ -77,7 +78,7 @@ miller_rabin_kernel(const uint32_t *input, bool *output, int iters) {
 
     for (int i = 0; i < iters; i++) {
         uint32_t a = curand(&state) % (num - 3) + 2;
-        if (witness(num, d, a, s)) {
+        if (gpu_witness(num, d, a, s)) {
             output[idx] = false;
             return;
         }
