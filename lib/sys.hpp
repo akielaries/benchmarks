@@ -104,31 +104,32 @@ class System {
     /** GPU name */
     std::string name;
     /** CUDA driver version */
-    int driverVersion;
+    int nvd_driver_version;
     /** CUDA runtime version */
-    int runtimeVersion;
+    int cuda_version;
     int major;
     int minor;
     /** total memory in KB */
-    float totalGlobalMemMB;
+    float total_glbl_mem;
     /** GPU count */
-    int multiProcessorCount;
+    int gpu_mp_count;
     /** CUDA GPU cores */
-    int cudaCores;
-    /** max GPU clock rate in GHx */
-    float maxClockRateGHz;
+    int cuda_cores;
+    /** max GPU clock rate in GHz */
+    float max_clock_rt;
     /** total GPU memory */
-    size_t totalConstMem;
+    size_t total_const_mem;
     /** shared memory / block */
     size_t sharedMemPerBlock;
+    size_t shared_mem_pb;
     /** max threads per GPU */
-    int maxThreadsPerMultiProcessor;
+    int max_mp_threads;
     /** max thread per GPU block */
-    int maxThreadsPerBlock;
+    int max_pb_threads;
     /** GPU threads MAX dimension */
-    int maxThreadsDim[3];
+    int max_dim_threads[3];
     /** GPU MAX grid size */
-    int maxGridSize[3];
+    int max_grid_size[3];
 
 
 #endif

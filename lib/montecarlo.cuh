@@ -12,6 +12,11 @@
 #include <cuda.h>
 #include <curand_kernel.h>
 
+/**
+ * @brief Driver for CUDA Monte Carlo method
+ * @param dev
+ * @param devStates
+ */
 void run_gpu_monte_carlo(float *dev, curandState *devStates);
 
 #endif

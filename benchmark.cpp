@@ -161,6 +161,65 @@ void bench_monte_carlo() {
 // if host has NVCC installed
 #ifdef __HAS_NVCC__
 
+void gpu_bench_miller_rabin() {
+    int n = nums.size();
+    int iters = 120000;
+
+    // Allocate device memory for input and output arrays
+    uint32_t *d_input;
+    bool *d_output;
+
+    std::chrono::steady_clock::time_point start_time =
+        std::chrono::steady_clock::now();
+
+    cudaMalloc((void **)&d_input, n * sizeof(uint32_t));
+    cudaMalloc((void **)&d_output, n * sizeof(bool));
+
+    // Copy input data to device
+    cudaMemcpy(d_input,
+               nums.data(),
+               n * sizeof(uint32_t),
+               cudaMemcpyHostToDevice);
+
+    // Launch a separate thread for each element in the array
+    int threads = 256;
+    int blocks = (n + threads - 1) / threads;
+
+    run_gpu_miller_rabin(d_input, d_output, iters, threads, blocks);
+
+    //miller_rabin_kernel<<<blocks, threads>>>(d_input,
+    //                                                        d_output,
+    //                                                        iters);
+
+    // Copy the results back to the host
+    bool *results = new bool[n];
+    cudaMemcpy(results, d_output, n * sizeof(bool), cudaMemcpyDeviceToHost);
+
+    std::chrono::steady_clock::time_point end_time =
+        std::chrono::steady_clock::now();
+
+    // print results
+    for (int i = 0; i < n; ++i) {
+        if (results[i]) {
+            std::cout << nums[i] << " is PRIME...\n";
+        } else {
+            std::cout << nums[i] << " is COMPOSITE...\n";
+        }
+    }
+
+    // Clean up
+    cudaFree(d_input);
+    cudaFree(d_output);
+    delete[] results;
+
+    std::cout << "Time elapsed: "
+              << std::chrono::duration_cast<std::chrono::milliseconds>(
+                     end_time - start_time)
+                     .count()
+              << " ms" << std::endl;
+
+}
+
 void gpu_bench_monte_carlo() {
     clock_t start, stop;
     float host[BLOCKS * THREADS];
@@ -182,7 +241,14 @@ void gpu_bench_monte_carlo() {
     cudaMalloc((void **)&devStates, THREADS * BLOCKS * sizeof(curandState));
 
     //gpu_monte_carlo<<<BLOCKS, THREADS>>>(dev, devStates);
+    start = clock();
+
+    std::chrono::steady_clock::time_point start_time =
+        std::chrono::steady_clock::now();
+
     run_gpu_monte_carlo(dev, devStates);
+    std::chrono::steady_clock::time_point end_time =
+        std::chrono::steady_clock::now();
 
     cudaMemcpy(host,
                dev,
@@ -203,6 +269,13 @@ void gpu_bench_monte_carlo() {
 
     printf("CUDA estimate of PI = %f [error of %f]\n", pi_gpu, pi_gpu - PI);
 
+    std::cout << "Time elapsed: "
+              << std::chrono::duration_cast<std::chrono::milliseconds>(
+                     end_time - start_time)
+                     .count()
+              << " ms" << std::endl;
+
+
 }
 
 #endif
@@ -210,7 +283,7 @@ void gpu_bench_monte_carlo() {
 // Function to run system monitor as a background process
 // TODO this should be run even when -b is passed in but on a seperate
 // thread?
-void daemon() {
+void daemon(int interval) {
     // System class obj
     System sys;
     
@@ -254,6 +327,11 @@ void daemon() {
                 csvFile << "TIME,CPU_MODEL,NUM_CPUs,PROCS,BogoMIPS,CPU_USG,"
                         << "CPU_TEMP,TOTAL_VRAM,USED_VRAM,FREE_VRAM,"
                         << "TOTAL_RAM,USED_RAM,FREE_RAM\n";
+#ifdef __HAS_NVCC__
+                csvFile << "GPU_MODEL,"
+                        << ",TOTAL_GPU_MEM,USED_GPU_MEM, FREE_GPU_MEM"
+                        ;
+#endif
             }
 
             // CURRENT MEMORY USAGE, THIS METHOD POPULATE VARIOUS CLASS VARS
@@ -294,7 +372,7 @@ void daemon() {
         }
 
         // sleep
-        std::this_thread::sleep_for(std::chrono::seconds(2));
+        std::this_thread::sleep_for(std::chrono::seconds(interval));
     }
 }
 
@@ -327,11 +405,12 @@ int main(int argc, char *argv[]) {
 
             std::string mode(argv[2]);
 
+            // System class obj
             System sys;
 
             // if -b cpu
             if (mode == "cpu") {
-                std::cout << "<--------- CPU TESTS --------->";
+                std::cout << "<--------- CPU TESTS --------->\n";
                 // display CPU information and number of running processes from
                 // `ps`
                 sys.cpu_info();
@@ -363,6 +442,18 @@ int main(int argc, char *argv[]) {
                 sys.cpu_usage();
                 sys.mem_info();
                 sys.cpu_temp();
+
+                std::cout << "Discrete Fourier Transform...\n";
+
+
+                std::cout << "Fast Fourier Transform...\n";
+
+
+                // TODO: finish out some openGPMP matrix operations for this
+                // to compare against the F90 methods, openBLAS, and finally 
+                // corresponding GPU implementations. 
+                // Include benchmarks against Naive Implementations as well
+                std::cout << "Matrix...\n";
             }
 
             // if -b gpu
@@ -371,13 +462,14 @@ int main(int argc, char *argv[]) {
                 
 #ifdef __HAS_NVCC__
                 
-                std::cout << "<--------- GPU TESTS --------->";
+                std::cout << "<--------- GPU TESTS --------->\n";
 
-                std::cout << "NVIDIA DEVICE!\n";
+                std::cout << "NVIDIA device found!\n";
                 gpu_bench_monte_carlo();
+                gpu_bench_miller_rabin();
                 
 #else
-                std::cout << "NO NVIDIA DEVICE FOUND!\n";
+                std::cout << "No NVIDIA device found!\n";
 #endif
             }
             else {
@@ -390,7 +482,7 @@ int main(int argc, char *argv[]) {
         if (strcmp(argv[1], "-d") == 0) {
             // TODO implement "daemon"
             std::cout << "Running as daemon...\n";
-            daemon();
+            daemon(2);
         }
     }
     return 0;
