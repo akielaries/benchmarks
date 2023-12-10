@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['queue_5fmutex_161',['queue_mutex',['../classThreadPool.html#adf76c928f148e8fdcd7e34c2bbaa97e3',1,'ThreadPool']]]
+  ['num_5fproc_164',['num_proc',['../classSystem.html#abcd0175ca4ea5d5d48919fb851f3a672',1,'System']]],
+  ['nums_165',['nums',['../benchmark_8cpp.html#a81031c0a79c9eb70381d31123a80835c',1,'benchmark.cpp']]]
 ];

@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['tasks_75',['tasks',['../classThreadPool.html#aecd2f98ff952b12bcd21102df80bdfe9',1,'ThreadPool']]],
-  ['test_5fsys_2ecpp_76',['test_sys.cpp',['../test__sys_8cpp.html',1,'']]],
-  ['threaddispatch_77',['ThreadDispatch',['../classThreadDispatch.html',1,'']]],
-  ['threadpool_78',['ThreadPool',['../classThreadPool.html',1,'ThreadPool'],['../classThreadPool.html#a3225e86aa7835545b3f6c2c8d363d5e5',1,'ThreadPool::ThreadPool()'],['../classThreadPool.html#a3e0ddf4638e66015010fd3e0cdeed3ff',1,'ThreadPool::ThreadPool(int numThreads)']]],
-  ['threadpool_2ehpp_79',['threadpool.hpp',['../threadpool_8hpp.html',1,'']]]
+  ['setlogdestination_72',['setLogDestination',['../classLogger.html#a656a669c2e93021464272575d6690d6a',1,'Logger']]],
+  ['setlogfile_73',['setLogFile',['../classLogger.html#aca73d3b79aaef706c4621d681e7bf662',1,'Logger']]],
+  ['setloglevel_74',['setLogLevel',['../classLogger.html#a00fdcdbeb39a2d5d4fb27cc36c35c101',1,'Logger']]],
+  ['stop_75',['stop',['../classThreadPool.html#a04e2cc4b3c979b4e054071436988d23d',1,'ThreadPool']]],
+  ['sys_2ecpp_76',['sys.cpp',['../sys_8cpp.html',1,'']]],
+  ['sys_2ehpp_77',['sys.hpp',['../sys_8hpp.html',1,'']]],
+  ['system_78',['System',['../classSystem.html',1,'']]]
 ];

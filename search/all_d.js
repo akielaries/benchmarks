@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['setlogdestination_68',['setLogDestination',['../classLogger.html#a656a669c2e93021464272575d6690d6a',1,'Logger']]],
-  ['setlogfile_69',['setLogFile',['../classLogger.html#aca73d3b79aaef706c4621d681e7bf662',1,'Logger']]],
-  ['setloglevel_70',['setLogLevel',['../classLogger.html#a00fdcdbeb39a2d5d4fb27cc36c35c101',1,'Logger']]],
-  ['stop_71',['stop',['../classThreadPool.html#a04e2cc4b3c979b4e054071436988d23d',1,'ThreadPool']]],
-  ['sys_2ecpp_72',['sys.cpp',['../sys_8cpp.html',1,'']]],
-  ['sys_2ehpp_73',['sys.hpp',['../sys_8hpp.html',1,'']]],
-  ['system_74',['System',['../classSystem.html',1,'']]]
+  ['read_5ffile_69',['read_file',['../classSystem.html#ace3df89ee0981870976a1b6f57cacc0f',1,'System']]],
+  ['readme_70',['README',['../md_README.html',1,'']]],
+  ['readme_2emd_71',['README.md',['../README_8md.html',1,'']]]
 ];

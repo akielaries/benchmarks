@@ -4,5 +4,6 @@ var searchData=
   ['bench_5fnaive_5fprimes_1',['bench_naive_primes',['../benchmark_8cpp.html#a9badd17a5aea365baf2d707497ed60e7',1,'benchmark.cpp']]],
   ['bench_5fthreadpool_5fprimes_2',['bench_threadpool_primes',['../benchmark_8cpp.html#ad598690a4aea45940c2a914225192468',1,'benchmark.cpp']]],
   ['benchmark_20documentation_2e_2e_2e_3',['Benchmark documentation...',['../index.html',1,'']]],
-  ['benchmark_2ecpp_4',['benchmark.cpp',['../benchmark_8cpp.html',1,'']]]
+  ['benchmark_2ecpp_4',['benchmark.cpp',['../benchmark_8cpp.html',1,'']]],
+  ['bogus_5fmips_5',['bogus_mips',['../classSystem.html#acf6f1334ae27c290bb391bf603a2c5cf',1,'System']]]
 ];

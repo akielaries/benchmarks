@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['p_5fmem_5ffree_158',['p_mem_free',['../classSystem.html#a201b9f3e98239b20104e88305adaeeee',1,'System']]],
-  ['p_5fmem_5ftotal_159',['p_mem_total',['../classSystem.html#abd2c5260abf4889d3bb20d8d425a8d91',1,'System']]],
-  ['p_5fmem_5fused_160',['p_mem_used',['../classSystem.html#a24277c0eebc92d3ef10481e1a5164de3',1,'System']]]
+  ['logdestination_160',['logDestination',['../classLogger.html#a967857c7128b7c34b79c63248c499235',1,'Logger']]],
+  ['logfilestream_161',['logFileStream',['../classLogger.html#a7bcb7e35acb7b1c70b5cef1800e2506b',1,'Logger']]],
+  ['loglevel_162',['logLevel',['../classLogger.html#a944f533cd338373621f20a6e20ba525e',1,'Logger']]],
+  ['logtofile_163',['logToFile',['../classLogger.html#ab45d0099fb55c8156305a1ce8490e79b',1,'Logger']]]
 ];
