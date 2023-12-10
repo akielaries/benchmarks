@@ -91,8 +91,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a1cfb44d14ad67d6f3c3f8cc38c223960"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">monte_carlo</a> (int total_trials)</td></tr>
 <tr class="memdesc:a1cfb44d14ad67d6f3c3f8cc38c223960"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monte Carlo method for predicting the number representing pi TODO.  <a href="montecarlo_8cpp.html#a1cfb44d14ad67d6f3c3f8cc38c223960">More...</a><br /></td></tr>
 <tr class="separator:a1cfb44d14ad67d6f3c3f8cc38c223960"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4669755f9ef5ae0738f3b5f73f00d6e1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="montecarlo_8cpp.html#a4669755f9ef5ae0738f3b5f73f00d6e1">host_monte_carlo</a> (long trials)</td></tr>
-<tr class="separator:a4669755f9ef5ae0738f3b5f73f00d6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a598a3330b3c21701223ee0ca14316eca"></a>
@@ -114,36 +112,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a4669755f9ef5ae0738f3b5f73f00d6e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4669755f9ef5ae0738f3b5f73f00d6e1">&#9670;&nbsp;</a></span>host_monte_carlo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float host_monte_carlo </td>
-          <td>(</td>
-          <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>trials</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="montecarlo_8cpp_source.html#l00043">43</a> of file <a class="el" href="montecarlo_8cpp_source.html">montecarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                    {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">float</span> x, y;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">long</span> points_in_circle;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">long</span> i = 0; i &lt; trials; i++) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        x = rand() / (float)RAND_MAX;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        y = rand() / (float)RAND_MAX;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        points_in_circle += (x * x + y * y &lt;= 1.0f);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> 4.0f * points_in_circle / trials;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a1cfb44d14ad67d6f3c3f8cc38c223960"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1cfb44d14ad67d6f3c3f8cc38c223960">&#9670;&nbsp;</a></span>monte_carlo()</h2>
 
