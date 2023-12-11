@@ -25,5 +25,8 @@ jobs:
         cuda: '12.1.0'
     - run: |
         echo "Installed cuda version is: ${{steps.cuda-toolkit.outputs.cuda}}" && echo "Cuda install location: ${{steps.cuda-toolkit.outputs.CUDA_PATH}}" && nvcc -V
+
+    - uses: actions/checkout@v3
+    - run: |
         make
         ./benchsys -b gpu
