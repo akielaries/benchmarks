@@ -2,6 +2,8 @@
 [![Build](https://github.com/NAU-IoT/benchmarks/actions/workflows/build.yml/badge.svg)](https://github.com/NAU-IoT/benchmarks/actions/workflows/build.yml)
 [![Build Doxygen Documentation](https://github.com/NAU-IoT/benchmarks/actions/workflows/doxygen.yml/badge.svg)](https://github.com/NAU-IoT/benchmarks/actions/workflows/doxygen.yml)
 [![license](https://img.shields.io/github/license/NAU-IoT/benchmarks?color=23228B22)](https://github.com/NAU-IoT/benchmarks/blob/main/LICENSE)
+[![benchmarks CUDA](https://github.com/NAU-IoT/benchmarks/actions/workflows/CUDA.yml/badge.svg)](https://github.com/NAU-IoT/benchmarks/actions/workflows/CUDA.yml)
+
 # Benchmarks
 Simple repository comparing the Raspberry Pi 4, Raspberry Pi IO Board compute module
 and the NVIDIA Jetson Nano.
