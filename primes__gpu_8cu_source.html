@@ -72,104 +72,103 @@ $(function() {
 <div class="contents">
 <a href="primes__gpu_8cu.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;#include &quot;../lib/primes.cuh&quot;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;#include &lt;ctime&gt;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;#include &lt;cuda_runtime.h&gt;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;#include &lt;iostream&gt;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;#include &lt;random&gt;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;#include &lt;vector&gt;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;#include &lt;curand_kernel.h&gt;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;__device__ uint32_t gpu_mod_mul(uint32_t a, uint32_t b, uint32_t m) {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    uint32_t res = 0;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    while (b &gt; 0) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        if (b &amp; 1) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            res = (res + a) % m;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        a = (2 * a) % m;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        b &gt;&gt;= 1;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    return res;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;__device__ uint32_t gpu_mod_pow(uint32_t a, uint32_t b, uint32_t m) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    uint32_t res = 1;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    a %= m;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    while (b &gt; 0) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        if (b &amp; 1) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            res = gpu_mod_mul(res, a, m);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        a = gpu_mod_mul(a, a, m);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        b &gt;&gt;= 1;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    return res;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;__device__ bool gpu_witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    uint32_t x = gpu_mod_pow(a, d, n);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    if (x == 1 || x == n - 1) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        return false;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    for (uint32_t r = 1; r &lt; s; r++) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        x = gpu_mod_mul(x, x, n);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        if (x == n - 1) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            return false;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    return true;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;__global__ void</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;miller_rabin_kernel(const uint32_t *input, bool *output, int iters) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    int idx = blockIdx.x * blockDim.x + threadIdx.x;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    uint32_t num = input[idx];</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    uint32_t d = num - 1, s = 0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    if (num &lt; 2) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        output[idx] = false;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        return;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    if (num == 2 || num == 3) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        output[idx] = true;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        return;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    if (num % 2 == 0) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        output[idx] = false;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        return;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    while (d % 2 == 0) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        d /= 2;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        s++;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    curandState state;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    curand_init(clock64(), idx, 0, &amp;state);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    for (int i = 0; i &lt; iters; i++) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        uint32_t a = curand(&amp;state) % (num - 3) + 2;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        if (gpu_witness(num, d, a, s)) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            output[idx] = false;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            return;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    output[idx] = true;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;void run_gpu_miller_rabin(const uint32_t *input, </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                          bool *output, </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                          int iters, </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                          int threads, </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                          int blocks) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    miller_rabin_kernel&lt;&lt;&lt;blocks, threads&gt;&gt;&gt;(input,</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                             output,</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                             iters);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;#include &lt;iostream&gt;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;#include &lt;random&gt;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;#include &lt;vector&gt;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;#include &lt;curand_kernel.h&gt;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;__device__ uint32_t gpu_mod_mul(uint32_t a, uint32_t b, uint32_t m) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    uint32_t res = 0;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    while (b &gt; 0) {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        if (b &amp; 1) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            res = (res + a) % m;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        a = (2 * a) % m;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        b &gt;&gt;= 1;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    return res;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;__device__ uint32_t gpu_mod_pow(uint32_t a, uint32_t b, uint32_t m) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    uint32_t res = 1;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    a %= m;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    while (b &gt; 0) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        if (b &amp; 1) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            res = gpu_mod_mul(res, a, m);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        a = gpu_mod_mul(a, a, m);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        b &gt;&gt;= 1;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    return res;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;__device__ bool gpu_witness(uint32_t n, uint32_t d, uint32_t a, uint32_t s) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    uint32_t x = gpu_mod_pow(a, d, n);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    if (x == 1 || x == n - 1) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        return false;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    for (uint32_t r = 1; r &lt; s; r++) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        x = gpu_mod_mul(x, x, n);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        if (x == n - 1) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            return false;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    return true;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;__global__ void</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;miller_rabin_kernel(const uint32_t *input, bool *output, int iters) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    int idx = blockIdx.x * blockDim.x + threadIdx.x;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    uint32_t num = input[idx];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    uint32_t d = num - 1, s = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    if (num &lt; 2) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        output[idx] = false;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        return;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    if (num == 2 || num == 3) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        output[idx] = true;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        return;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    if (num % 2 == 0) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        output[idx] = false;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        return;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    while (d % 2 == 0) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        d /= 2;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        s++;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    curandState state;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    curand_init(clock64(), idx, 0, &amp;state);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    for (int i = 0; i &lt; iters; i++) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        uint32_t a = curand(&amp;state) % (num - 3) + 2;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        if (gpu_witness(num, d, a, s)) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            output[idx] = false;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            return;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    output[idx] = true;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;void run_gpu_miller_rabin(const uint32_t *input, </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                          bool *output, </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                          int iters, </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                          int threads, </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                          int blocks) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    miller_rabin_kernel&lt;&lt;&lt;blocks, threads&gt;&gt;&gt;(input,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                             output,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                             iters);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
