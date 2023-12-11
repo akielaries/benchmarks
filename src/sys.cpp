@@ -23,7 +23,8 @@
 
 #ifdef __HAS_NVCC__
 
-#include <cuda_runtime_api.h>
+// This will break compilation with g++ even if protected with ifdef since cpp files assume g++
+//#include <cuda_runtime_api.h>
 
 #endif
 

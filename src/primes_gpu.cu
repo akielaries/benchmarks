@@ -1,6 +1,5 @@
 #include "../lib/primes.cuh"
 #include <ctime>
-#include <cuda_runtime.h>
 #include <iostream>
 #include <random>
 #include <vector>
