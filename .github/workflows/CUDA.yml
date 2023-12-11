@@ -1,4 +1,4 @@
-name: benchmarks CUDA
+name: CUDA
 
 on:
   push:
