@@ -161,7 +161,9 @@ void bench_monte_carlo() {
 // if host has NVCC installed
 #ifdef __HAS_NVCC__
 
+// does not achieve same accuracy as CPU based Miller-Rabin
 void gpu_bench_miller_rabin() {
+    clock_t start, stop;
     int n = nums.size();
     int iters = 120000;
 
@@ -169,8 +171,7 @@ void gpu_bench_miller_rabin() {
     uint32_t *d_input;
     bool *d_output;
 
-    std::chrono::steady_clock::time_point start_time =
-        std::chrono::steady_clock::now();
+    start = clock();
 
     cudaMalloc((void **)&d_input, n * sizeof(uint32_t));
     cudaMalloc((void **)&d_output, n * sizeof(bool));
@@ -195,8 +196,8 @@ void gpu_bench_miller_rabin() {
     bool *results = new bool[n];
     cudaMemcpy(results, d_output, n * sizeof(bool), cudaMemcpyDeviceToHost);
 
-    std::chrono::steady_clock::time_point end_time =
-        std::chrono::steady_clock::now();
+    stop = clock();
+
 
     // print results
     for (int i = 0; i < n; ++i) {
@@ -212,11 +213,8 @@ void gpu_bench_miller_rabin() {
     cudaFree(d_output);
     delete[] results;
 
-    std::cout << "Time elapsed: "
-              << std::chrono::duration_cast<std::chrono::milliseconds>(
-                     end_time - start_time)
-                     .count()
-              << " ms" << std::endl;
+    printf("Finished in %f s.\n",
+           (stop - start) / (float)CLOCKS_PER_SEC);
 
 }
 
@@ -225,13 +223,15 @@ void gpu_bench_monte_carlo() {
     float host[BLOCKS * THREADS];
     float *dev;
     curandState *devStates;
+    int total_trials = TRIALS_PER_THREAD * BLOCKS * THREADS;
 
     printf("# of trials per thread = %d, # of blocks = %d, # of threads/block "
-           "= %d.\n",
+           "= %d, total trials %d.\n",
            TRIALS_PER_THREAD,
            BLOCKS,
-           THREADS);
-
+           THREADS,
+           total_trials);
+    
     start = clock();
 
     cudaMalloc((void **)&dev,
@@ -240,15 +240,9 @@ void gpu_bench_monte_carlo() {
 
     cudaMalloc((void **)&devStates, THREADS * BLOCKS * sizeof(curandState));
 
-    //gpu_monte_carlo<<<BLOCKS, THREADS>>>(dev, devStates);
     start = clock();
 
-    std::chrono::steady_clock::time_point start_time =
-        std::chrono::steady_clock::now();
-
     run_gpu_monte_carlo(dev, devStates);
-    std::chrono::steady_clock::time_point end_time =
-        std::chrono::steady_clock::now();
 
     cudaMemcpy(host,
                dev,
@@ -268,12 +262,6 @@ void gpu_bench_monte_carlo() {
            (stop - start) / (float)CLOCKS_PER_SEC);
 
     printf("CUDA estimate of PI = %f [error of %f]\n", pi_gpu, pi_gpu - PI);
-
-    std::cout << "Time elapsed: "
-              << std::chrono::duration_cast<std::chrono::milliseconds>(
-                     end_time - start_time)
-                     .count()
-              << " ms" << std::endl;
 
 
 }
@@ -460,10 +448,9 @@ int main(int argc, char *argv[]) {
             else if (mode == "gpu") {
                 // if host has NVCC installed
                 
+                std::cout << "<--------- GPU TESTS --------->\n";
 #ifdef __HAS_NVCC__
                 
-                std::cout << "<--------- GPU TESTS --------->\n";
-
                 std::cout << "NVIDIA device found!\n";
                 gpu_bench_monte_carlo();
                 gpu_bench_miller_rabin();

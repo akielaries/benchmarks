@@ -131,6 +131,11 @@ class System {
     /** GPU MAX grid size */
     int max_grid_size[3];
 
+    int _ConvertSMVer2Cores(int major, int minor);
+
+    void getGPUInfo();
+
+    void printGPUInfo();
 
 #endif
 

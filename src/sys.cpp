@@ -21,6 +21,12 @@
 #include <vector>
 #include <stdexcept>
 
+#ifdef __HAS_NVCC__
+
+#include <cuda_runtime_api.h>
+
+#endif
+
 // function to read and return the contents of a file
 std::string System::read_file(const std::string &filename) {
     std::ifstream file(filename);
