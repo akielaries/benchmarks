@@ -1,7 +1,12 @@
-name: openGPMP CUDA
+name: benchmarks CUDA
 
 on:
-  workflow_call:
+  push:
+    branches: 
+      - '**'
+  pull_request:
+    branches:
+      - '**'
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
