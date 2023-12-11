@@ -1,0 +1,24 @@
+name: openGPMP CUDA
+
+on:
+  workflow_call:
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+    steps:
+    - uses: Jimver/cuda-toolkit@v0.2.11
+      id: cuda-toolkit
+      with:
+        cuda: '12.1.0'
+    - run: |
+        echo "Installed cuda version is: ${{steps.cuda-toolkit.outputs.cuda}}" && echo "Cuda install location: ${{steps.cuda-toolkit.outputs.CUDA_PATH}}" && nvcc -V
+        make
+        ./benchsys -b gpu
