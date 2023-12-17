@@ -5,9 +5,9 @@
 class System {
   public:
     /** CPU/PROC info */
-    std::string cpu_model;      // proc model
-    double bogus_mips;     // proc speed
-    int num_proc;       // # of processors
+    std::string cpu_model;  // proc model
+    double bogus_mips;      // proc speed
+    int num_proc;           // # of processors
 
     /** Idle CPU temp set in cpu_idle_temp() */
     double cpu_temp_idle;
@@ -21,11 +21,6 @@ class System {
     uint64_t p_mem_total;
     uint64_t p_mem_used;
     uint64_t p_mem_free;
-
-#ifdef __HAS_NVCC__
-    /** NVIDIA GPU INFO */
-
-#endif
 
 
     /**
@@ -99,6 +94,7 @@ class System {
     bool has_nvidia_gpu();
 
 
+/** IF CUDA CAPABLE DEVICE */
 #ifdef __HAS_NVCC__
     /** NVIDIA GPU INFO */
     /** GPU name */
@@ -120,7 +116,6 @@ class System {
     /** total GPU memory */
     size_t total_const_mem;
     /** shared memory / block */
-    size_t sharedMemPerBlock;
     size_t shared_mem_pb;
     /** max threads per GPU */
     int max_mp_threads;
@@ -131,11 +126,20 @@ class System {
     /** GPU MAX grid size */
     int max_grid_size[3];
 
-    int _ConvertSMVer2Cores(int major, int minor);
+    /**
+     * @brief get Nvidia GPU architecture from reference matrix
+     */
+    int _gpu_arch(int major, int minor);
 
-    void getGPUInfo();
+    /**
+     * @brief get Nvidia GPU information
+     */
+    void gpu_info();
 
-    void printGPUInfo();
+    /**
+     * @brief display Nvidia GPU information
+     */
+    void gpu_info_print();
 
 #endif
 

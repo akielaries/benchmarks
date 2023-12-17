@@ -303,8 +303,11 @@ void daemon(int interval) {
         std::strftime(time_str, sizeof(time_str), "%H%M%S", &local_tm);
 
         // CSV FILE NAME with only the date
-        std::string filename = std::string(user) + "_" + std::string(host) + 
-            std::string(date_str) + ".csv";
+        std::string filename = "HOST_" +
+                                std::string(user) + "_" + 
+                                std::string(host) + 
+                                std::string(date_str) + 
+                                ".csv";
 
         // open CSV to append
         std::ofstream csvFile(filename, std::ios::app);
@@ -364,8 +367,8 @@ void daemon(int interval) {
     }
 }
 
-void usage(const char *programName) {
-    std::cout << "Usage: " << programName 
+void usage(const char *bin) {
+    std::cout << "Usage: " << bin 
               << " [-d | -b cpu | gpu ] -o" << std::endl;
 
     std::cout << "  -d : daemon mode to monitor system information\n";
@@ -374,7 +377,7 @@ void usage(const char *programName) {
 
     std::cout << "    cpu - run CPU-based benchmarks\n";
     std::cout << "    gpu - run GPU-based benchmarks\n";
-    std::cout << "  -o : output file\n";
+    std::cout << "  -o : output file TODO\n"; // TODO
 }
 
 int main(int argc, char *argv[]) {
