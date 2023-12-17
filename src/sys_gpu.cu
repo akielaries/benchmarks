@@ -64,23 +64,31 @@ void System::gpu_info() {
     cudaGetDeviceProperties(&deviceProp, dev);
 
     int nvd_driver_version, cuda_version;
-    System::name = deviceProp.name;
+    size_t gpu_mem_total, gpu_mem_free;
+
+    /** GPU DEVICE INFORMATION */
+    System::name                = deviceProp.name;
 
     cudaDriverGetVersion(&nvd_driver_version);
     cudaRuntimeGetVersion(&cuda_version);
-    System::nvd_driver_version = nvd_driver_version;
-    System::cuda_version = cuda_version;
-    System::major = deviceProp.major;
-    System::minor = deviceProp.minor;
+    System::nvd_driver_version  = nvd_driver_version;
+    System::cuda_version        = cuda_version;
+    System::major               = deviceProp.major;
+    System::minor               = deviceProp.minor;
     
-    System::total_glbl_mem = static_cast<float>(deviceProp.totalGlobalMem / 1048576.0f);
+    System::shared_mem_pb       = deviceProp.sharedMemPerBlock;
+    System::total_const_mem     = deviceProp.totalConstMem;
+    System::total_glbl_mem      = static_cast<float>(deviceProp.totalGlobalMem / 1048576.0f);
+    cudaMemGetInfo(&gpu_mem_free, &gpu_mem_total);
     
+    System::gpu_mem_total       = static_cast<float>(gpu_mem_total / 1048576.0f);
+    System::gpu_mem_free        = static_cast<float>(gpu_mem_free / 1048576.0f);
+    System::gpu_mem_used        = static_cast<float>(gpu_mem_total - gpu_mem_free);
+
     System::gpu_mp_count        = deviceProp.multiProcessorCount;
     System::cuda_cores          = _gpu_arch(deviceProp.major, 
                                                         deviceProp.minor);
     System::max_clock_rt        = deviceProp.clockRate * 1e-6f;
-    System::total_const_mem     = deviceProp.totalConstMem;
-    System::shared_mem_pb       = deviceProp.sharedMemPerBlock;
     
     System::max_mp_threads      = deviceProp.maxThreadsPerMultiProcessor;
     System::max_pb_threads      = deviceProp.maxThreadsPerBlock;
@@ -135,5 +143,12 @@ void System::gpu_info_print() {
     std::cout << "  Max dimension size of a grid size    (x,y,z): ("
               << System::max_grid_size[0] << ", " << System::max_grid_size[1] << ", "
               << System::max_grid_size[2] << ")" << std::endl;
+
+    std::cout << "  GPU MEMORY TOTAL" << System::gpu_mem_total << "\n";
+
+    std::cout << "  GPU MEMORY USED" << System::gpu_mem_used << "\n";
+
+    std::cout << "  GPU MEMORY FREE" << System::gpu_mem_free << "\n";
+
 }
 

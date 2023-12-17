@@ -125,6 +125,9 @@ class System {
     int max_dim_threads[3];
     /** GPU MAX grid size */
     int max_grid_size[3];
+    size_t gpu_mem_total;
+    size_t gpu_mem_used;
+    size_t gpu_mem_free;
 
     /**
      * @brief get Nvidia GPU architecture from reference matrix

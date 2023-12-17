@@ -330,6 +330,11 @@ void daemon(int interval) {
             // CPU/PROC INFO, POPULATES VARIOUS CLASS VARS
             sys.cpu_info();
 
+#ifdef __HAS_NVCC__
+            sys.gpu_info();
+            sys.gpu_info_print();
+#endif
+
             // WRITE ALL INFO TO CSV FILE
             csvFile << time             << ","  // time
                     << sys.cpu_model    << ","  // CPU model
