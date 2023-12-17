@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usage_148',['usage',['../benchmark_8cpp.html#a1ff022344debd4323f3df7b0dabc088a',1,'benchmark.cpp']]]
+  ['usage_148',['usage',['../benchmark_8cpp.html#a8e0c2a17326444ab76eb49dc98d309c8',1,'benchmark.cpp']]]
 ];
