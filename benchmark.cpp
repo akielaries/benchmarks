@@ -351,10 +351,10 @@ void daemon(int interval) {
                     << sys.p_mem_free           // RAM free
                     ;
 #ifdef __HAS_NVCC__
-            // additional GPU information
-            //csvFile << "," << sys.gpu_mem_total  // GPU VRAM total
-            //        << "," << sys.gpu_mem_used   // GPU VRAM used
-            //        << "," << sys.gpu_mem_free;  // GPU VRAM free
+            // WRITE NVIDIA GPU INFO TO CSV FILE
+            csvFile << "," 
+                    << sys.name << ","
+                    ;
 #endif
 
 
